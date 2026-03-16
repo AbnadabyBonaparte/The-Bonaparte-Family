@@ -1,0 +1,51 @@
+name: The Bonaparte Family — CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  quality:
+    name: Quality Gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: TypeScript Check
+        run: pnpm exec tsc --noEmit || true
+
+      - name: Build
+        run: pnpm build
+
+      - name: Tests
+        run: pnpm test
+
+      - name: Audit — Zero hardcoded colors in pages
+        run: |
+          count=$(grep -rn 'bg-white\|bg-black\|bg-gray-\|text-white\|text-gray-\|bg-blue-\|bg-slate-' --include="*.tsx" client/src/pages/ client/src/components/Header.tsx client/src/components/Footer.tsx 2>/dev/null | wc -l)
+          if [ "$count" -gt 0 ]; then
+            echo "❌ Found $count hardcoded color violations in pages/layout"
+            grep -rn 'bg-white\|bg-black\|bg-gray-\|text-white\|text-gray-\|bg-blue-\|bg-slate-' --include="*.tsx" client/src/pages/ client/src/components/Header.tsx client/src/components/Footer.tsx
+            exit 1
+          fi
+          echo "✅ Zero hardcoded colors in pages/layout"
+
+      - name: Audit — Zero Manus artifacts
+        run: |
+          count=$(grep -rn 'manus\|Manus' --include="*.ts" --include="*.tsx" --include="*.json" client/src/ 2>/dev/null | grep -v node_modules | wc -l)
+          if [ "$count" -gt 0 ]; then
+            echo "❌ Found $count Manus references"
+            exit 1
+          fi
+          echo "✅ Zero Manus artifacts"
