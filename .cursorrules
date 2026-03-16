@@ -1,0 +1,10 @@
+# Cursor Rules — The Bonaparte Family Portal
+
+1. Zero hex hardcoded em componentes — usar CSS vars do tema
+2. Componentes UI: components/ui/ (shadcn base, não modificar)
+3. Dados reais em data/ — zero mock/fake/lorem
+4. Dark/Light mode funcional em todas as páginas
+5. Mobile-first — responsive
+6. Fontes: Merriweather (títulos) + Inter (interface)
+7. Cores: bg-background, text-foreground, bg-primary, text-muted-foreground
+8. Build: pnpm build → dist/public/
