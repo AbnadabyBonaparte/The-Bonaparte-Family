@@ -12,20 +12,20 @@ export default function Footer() {
             </p>
           </div>
           <div className="grid grid-cols-2 gap-3 text-sm">
-            <Link href="/start-here"><a className="text-muted-foreground hover:text-primary">Start Here</a></Link>
-            <Link href="/expedition"><a className="text-muted-foreground hover:text-primary">Expedition</a></Link>
-            <Link href="/family"><a className="text-muted-foreground hover:text-primary">Family</a></Link>
-            <Link href="/education"><a className="text-muted-foreground hover:text-primary">Education</a></Link>
+            <Link href="/start-here"><a className="text-muted-foreground hover:text-primary">Comece Aqui</a></Link>
+            <Link href="/expedition"><a className="text-muted-foreground hover:text-primary">Expedição</a></Link>
+            <Link href="/family"><a className="text-muted-foreground hover:text-primary">Família</a></Link>
+            <Link href="/education"><a className="text-muted-foreground hover:text-primary">Educação</a></Link>
             <Link href="/alsham"><a className="text-muted-foreground hover:text-primary">ALSHAM</a></Link>
-            <Link href="/legacy"><a className="text-muted-foreground hover:text-primary">Legacy</a></Link>
+            <Link href="/legacy"><a className="text-muted-foreground hover:text-primary">Legado</a></Link>
           </div>
           <div className="text-sm">
             <p className="text-muted-foreground">Instagram • YouTube (em breve)</p>
-            <p className="mt-3 text-muted-foreground">Powered by ALSHAM Global Commerce</p>
+            <p className="mt-3 text-muted-foreground">Desenvolvido por ALSHAM Global Commerce</p>
           </div>
         </div>
         <p className="mt-10 border-t border-border pt-6 text-xs text-muted-foreground">
-          © 2026 The Bonaparte Family
+          © 2026 The Bonaparte Family. Todos os direitos reservados.
         </p>
       </div>
     </footer>

@@ -5,18 +5,18 @@ import { useState } from "react";
 import { Link } from "wouter";
 
 const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Start Here", href: "/start-here" },
-  { label: "Expedition", href: "/expedition" },
-  { label: "Family", href: "/family" },
-  { label: "Life", href: "/life" },
-  { label: "Education", href: "/education" },
-  { label: "Health", href: "/health" },
-  { label: "Faith", href: "/faith" },
+  { label: "Início", href: "/" },
+  { label: "Comece Aqui", href: "/start-here" },
+  { label: "Expedição", href: "/expedition" },
+  { label: "Família", href: "/family" },
+  { label: "Vida", href: "/life" },
+  { label: "Educação", href: "/education" },
+  { label: "Saúde", href: "/health" },
+  { label: "Fé", href: "/faith" },
   { label: "ALSHAM", href: "/alsham" },
-  { label: "Work", href: "/work" },
-  { label: "Store", href: "/store" },
-  { label: "Legacy", href: "/legacy" },
+  { label: "Obra", href: "/work" },
+  { label: "Loja", href: "/store" },
+  { label: "Legado", href: "/legacy" },
 ];
 
 export default function Header() {
