@@ -1,34 +1,31 @@
-import { PageTemplate } from "./PageTemplate";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import { Card } from "@/components/ui/card";
+
+const sections = [
+  ["Por que Homeschool", "Para preservar curiosidade, autonomia intelectual e participação ativa da família no processo formativo."],
+  ["Como educamos", "Combinamos trilhas estruturadas, leitura, música, projetos práticos e mentorias direcionadas."],
+  ["Worldschooling", "A expedição integra currículo vivo: geografia aplicada, idiomas, história e resolução de problemas reais."],
+  ["Resultados", "As meninas aprendem com contexto, propósito e repertório multicultural desde cedo."],
+];
 
 export default function Education() {
-  const sections = [
-    {
-      title: "Worldschooling Philosophy",
-      content:
-        "Education is not confined to classrooms. The world is our curriculum. Real experience, real projects, and real mentors guide our learning.",
-    },
-    {
-      title: "Homeschool Structure",
-      content:
-        "We combine structured learning with freedom. Core subjects are taught with rigor, but the method is always adapted to each child's learning style and interests.",
-    },
-    {
-      title: "Real-World Projects",
-      content:
-        "From building projects on the sítio to managing aspects of our business, our children learn by doing. Theory is always grounded in practice.",
-    },
-    {
-      title: "Continuous Learning",
-      content:
-        "Education doesn't end with childhood. Our entire family is committed to lifelong learning, growth, and the pursuit of knowledge.",
-    },
-  ];
-
   return (
-    <PageTemplate
-      title="Education"
-      subtitle="Homeschool and worldschooling as a philosophy of life."
-      sections={sections}
-    />
+    <div className="page-shell">
+      <Header />
+      <main className="editorial-container py-16">
+        <h1 className="hero-title">Educação</h1>
+        <p className="mt-4 text-lg text-muted-foreground">Worldschooling — o mundo é a sala de aula.</p>
+        <div className="mt-12 grid gap-5 md:grid-cols-2">
+          {sections.map(([title, content]) => (
+            <Card key={title} className="p-6">
+              <h2 className="text-2xl">{title}</h2>
+              <p className="mt-3 text-muted-foreground">{content}</p>
+            </Card>
+          ))}
+        </div>
+      </main>
+      <Footer />
+    </div>
   );
 }

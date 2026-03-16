@@ -1,34 +1,58 @@
-import { PageTemplate } from "./PageTemplate";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import { Card } from "@/components/ui/card";
+import { checkpoints, countries } from "@/data/expedition";
 
 export default function Expedition() {
-  const sections = [
-    {
-      title: "The Motorhome Alfredo",
-      content:
-        "Alfredo is not just a vehicle—it's our mobile home, our workspace, and our symbol of freedom. Built with intention and engineered for autonomy, it enables us to live on the road without compromising on comfort or functionality.",
-    },
-    {
-      title: "The Journey",
-      content:
-        "Our expedition is a living project. Every checkpoint is documented, every route is intentional, and every destination teaches us something new about ourselves and the world.",
-    },
-    {
-      title: "Autonomy Systems",
-      content:
-        "Energy independence, water systems, internet connectivity—we've engineered Alfredo to be self-sufficient. Our infrastructure supports our freedom.",
-    },
-    {
-      title: "Diary & Documentation",
-      content:
-        "We document our journey in real-time. Field notes, photos, and reflections are shared to inspire others and create a living archive of our expedition.",
-    },
-  ];
-
   return (
-    <PageTemplate
-      title="Expedition"
-      subtitle="The motorhome Alfredo, our journey, and the road ahead."
-      sections={sections}
-    />
+    <div className="page-shell">
+      <Header />
+      <main className="editorial-container py-16">
+        <h1 className="hero-title">Expedição Bonaparte 2026-2027</h1>
+        <p className="mt-4 text-lg text-muted-foreground">13 meses • 12 países • 1 família • 1 motorhome chamado Alfredo</p>
+
+        <section className="mt-14">
+          <h2 className="text-3xl">O plano</h2>
+          <div className="mt-6 grid gap-3 md:grid-cols-3">
+            {countries.map(country => <Card key={country} className="p-4 text-muted-foreground">{country}</Card>)}
+          </div>
+        </section>
+
+        <section className="mt-14 grid gap-6 md:grid-cols-2">
+          <Card className="p-6">
+            <h3 className="text-2xl">Alfredo</h3>
+            <p className="mt-3 text-muted-foreground">Alfredo é o quinto membro da família. Casa, estúdio, escola e base logística no mesmo corpo.</p>
+            <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+              <li>• Energia e operação para rotina full-time</li>
+              <li>• Espaço para aulas, gravações e descanso</li>
+              <li>• Estrutura pensada para autonomia</li>
+            </ul>
+          </Card>
+          <Card className="border-dashed p-6">
+            <p className="text-muted-foreground">Foto do Alfredo</p>
+            <p className="mt-2 text-sm text-muted-foreground">Conteúdo visual em atualização.</p>
+          </Card>
+        </section>
+
+        <section className="mt-14">
+          <h2 className="text-3xl">Timeline documental</h2>
+          <div className="mt-6 space-y-4">
+            {checkpoints.map(check => (
+              <Card key={check.country} className="p-5">
+                <p className="text-sm text-primary">{check.window}</p>
+                <h3 className="text-xl">{check.country}</h3>
+                <p className="text-muted-foreground">{check.goal}</p>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-14 rounded-xl border border-border bg-card p-8">
+          <h2 className="text-3xl">Worldschooling na estrada</h2>
+          <p className="mt-4 text-muted-foreground">Cada país é uma sala de aula. História, geografia, idiomas e arte aparecem no dia a dia, conectados a projetos reais das filhas.</p>
+        </section>
+      </main>
+      <Footer />
+    </div>
   );
 }

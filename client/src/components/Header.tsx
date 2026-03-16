@@ -4,104 +4,71 @@ import { Menu, Moon, Sun, X } from "lucide-react";
 import { useState } from "react";
 import { Link } from "wouter";
 
-/**
- * Header Canônico - Portal-Hub The Bonaparte Family
- * Navegação principal com dark mode toggle
- * Design: Híbrido (Documentary + Tech)
- */
+const navItems = [
+  { label: "Home", href: "/" },
+  { label: "Start Here", href: "/start-here" },
+  { label: "Expedition", href: "/expedition" },
+  { label: "Family", href: "/family" },
+  { label: "Life", href: "/life" },
+  { label: "Education", href: "/education" },
+  { label: "Health", href: "/health" },
+  { label: "Faith", href: "/faith" },
+  { label: "ALSHAM", href: "/alsham" },
+  { label: "Work", href: "/work" },
+  { label: "Store", href: "/store" },
+  { label: "Legacy", href: "/legacy" },
+];
+
 export default function Header() {
   const { theme, toggleTheme } = useTheme();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const navItems = [
-    { label: "Start Here", href: "/start-here" },
-    { label: "Family", href: "/family" },
-    { label: "Life", href: "/life" },
-    { label: "Expedition", href: "/expedition" },
-    { label: "Education", href: "/education" },
-    { label: "Health", href: "/health" },
-    { label: "Faith", href: "/faith" },
-    { label: "ALSHAM", href: "/alsham" },
-    { label: "Work", href: "/work" },
-    { label: "Store", href: "/store" },
-    { label: "Legacy", href: "/legacy" },
-  ];
+  const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-background border-b border-border">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
+    <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur">
+      <div className="editorial-container">
+        <div className="flex min-h-16 items-center justify-between gap-4">
           <Link href="/">
-            <a className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-              <div className="text-2xl font-serif font-bold text-primary">
-                Bonaparte
-              </div>
-              <div className="hidden sm:block text-xs font-sans text-muted-foreground uppercase tracking-widest">
-                Family
-              </div>
-            </a>
+            <a className="text-lg font-serif font-bold text-primary">The Bonaparte Family</a>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1">
-            {navItems.slice(0, 6).map((item) => (
+          <nav className="hidden xl:flex items-center gap-1">
+            {navItems.map(item => (
               <Link key={item.href} href={item.href}>
-                <a className="px-3 py-2 text-sm font-medium text-foreground hover:text-primary hover:bg-secondary rounded transition-colors">
-                  {item.label}
-                </a>
-              </Link>
-            ))}
-            <div className="mx-2 h-4 w-px bg-border" />
-            {navItems.slice(6).map((item) => (
-              <Link key={item.href} href={item.href}>
-                <a className="px-3 py-2 text-sm font-medium text-foreground hover:text-primary hover:bg-secondary rounded transition-colors">
+                <a className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground">
                   {item.label}
                 </a>
               </Link>
             ))}
           </nav>
 
-          {/* Actions */}
           <div className="flex items-center gap-2">
             <Button
-              variant="ghost"
+              variant="outline"
               size="icon"
+              className="min-h-11 min-w-11"
               onClick={toggleTheme}
-              className="hover:bg-secondary"
-              title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+              aria-label="Alternar tema"
             >
-              {theme === "light" ? (
-                <Moon className="h-5 w-5" />
-              ) : (
-                <Sun className="h-5 w-5" />
-              )}
+              {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
             </Button>
-
-            {/* Mobile Menu Button */}
             <Button
-              variant="ghost"
+              variant="outline"
               size="icon"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden hover:bg-secondary"
+              className="xl:hidden min-h-11 min-w-11"
+              onClick={() => setOpen(prev => !prev)}
+              aria-label="Abrir menu"
             >
-              {mobileMenuOpen ? (
-                <X className="h-5 w-5" />
-              ) : (
-                <Menu className="h-5 w-5" />
-              )}
+              {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
             </Button>
           </div>
         </div>
-
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <nav className="lg:hidden mt-4 pb-4 flex flex-col gap-2 border-t border-border pt-4">
-            {navItems.map((item) => (
+        {open && (
+          <nav className="xl:hidden grid grid-cols-2 gap-2 border-t border-border py-4">
+            {navItems.map(item => (
               <Link key={item.href} href={item.href}>
                 <a
-                  className="px-3 py-2 text-sm font-medium text-foreground hover:text-primary hover:bg-secondary rounded transition-colors block"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={() => setOpen(false)}
+                  className="rounded-md px-3 py-3 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
                 >
                   {item.label}
                 </a>
