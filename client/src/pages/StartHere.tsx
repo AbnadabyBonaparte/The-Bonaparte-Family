@@ -1,113 +1,46 @@
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { ArrowRight } from "lucide-react";
+import { Card } from "@/components/ui/card";
 import { Link } from "wouter";
 
-/**
- * Start Here Page - Portal-Hub The Bonaparte Family
- * Página guiada para qualquer pessoa entender a visão em 2 minutos
- */
 export default function StartHere() {
-  const sections = [
-    {
-      title: "Who We Are",
-      description: "A family that chose freedom over comfort, presence over performance.",
-      content: "We are the Bonapartes: architects of our own reality, builders of systems, and creators of legacy.",
-    },
-    {
-      title: "What We Refuse",
-      description: "We reject the ordinary paths and conventional wisdom.",
-      content: "Boredom. Mediocrity. Passive consumption. Disconnection from nature. Separation of work and life.",
-    },
-    {
-      title: "What We Seek",
-      description: "Our mission is clear and intentional.",
-      content: "Freedom. Authentic connection. Continuous learning. Real impact. A life that matters.",
-    },
-    {
-      title: "How We Live",
-      description: "Nômade, conscious, and integrated.",
-      content: "On the road with our motorhome. On the land at our sítio. Always learning. Always building.",
-    },
-    {
-      title: "How We Educate",
-      description: "Worldschooling and homeschooling as a philosophy.",
-      content: "Real experience. Real projects. Real mentors. The world as our classroom.",
-    },
-    {
-      title: "How We Sustain",
-      description: "Through systems, technology, and intentional business.",
-      content: "ALSHAM Global Commerce. Digital products. Automation. Building the economic engine of freedom.",
-    },
-  ];
-
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="page-shell">
       <Header />
-
-      <main className="flex-1">
-        {/* Hero */}
-        <section className="py-16 bg-card border-b border-border">
-          <div className="container mx-auto px-4 text-center">
-            <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6 text-foreground">
-              Start Here
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Everything you need to understand The Bonaparte Family in 2 minutes.
-            </p>
+      <main className="editorial-container py-16 md:py-20">
+        <section>
+          <p className="text-sm uppercase tracking-[0.2em] text-primary">Guia inicial</p>
+          <h1 className="hero-title mt-3">Comece Aqui</h1>
+          <div className="mt-8 space-y-5 text-lg leading-relaxed text-muted-foreground">
+            <p>Somos uma família brasileira baseada em Aragarças que decidiu viver com intencionalidade: menos piloto automático, mais presença.</p>
+            <p>Este portal existe para reunir nossa história, nossos sistemas e os projetos que sustentam a jornada de estrada, educação e criação.</p>
+            <p>Aqui você vai encontrar nossa visão sobre soberania familiar, fé vivida no cotidiano, worldschooling, saúde e construção de legado.</p>
+            <p>Não é só conteúdo: é um laboratório aberto de vida real, com vitórias, ajustes e decisões feitas em movimento.</p>
           </div>
         </section>
 
-        {/* Content Grid */}
-        <section className="py-20 bg-background">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {sections.map((section, idx) => (
-                <Card key={idx} className="p-8 hover:shadow-lg transition-shadow">
-                  <h2 className="text-2xl font-serif font-bold mb-2 text-foreground">
-                    {section.title}
-                  </h2>
-                  <p className="text-sm text-accent font-medium mb-4">
-                    {section.description}
-                  </p>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {section.content}
-                  </p>
-                </Card>
-              ))}
-            </div>
+        <section className="mt-14">
+          <h2 className="text-3xl">Timeline</h2>
+          <div className="mt-6 grid gap-3 md:grid-cols-4">
+            {["2020 → Sítio", "2024 → ALSHAM", "2025 → Música", "2026 → Expedição"].map(item => (
+              <Card key={item} className="p-5 text-center text-muted-foreground">{item}</Card>
+            ))}
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="py-20 bg-card border-t border-border">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-serif font-bold mb-8 text-foreground">
-              Ready to Explore?
-            </h2>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/family">
-                <a>
-                  <Button size="lg" className="bg-primary hover:bg-primary/90">
-                    Meet the Family
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
+        <section className="mt-14">
+          <h2 className="text-3xl">Explore as seções</h2>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {["/family", "/expedition", "/education", "/life", "/health", "/faith"].map(path => (
+              <Link key={path} href={path}>
+                <a className="rounded-lg border border-border bg-card p-4 text-muted-foreground transition-colors hover:border-primary hover:text-foreground">
+                  {path.replace("/", "").toUpperCase()}
                 </a>
               </Link>
-              <Link href="/expedition">
-                <a>
-                  <Button size="lg" variant="outline">
-                    Follow the Expedition
-                  </Button>
-                </a>
-              </Link>
-            </div>
+            ))}
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );

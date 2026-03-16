@@ -1,34 +1,29 @@
-import { PageTemplate } from "./PageTemplate";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import { Card } from "@/components/ui/card";
 
 export default function Faith() {
-  const sections = [
-    {
-      title: "Spirituality Without Dogma",
-      content:
-        "Our faith is personal and non-institutional. We believe in transcendence, meaning, and connection to something greater than ourselves.",
-    },
-    {
-      title: "Rituals & Practice",
-      content:
-        "We create rituals that ground us. Silence, meditation, time in nature, and shared reflection are central to our spiritual practice.",
-    },
-    {
-      title: "Philosophy & Ethics",
-      content:
-        "We are guided by principles: integrity, compassion, wisdom, and service. These principles inform every decision we make.",
-    },
-    {
-      title: "Connection & Community",
-      content:
-        "Spirituality is not solitary. We seek connection with others who share our values and commitment to living with purpose.",
-    },
-  ];
-
   return (
-    <PageTemplate
-      title="Faith & Spirituality"
-      subtitle="Our spiritual practice, philosophy, and connection to the transcendent."
-      sections={sections}
-    />
+    <div className="page-shell">
+      <Header />
+      <main className="editorial-container py-16">
+        <h1 className="hero-title">Fé</h1>
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          <Card className="p-6">
+            <h2 className="text-2xl">Nossa Fé</h2>
+            <p className="mt-3 text-muted-foreground">Cristã, não-institucional e panenteísta, inspirada por “O Deus Que Não Se Separa”.</p>
+          </Card>
+          <Card className="p-6">
+            <h2 className="text-2xl">Rituais Familiares</h2>
+            <p className="mt-3 text-muted-foreground">Leitura, oração, silêncio e conversas semanais para alinhar coração e direção.</p>
+          </Card>
+          <Card className="p-6">
+            <h2 className="text-2xl">Liberdade Espiritual</h2>
+            <p className="mt-3 text-muted-foreground">A fé como motor de liberdade e responsabilidade, nunca de controle.</p>
+          </Card>
+        </div>
+      </main>
+      <Footer />
+    </div>
   );
 }

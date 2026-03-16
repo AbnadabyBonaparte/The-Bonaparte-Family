@@ -1,34 +1,30 @@
-import { PageTemplate } from "./PageTemplate";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import { Card } from "@/components/ui/card";
 
 export default function ALSHAM() {
-  const sections = [
-    {
-      title: "What is ALSHAM?",
-      content:
-        "ALSHAM Global Commerce is the economic engine of our freedom. It's a multi-layered system of digital products, services, and automation designed to create sustainable income while maintaining our values.",
-    },
-    {
-      title: "Our Products & Services",
-      content:
-        "From digital courses to consulting, from automation tools to premium content—our offerings are designed to help others build freedom while generating the resources we need for our mission.",
-    },
-    {
-      title: "Technology & Agents",
-      content:
-        "We leverage cutting-edge technology: AI agents, automation systems, and data infrastructure. These are not just tools—they're multipliers of our impact.",
-    },
-    {
-      title: "2026-2027 Roadmap",
-      content:
-        "We're scaling ALSHAM to become a billion-dollar enterprise. Our vision is ambitious, our systems are rigorous, and our execution is disciplined.",
-    },
-  ];
-
   return (
-    <PageTemplate
-      title="ALSHAM"
-      subtitle="Global Commerce, systems, and the economic motor of freedom."
-      sections={sections}
-    />
+    <div className="page-shell">
+      <Header />
+      <main className="editorial-container py-16">
+        <h1 className="hero-title">ALSHAM Global Commerce</h1>
+        <p className="mt-4 text-lg text-muted-foreground">O motor econômico da família.</p>
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          <Card className="p-6">
+            <h2 className="text-2xl">O que é</h2>
+            <p className="mt-3 text-muted-foreground">Holding que integra Garimpo IA, SUPREMA BELEZA e Casa Bonaparte SaaS.</p>
+          </Card>
+          <Card className="p-6">
+            <h2 className="text-2xl">Tecnologia</h2>
+            <p className="mt-3 text-muted-foreground">Operação cloud-based com n8n, Supabase, Vercel e automações para escala enxuta.</p>
+          </Card>
+          <Card className="p-6">
+            <h2 className="text-2xl">Roadmap 2026-2027</h2>
+            <p className="mt-3 text-muted-foreground">Consolidar produtos digitais, ampliar distribuição global e financiar a expedição contínua.</p>
+          </Card>
+        </div>
+      </main>
+      <Footer />
+    </div>
   );
 }
