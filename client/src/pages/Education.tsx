@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 import { Card } from "@/components/ui/card";
 
 const sections = [
@@ -16,6 +17,9 @@ export default function Education() {
       <main className="editorial-container py-16">
         <h1 className="hero-title">Educação</h1>
         <p className="mt-4 text-lg text-muted-foreground">Worldschooling — o mundo é a sala de aula.</p>
+        <div className="mt-8 w-full">
+          <ImagePlaceholder aspectRatio="hero" alt="Worldschooling Bonaparte" />
+        </div>
         <div className="mt-12 grid gap-5 md:grid-cols-2">
           {sections.map(([title, content]) => (
             <Card key={title} className="p-6">

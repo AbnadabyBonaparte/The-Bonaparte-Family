@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 import { Card } from "@/components/ui/card";
 
 export default function Faith() {
@@ -8,6 +9,9 @@ export default function Faith() {
       <Header />
       <main className="editorial-container py-16">
         <h1 className="hero-title">Fé</h1>
+        <div className="mt-8 w-full">
+          <ImagePlaceholder aspectRatio="hero" alt="Espiritualidade" />
+        </div>
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           <Card className="p-6">
             <h2 className="text-2xl">Nossa Fé</h2>

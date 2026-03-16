@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 import { Card } from "@/components/ui/card";
 
 const principles = [
@@ -18,6 +19,9 @@ export default function Legacy() {
       <main className="editorial-container py-16">
         <h1 className="hero-title">Legado</h1>
         <p className="mt-4 text-lg text-muted-foreground">O que deixamos quando partirmos.</p>
+        <div className="mt-8 w-full">
+          <ImagePlaceholder aspectRatio="hero" alt="Legado Bonaparte" />
+        </div>
 
         <section className="mt-12 rounded-xl border border-border bg-card p-8">
           <h2 className="text-3xl">Para nossas filhas</h2>

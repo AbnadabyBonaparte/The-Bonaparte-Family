@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 import { Card } from "@/components/ui/card";
 
 export default function ALSHAM() {
@@ -9,6 +10,9 @@ export default function ALSHAM() {
       <main className="editorial-container py-16">
         <h1 className="hero-title">ALSHAM Global Commerce</h1>
         <p className="mt-4 text-lg text-muted-foreground">O motor econômico da família.</p>
+        <div className="mt-8 w-full">
+          <ImagePlaceholder aspectRatio="hero" alt="ALSHAM Global Commerce" />
+        </div>
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           <Card className="p-6">
             <h2 className="text-2xl">O que é</h2>

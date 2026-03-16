@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 import { Card } from "@/components/ui/card";
 import { books } from "@/data/work";
 
@@ -14,22 +15,31 @@ export default function Work() {
           <h2 className="text-3xl">Livros</h2>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {books.map(book => (
-              <Card key={book.title} className="p-5">
-                <h3 className="text-xl">{book.title}</h3>
-                <p className="mt-2 text-muted-foreground">{book.theme}</p>
+              <Card key={book.title} className="overflow-hidden p-0">
+                <ImagePlaceholder aspectRatio="portrait" alt={`Capa — ${book.title}`} />
+                <div className="p-5">
+                  <h3 className="text-xl">{book.title}</h3>
+                  <p className="mt-2 text-muted-foreground">{book.theme}</p>
+                </div>
               </Card>
             ))}
           </div>
         </section>
 
         <section className="mt-14 grid gap-4 md:grid-cols-2">
-          <Card className="p-6">
-            <h2 className="text-2xl">Música</h2>
-            <p className="mt-3 text-muted-foreground">Aby Bonaparte: 25+ anos de carreira, com shows em Portugal, Alemanha, Bélgica e Uruguai.</p>
+          <Card className="overflow-hidden p-0">
+            <ImagePlaceholder aspectRatio="landscape" alt="Show ao vivo" />
+            <div className="p-6">
+              <h2 className="text-2xl">Música</h2>
+              <p className="mt-3 text-muted-foreground">Aby Bonaparte: 25+ anos de carreira, com shows em Portugal, Alemanha, Bélgica e Uruguai.</p>
+            </div>
           </Card>
-          <Card className="p-6">
-            <h2 className="text-2xl">Documentário</h2>
-            <p className="mt-3 text-muted-foreground">Projeto em planejamento para registrar a expedição como narrativa de família, território e legado.</p>
+          <Card className="overflow-hidden p-0">
+            <ImagePlaceholder aspectRatio="landscape" alt="Documentário da expedição" />
+            <div className="p-6">
+              <h2 className="text-2xl">Documentário</h2>
+              <p className="mt-3 text-muted-foreground">Projeto em planejamento para registrar a expedição como narrativa de família, território e legado.</p>
+            </div>
           </Card>
         </section>
       </main>

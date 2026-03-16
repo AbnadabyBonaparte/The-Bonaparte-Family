@@ -1,7 +1,17 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 import { Card } from "@/components/ui/card";
 import { Link } from "wouter";
+
+const sectionLabels: Record<string, string> = {
+  "/family": "Família",
+  "/expedition": "Expedição",
+  "/education": "Educação",
+  "/life": "Vida",
+  "/health": "Saúde",
+  "/faith": "Fé",
+};
 
 export default function StartHere() {
   return (
@@ -11,6 +21,9 @@ export default function StartHere() {
         <section>
           <p className="text-sm uppercase tracking-[0.2em] text-primary">Guia inicial</p>
           <h1 className="hero-title mt-3">Comece Aqui</h1>
+          <div className="mt-6 w-full">
+            <ImagePlaceholder aspectRatio="hero" alt="Bem-vindo ao portal Bonaparte" />
+          </div>
           <div className="mt-8 space-y-5 text-lg leading-relaxed text-muted-foreground">
             <p>Somos uma família brasileira baseada em Aragarças que decidiu viver com intencionalidade: menos piloto automático, mais presença.</p>
             <p>Este portal existe para reunir nossa história, nossos sistemas e os projetos que sustentam a jornada de estrada, educação e criação.</p>
@@ -20,7 +33,7 @@ export default function StartHere() {
         </section>
 
         <section className="mt-14">
-          <h2 className="text-3xl">Timeline</h2>
+          <h2 className="text-3xl">Linha do tempo</h2>
           <div className="mt-6 grid gap-3 md:grid-cols-4">
             {["2020 → Sítio", "2024 → ALSHAM", "2025 → Música", "2026 → Expedição"].map(item => (
               <Card key={item} className="p-5 text-center text-muted-foreground">{item}</Card>
@@ -34,7 +47,7 @@ export default function StartHere() {
             {["/family", "/expedition", "/education", "/life", "/health", "/faith"].map(path => (
               <Link key={path} href={path}>
                 <a className="rounded-lg border border-border bg-card p-4 text-muted-foreground transition-colors hover:border-primary hover:text-foreground">
-                  {path.replace("/", "").toUpperCase()}
+                  {sectionLabels[path] ?? path.replace("/", "")}
                 </a>
               </Link>
             ))}
