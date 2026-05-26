@@ -325,7 +325,7 @@ export default function Home() {
             {[
               { label: "Hub Central",    href: "https://casabonaparte.com.br",          sub: "casabonaparte.com.br",                       ext: true  },
               { label: "Livraria",       href: "https://casabonaparte.com.br/livros",   sub: "19 obras Bonaparte",                         ext: true  },
-              { label: "Bazar",          href: "https://casabonaparte.com.br/bazar",    sub: "Setup · Livraria · Expedição",               ext: true  },
+              { label: "Bazar & Livros", href: "/store",                                sub: "Equipamentos · Obras · Expedição",           ext: false },
               { label: "Músico",         href: "https://abnadabybonaparte.alshamglobal.com.br", sub: "25 anos · 888 músicas",              ext: true  },
             ].map(link => (
               <a
