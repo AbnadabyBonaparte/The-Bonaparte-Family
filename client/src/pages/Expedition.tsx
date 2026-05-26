@@ -302,7 +302,7 @@ export default function Expedition() {
               href="https://wa.me/5563992428800?text=Quero%20acompanhar%20a%20Expedi%C3%A7%C3%A3o%20Bonaparte!"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-sm bg-primary px-8 py-3 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition hover:opacity-90"
+              className="rounded-sm bg-accent px-8 py-3 text-sm font-semibold uppercase tracking-widest text-accent-foreground transition hover:opacity-90"
             >
               Acompanhar no WhatsApp →
             </a>

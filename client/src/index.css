@@ -31,54 +31,61 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+
+  /* Bonaparte palette — named tokens */
+  --color-forest-dark:    oklch(0.28 0.09 155);
+  --color-forest-mid:     oklch(0.52 0.13 155);
+  --color-sunset-orange:  oklch(0.65 0.18 50);
+  --color-cream:          oklch(0.97 0.01 80);
+  --color-obsidian:       oklch(0.12 0.04 155);
 }
 
 :root {
   --radius: 0.85rem;
 
-  /* Creme quente, texto terroso, verde oliva forte, bom contraste */
-  --background: oklch(0.97 0.01 80);
-  --foreground: oklch(0.15 0.02 80);
+  /* Paleta Bonaparte — canônica (os-bonaparts, 2024) */
+  --background: oklch(0.97 0.01 80);          /* Cream */
+  --foreground: oklch(0.15 0.03 155);
   --card: oklch(0.94 0.01 80);
-  --card-foreground: oklch(0.15 0.02 80);
+  --card-foreground: oklch(0.15 0.03 155);
   --popover: oklch(0.94 0.01 80);
-  --popover-foreground: oklch(0.15 0.02 80);
-  --primary: oklch(0.68 0.12 75);
+  --popover-foreground: oklch(0.15 0.03 155);
+  --primary: oklch(0.52 0.13 155);            /* Forest Mid #277C52 */
   --primary-foreground: oklch(0.97 0.01 80);
-  --secondary: oklch(0.9 0.03 60);
-  --secondary-foreground: oklch(0.25 0.02 80);
-  --accent: oklch(0.55 0.12 60);
+  --secondary: oklch(0.91 0.03 155);          /* tint suave forest para hover */
+  --secondary-foreground: oklch(0.25 0.04 155);
+  --accent: oklch(0.65 0.18 50);              /* Sunset Orange #E9741C — CTAs */
   --accent-foreground: oklch(0.97 0.01 80);
   --muted: oklch(0.9 0.01 80);
   --muted-foreground: oklch(0.45 0.02 80);
   --destructive: oklch(0.55 0.2 25);
   --destructive-foreground: oklch(0.97 0.01 80);
-  --border: oklch(0.85 0.01 80);
-  --input: oklch(0.85 0.01 80);
-  --ring: oklch(0.68 0.12 75);
+  --border: oklch(0.85 0.02 155);
+  --input: oklch(0.85 0.02 155);
+  --ring: oklch(0.52 0.13 155);               /* Forest Mid */
 }
 
 .dark {
-  /* Noite terrosa, texto claro, verde/âmbar mais brilhantes */
-  --background: oklch(0.12 0.01 80);
-  --foreground: oklch(0.9 0.01 80);
-  --card: oklch(0.16 0.01 80);
-  --card-foreground: oklch(0.9 0.01 80);
-  --popover: oklch(0.16 0.01 80);
-  --popover-foreground: oklch(0.9 0.01 80);
-  --primary: oklch(0.72 0.12 75);
-  --primary-foreground: oklch(0.12 0.01 80);
-  --secondary: oklch(0.2 0.02 60);
-  --secondary-foreground: oklch(0.85 0.01 80);
-  --accent: oklch(0.6 0.12 60);
-  --accent-foreground: oklch(0.12 0.01 80);
-  --muted: oklch(0.18 0.01 80);
-  --muted-foreground: oklch(0.55 0.02 80);
+  /* Dark mode Bonaparte — Obsidian Verde */
+  --background: oklch(0.12 0.04 155);         /* Obsidian Verde */
+  --foreground: oklch(0.97 0.01 80);
+  --card: oklch(0.16 0.04 155);
+  --card-foreground: oklch(0.97 0.01 80);
+  --popover: oklch(0.16 0.04 155);
+  --popover-foreground: oklch(0.97 0.01 80);
+  --primary: oklch(0.58 0.13 155);            /* Forest Mid — mais brilhante no escuro */
+  --primary-foreground: oklch(0.12 0.04 155);
+  --secondary: oklch(0.20 0.05 155);          /* Forest Dark hover */
+  --secondary-foreground: oklch(0.85 0.02 155);
+  --accent: oklch(0.68 0.18 50);              /* Sunset Orange — mais brilhante no escuro */
+  --accent-foreground: oklch(0.12 0.04 155);
+  --muted: oklch(0.18 0.03 155);
+  --muted-foreground: oklch(0.55 0.03 155);
   --destructive: oklch(0.55 0.2 25);
   --destructive-foreground: oklch(0.97 0.01 80);
-  --border: oklch(0.22 0.01 80);
-  --input: oklch(0.22 0.01 80);
-  --ring: oklch(0.72 0.12 75);
+  --border: oklch(0.24 0.05 155);
+  --input: oklch(0.24 0.05 155);
+  --ring: oklch(0.58 0.13 155);               /* Forest Mid */
 }
 
 @layer base {

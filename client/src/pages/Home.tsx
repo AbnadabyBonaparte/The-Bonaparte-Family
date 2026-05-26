@@ -130,7 +130,7 @@ export default function Home() {
             {/* CTAs */}
             <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
               <Link href="/expedition">
-                <a className="rounded-sm bg-primary px-8 py-3 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition hover:opacity-90">
+                <a className="rounded-sm bg-accent px-8 py-3 text-sm font-semibold uppercase tracking-widest text-accent-foreground transition hover:opacity-90">
                   A Expedição →
                 </a>
               </Link>
@@ -238,7 +238,7 @@ export default function Home() {
 
             <div className="mt-10">
               <Link href="/expedition">
-                <a className="inline-flex items-center gap-2 rounded-sm bg-primary px-8 py-3 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition hover:opacity-90">
+                <a className="inline-flex items-center gap-2 rounded-sm bg-accent px-8 py-3 text-sm font-semibold uppercase tracking-widest text-accent-foreground transition hover:opacity-90">
                   Ver o mapa da jornada →
                 </a>
               </Link>
@@ -371,7 +371,7 @@ export default function Home() {
                 href="https://wa.me/5563992428800?text=Quero%20acompanhar%20a%20Expedi%C3%A7%C3%A3o%20Bonaparte!"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-sm bg-primary px-8 py-3 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition hover:opacity-90"
+                className="rounded-sm bg-accent px-8 py-3 text-sm font-semibold uppercase tracking-widest text-accent-foreground transition hover:opacity-90"
               >
                 Acompanhar no WhatsApp →
               </a>
