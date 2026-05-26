@@ -5,20 +5,13 @@ import { useState } from "react";
 import { Link } from "wouter";
 
 const navItems = [
-  { label: "Início", href: "/" },
-  { label: "Comece Aqui", href: "/start-here" },
-  { label: "Expedição", href: "/expedition" },
-  { label: "Journal", href: "/journal" },
+  { label: "Início",         href: "/" },
+  { label: "Expedição",      href: "/expedition" },
+  { label: "Journal",        href: "/journal" },
+  { label: "Família",        href: "/family" },
+  { label: "Educação",       href: "/education" },
   { label: "Bazar & Livros", href: "/store" },
-  { label: "Família", href: "/family" },
-  { label: "Vida", href: "/life" },
-  { label: "Educação", href: "/education" },
-  { label: "Saúde", href: "/health" },
-  { label: "Fé", href: "/faith" },
-  { label: "ALSHAM", href: "/alsham" },
-  { label: "Obra", href: "/work" },
-  { label: "Loja", href: "/store" },
-  { label: "Legado", href: "/legacy" },
+  { label: "Legado",         href: "/legacy" },
 ];
 
 export default function Header() {
@@ -80,7 +73,7 @@ export default function Header() {
           </div>
         </div>
         {open && (
-          <nav className="xl:hidden grid grid-cols-2 gap-2 border-t border-border py-4">
+          <nav className="xl:hidden grid grid-cols-1 gap-2 border-t border-border py-4">
             {navItems.map(item => (
               <Link key={item.href} href={item.href}>
                 <a
