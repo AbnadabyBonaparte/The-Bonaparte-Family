@@ -18,6 +18,8 @@ const Work       = lazy(() => import("./pages/Work"));
 const Store      = lazy(() => import("./pages/Store"));
 const Legacy     = lazy(() => import("./pages/Legacy"));
 const Laurice    = lazy(() => import("./pages/Laurice"));
+const Journal    = lazy(() => import("./pages/Journal"));
+const Escrever   = lazy(() => import("./pages/Escrever"));
 const NotFound   = lazy(() => import("./pages/NotFound"));
 
 function Router() {
@@ -37,6 +39,8 @@ function Router() {
         <Route path="/store"      component={Store} />
         <Route path="/legacy"     component={Legacy} />
         <Route path="/laurice"    component={Laurice} />
+        <Route path="/journal"    component={Journal} />
+        <Route path="/escrever"   component={Escrever} />
         <Route path="/404"        component={NotFound} />
         <Route                    component={NotFound} />
       </Switch>
