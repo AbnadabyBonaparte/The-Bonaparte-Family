@@ -71,7 +71,7 @@ const FAMILY = [
     desc: "A força que ancora tudo. Educadora das filhas, guardiã da estabilidade, presença insubstituível da Casa Bonaparte." },
   { name: "Sarah Hadassa",  role: "10 anos",             photo: "/familia/sarah_hadassa.jpg",
     desc: "A primeira. Nascida para observar o mundo com olhos que não se conformam com a resposta fácil." },
-  { name: "Ana Maria",      role: "8 anos",              photo: null,
+  { name: "Ana Maria",      role: "8 anos",              photo: "/familia/ana_maria.jpg",
     desc: "A segunda. Nascida para sentir o que os outros passam rápido. Uma alma que habita o presente." },
   { name: "Mel",            role: "Yorkshire · A quinta", photo: "/familia/mel.jpg",
     desc: "A cachorrinha que não sabe que é pequena. Viaja, late e ama como se fosse a dona da estrada." },
