@@ -113,7 +113,7 @@ export default function Store() {
               href={BAZAR_HUB_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-sm bg-primary px-8 py-3 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition hover:opacity-90"
+              className="rounded-sm bg-accent px-8 py-3 text-sm font-semibold uppercase tracking-widest text-accent-foreground transition hover:opacity-90"
             >
               Ver catálogo completo → Bazar Bonaparte
             </a>
@@ -191,7 +191,7 @@ export default function Store() {
                           href={book.amazonUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="mt-4 block w-full rounded-sm bg-primary px-4 py-2.5 text-center text-sm font-semibold text-primary-foreground transition hover:opacity-90"
+                          className="mt-4 block w-full rounded-sm bg-accent px-4 py-2.5 text-center text-sm font-semibold text-accent-foreground transition hover:opacity-90"
                         >
                           Ler na Amazon →
                         </a>
@@ -208,7 +208,7 @@ export default function Store() {
                 href={LIVROS_HUB_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-sm bg-foreground px-8 py-3 text-sm font-semibold uppercase tracking-widest text-background transition hover:opacity-80"
+                className="rounded-sm bg-accent px-8 py-3 text-sm font-semibold uppercase tracking-widest text-accent-foreground transition hover:opacity-90"
               >
                 Ver catálogo completo → 19 obras
               </a>
