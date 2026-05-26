@@ -1,4 +1,4 @@
-limport { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { Link } from "wouter";
