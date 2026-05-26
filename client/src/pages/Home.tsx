@@ -79,7 +79,7 @@ const FAMILY = [
 
 // ── PILARES ───────────────────────────────────────────────────
 const PILLARS = [
-  { icon: "🏡", title: "Casa de madeira no sítio", text: "Sem condomínio. Sem barulheira. Natureza, silêncio e presença integral com as filhas.", image: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=600&q=80" },
+  { icon: "🏡", title: "Casa de madeira no sítio", text: "Sem condomínio. Sem barulheira. Natureza, silêncio e presença integral com as filhas.", image: "/familia/ana-peru.jpg" },
   { icon: "📡", title: "Starlink no sertão",        text: "Negócio remoto, escola online, liberdade geográfica real — não prometida.",           image: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=600&q=80" },
   { icon: "📚", title: "Worldschooling",             text: "O mundo é a sala de aula. Cada país é uma disciplina. Cada cultura é um professor.",   image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80" },
   { icon: "🎵", title: "Música como ofício",         text: "25 anos de palco. 888 músicas compostas. A arte que sustenta a travessia.",            image: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=600&q=80" },
@@ -177,11 +177,11 @@ export default function Home() {
           style={{ background: "var(--color-forest-dark)" }}
         >
           <img
-            src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1800&q=80"
+            src="/familia/hero.jpg"
             alt="" aria-hidden="true"
             style={{ position: "absolute", inset: 0, width: "100%", height: "100%",
                      objectFit: "cover", objectPosition: "center",
-                     opacity: 0.25, zIndex: 0 }}
+                     opacity: 0.45, zIndex: 0 }}
           />
           <div className="pointer-events-none absolute inset-0 opacity-20"
             style={{ zIndex: 1, backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.1'/%3E%3C/svg%3E\")" }} />
@@ -428,7 +428,7 @@ export default function Home() {
 
         {/* ══ AS MENINAS ════════════════════════════════════════ */}
         <motion.section {...fadeUp} className="section-reveal py-14 md:py-24 relative overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80"
+          <img src="/familia/meninas-cordeiro.jpg"
             alt="" aria-hidden="true"
             style={{ position: "absolute", inset: 0, width: "100%", height: "100%",
                      objectFit: "cover", objectPosition: "center top", zIndex: 0 }} />
