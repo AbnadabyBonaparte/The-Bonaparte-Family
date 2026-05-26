@@ -1,7 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { motion } from "framer-motion";
 import { countries, checkpoints, EXPEDITION_STATS, DEPARTURE_DATE } from "@/data/expedition";
+
+const fadeUp = {
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.7, ease: "easeOut" as const },
+};
 
 // ── COUNTDOWN ─────────────────────────────────────────────────
 function useCountdown(target: Date) {
@@ -150,7 +157,8 @@ export default function Expedition() {
       <main>
 
         {/* ══ HERO ══════════════════════════════════════════════ */}
-        <section
+        <motion.section
+          {...fadeUp}
           className="flex min-h-[70vh] flex-col items-center justify-center py-20 text-center"
           style={{ background: "linear-gradient(160deg, oklch(0.12 0.02 80) 0%, oklch(0.16 0.04 130) 100%)" }}
         >
@@ -184,20 +192,20 @@ export default function Expedition() {
               ))}
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* ══ MAPA INTERATIVO ═══════════════════════════════════ */}
-        <section className="editorial-container py-16">
+        <motion.section {...fadeUp} className="editorial-container py-16">
           <p className="mb-2 text-xs uppercase tracking-[0.3em] text-primary">Rota da jornada</p>
           <h2 className="mb-8 font-serif text-4xl">O mapa da expedição</h2>
           <ExpeditionMap />
           <p className="mt-4 text-xs text-muted-foreground">
             Clique em cada marcador para ver o país, período e objetivo da parada.
           </p>
-        </section>
+        </motion.section>
 
         {/* ══ TIMELINE ══════════════════════════════════════════ */}
-        <section className="bg-card py-16">
+        <motion.section {...fadeUp} className="bg-card py-16">
           <div className="editorial-container">
             <p className="mb-2 text-xs uppercase tracking-[0.3em] text-primary">13 meses</p>
             <h2 className="mb-10 font-serif text-4xl">A rota passo a passo</h2>
@@ -229,10 +237,10 @@ export default function Expedition() {
               ))}
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* ══ ALFREDO ═══════════════════════════════════════════ */}
-        <section className="editorial-container py-16">
+        <motion.section {...fadeUp} className="editorial-container py-16">
           <div className="rounded-xl border border-border bg-card p-8 md:p-12">
             <p className="mb-2 text-xs uppercase tracking-[0.3em] text-primary">Fase 2 · Condicional</p>
             <h2 className="font-serif text-4xl">Alfredo</h2>
@@ -254,10 +262,11 @@ export default function Expedition() {
               ))}
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* ══ WORLDSCHOOLING ════════════════════════════════════ */}
-        <section
+        <motion.section
+          {...fadeUp}
           className="py-20"
           style={{ background: "linear-gradient(160deg, oklch(0.12 0.02 80) 0%, oklch(0.16 0.04 130) 100%)" }}
         >
@@ -280,10 +289,10 @@ export default function Expedition() {
               ))}
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* ══ CTA ═══════════════════════════════════════════════ */}
-        <section className="editorial-container py-20 text-center">
+        <motion.section {...fadeUp} className="editorial-container py-20 text-center">
           <h2 className="font-serif text-3xl">Acompanhe cada parada</h2>
           <p className="mx-auto mt-4 max-w-lg text-muted-foreground">
             12 países. 13 meses. Uma família aprendendo o mundo em tempo real.
@@ -306,7 +315,7 @@ export default function Expedition() {
               Hub Bonaparte →
             </a>
           </div>
-        </section>
+        </motion.section>
 
       </main>
       <Footer />

@@ -2,7 +2,14 @@ import { useState, useEffect, useRef } from "react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { Link } from "wouter";
+import { motion } from "framer-motion";
 import { countries, DEPARTURE_DATE, EXPEDITION_STATS } from "@/data/expedition";
+
+const fadeUp = {
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.7, ease: "easeOut" as const },
+};
 
 // ── COUNTDOWN ─────────────────────────────────────────────────
 function useCountdown(target: Date) {
@@ -67,7 +74,8 @@ export default function Home() {
       <main>
 
         {/* ══ HERO ══════════════════════════════════════════════ */}
-        <section
+        <motion.section
+          {...fadeUp}
           className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden text-center"
           style={{
             background: "linear-gradient(160deg, oklch(0.12 0.02 80) 0%, oklch(0.18 0.03 130) 100%)",
@@ -136,10 +144,10 @@ export default function Home() {
 
           {/* Scroll indicator */}
           <p className="absolute bottom-8 text-xs text-white/20 animate-pulse">Role para conhecer ↓</p>
-        </section>
+        </motion.section>
 
         {/* ══ AS TRÊS PERGUNTAS ═════════════════════════════════ */}
-        <section className="editorial-container section-reveal py-24">
+        <motion.section {...fadeUp} className="editorial-container section-reveal py-24">
           <div className="mx-auto max-w-4xl">
             <p className="mb-6 text-xs uppercase tracking-[0.3em] text-muted-foreground">Toda linhagem responde</p>
             <div className="grid gap-8 md:grid-cols-3">
@@ -156,10 +164,10 @@ export default function Home() {
               ))}
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* ══ QUEM SOMOS ════════════════════════════════════════ */}
-        <section className="bg-card section-reveal py-24">
+        <motion.section {...fadeUp} className="bg-card section-reveal py-24">
           <div className="editorial-container">
             <p className="mb-2 text-xs uppercase tracking-[0.3em] text-primary">A família</p>
             <h2 className="font-serif text-4xl md:text-5xl">Os Bonaparte</h2>
@@ -178,10 +186,10 @@ export default function Home() {
               ))}
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* ══ COMO VIVEMOS ══════════════════════════════════════ */}
-        <section className="editorial-container section-reveal py-24">
+        <motion.section {...fadeUp} className="editorial-container section-reveal py-24">
           <p className="mb-2 text-xs uppercase tracking-[0.3em] text-primary">O design de vida</p>
           <h2 className="font-serif text-4xl md:text-5xl">Como vivemos</h2>
           <p className="mt-4 max-w-2xl text-muted-foreground">
@@ -197,10 +205,11 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </section>
+        </motion.section>
 
         {/* ══ A EXPEDIÇÃO — TEASER ══════════════════════════════ */}
-        <section
+        <motion.section
+          {...fadeUp}
           className="section-reveal py-24"
           style={{ background: "linear-gradient(160deg, oklch(0.12 0.02 80) 0%, oklch(0.16 0.04 130) 100%)" }}
         >
@@ -235,10 +244,10 @@ export default function Home() {
               </Link>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* ══ O MANIFESTO ═══════════════════════════════════════ */}
-        <section className="editorial-container section-reveal py-24">
+        <motion.section {...fadeUp} className="editorial-container section-reveal py-24">
           <div className="mx-auto max-w-3xl">
             <p className="mb-8 text-xs uppercase tracking-[0.3em] text-muted-foreground">Manifesto Bonaparte</p>
             <blockquote className="space-y-6 border-l-2 border-primary pl-8">
@@ -278,10 +287,10 @@ export default function Home() {
               </a>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* ══ AS MENINAS ════════════════════════════════════════ */}
-        <section className="bg-card section-reveal py-24">
+        <motion.section {...fadeUp} className="bg-card section-reveal py-24">
           <div className="editorial-container">
             <p className="mb-2 text-xs uppercase tracking-[0.3em] text-primary">Worldschooling</p>
             <h2 className="font-serif text-4xl md:text-5xl">Sarah & Ana Maria</h2>
@@ -315,10 +324,10 @@ export default function Home() {
               </p>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* ══ HUB LINKS ═════════════════════════════════════════ */}
-        <section className="editorial-container section-reveal py-24">
+        <motion.section {...fadeUp} className="editorial-container section-reveal py-24">
           <p className="mb-2 text-xs uppercase tracking-[0.3em] text-muted-foreground">Universo Bonaparte</p>
           <h2 className="font-serif text-3xl">Explore o ecossistema</h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -340,10 +349,11 @@ export default function Home() {
               </a>
             ))}
           </div>
-        </section>
+        </motion.section>
 
         {/* ══ ACOMPANHE ═════════════════════════════════════════ */}
-        <section
+        <motion.section
+          {...fadeUp}
           className="section-reveal py-20"
           style={{ background: "oklch(0.14 0.02 130)" }}
         >
@@ -372,7 +382,7 @@ export default function Home() {
               </Link>
             </div>
           </div>
-        </section>
+        </motion.section>
 
       </main>
       <Footer />

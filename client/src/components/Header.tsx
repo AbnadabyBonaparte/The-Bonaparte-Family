@@ -30,7 +30,22 @@ export default function Header() {
       <div className="editorial-container">
         <div className="flex min-h-16 items-center justify-between gap-4">
           <Link href="/">
-            <a className="text-lg font-serif font-bold text-primary">The Bonaparte Family</a>
+            {/* TODO: fazer upload de logo.png em client/public/ */}
+            <a className="flex items-center gap-3">
+              <img
+                src="/logo.svg"
+                alt="Bonaparte"
+                style={{
+                  height: "2rem",
+                  width: "2rem",
+                  objectFit: "contain",
+                  filter: "brightness(0) saturate(100%) invert(72%) sepia(28%) saturate(601%) hue-rotate(1deg) brightness(93%) contrast(87%)",
+                }}
+              />
+              <span className="font-serif text-lg font-semibold text-primary">
+                The Bonaparte Family
+              </span>
+            </a>
           </Link>
 
           <nav className="hidden xl:flex items-center gap-1">
