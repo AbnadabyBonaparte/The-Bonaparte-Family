@@ -35,7 +35,7 @@ export default function Header() {
                   filter: "brightness(0) saturate(100%) invert(72%) sepia(28%) saturate(601%) hue-rotate(1deg) brightness(93%) contrast(87%)",
                 }}
               />
-              <span className="font-serif text-lg font-semibold text-primary">
+              <span className="font-serif text-base md:text-lg font-semibold text-primary">
                 The Bonaparte Family
               </span>
             </a>

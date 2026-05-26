@@ -204,7 +204,7 @@ export default function Home() {
             </div>
             <div className="mt-14">
               <p className="mb-4 text-xs uppercase tracking-[0.3em] text-primary/70">Partida para Cebu · 03 Nov 2026</p>
-              <div className="flex items-center justify-center gap-6 md:gap-10">
+              <div className="flex items-center justify-center gap-4 md:gap-8">
                 {[
                   { value: countdown.days,    label: "dias" },
                   { value: countdown.hours,   label: "horas" },
@@ -241,7 +241,7 @@ export default function Home() {
         <Divider />
 
         {/* ══ AS TRÊS PERGUNTAS ═════════════════════════════════ */}
-        <motion.section {...fadeUp} className="editorial-container section-reveal py-24">
+        <motion.section {...fadeUp} className="editorial-container section-reveal py-14 md:py-24">
           <div className="mx-auto max-w-4xl">
             <p className="mb-6 text-xs uppercase tracking-[0.3em] text-muted-foreground">Toda linhagem responde</p>
             <div className="grid gap-8 md:grid-cols-3">
@@ -263,7 +263,7 @@ export default function Home() {
         <Divider />
 
         {/* ══ QUEM SOMOS ════════════════════════════════════════ */}
-        <motion.section {...fadeUp} className="bg-card section-reveal py-24">
+        <motion.section {...fadeUp} className="bg-card section-reveal py-14 md:py-24">
           <div className="editorial-container">
             <p className="mb-2 text-xs uppercase tracking-[0.3em] text-primary">A família</p>
             <h2 className="font-serif text-4xl md:text-5xl">Os Bonaparte</h2>
@@ -272,7 +272,7 @@ export default function Home() {
               mas por uma combinação rara que pouquíssimas pessoas no planeta conseguem:
               <strong className="text-foreground"> presença, natureza, autonomia e propósito</strong>.
             </p>
-            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
               {FAMILY.map(member => (
                 <div key={member.name} className="group overflow-hidden rounded-lg border border-border transition hover:border-primary">
                   <div className="relative overflow-hidden" style={{ aspectRatio: "3/4" }}>
@@ -311,14 +311,14 @@ export default function Home() {
         <Divider />
 
         {/* ══ COMO VIVEMOS ══════════════════════════════════════ */}
-        <motion.section {...fadeUp} className="editorial-container section-reveal py-24">
+        <motion.section {...fadeUp} className="editorial-container section-reveal py-14 md:py-24">
           <p className="mb-2 text-xs uppercase tracking-[0.3em] text-primary">O design de vida</p>
           <h2 className="font-serif text-4xl md:text-5xl">Como vivemos</h2>
           <p className="mt-4 max-w-2xl text-muted-foreground">
             Não somos ricos. Temos algo mais raro: controle do tempo, presença com as filhas
             e uma estrutura de vida que a maioria das pessoas não consegue comprar com nenhum salário.
           </p>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {PILLARS.map(p => (
               <div key={p.title} style={{ position: "relative", borderRadius: "0.5rem",
                                           overflow: "hidden", aspectRatio: "4/3" }}>
@@ -341,7 +341,7 @@ export default function Home() {
         <Divider />
 
         {/* ══ A EXPEDIÇÃO — TEASER ══════════════════════════════ */}
-        <motion.section {...fadeUp} className="section-reveal py-24"
+        <motion.section {...fadeUp} className="section-reveal py-14 md:py-24"
           style={{ background: "var(--color-forest-dark)" }}>
           <div className="editorial-container">
             <p className="mb-2 text-xs uppercase tracking-[0.3em] text-primary/70">03 Novembro 2026</p>
@@ -355,10 +355,11 @@ export default function Home() {
               De mochila. Sem motorhome. Escola real dentro de cada cultura visitada.
             </p>
             <div className="mt-10 pb-4"
-              style={{ display: "flex", gap: "1rem", overflowX: "auto", scrollSnapType: "x mandatory" }}>
+              style={{ display: "flex", gap: "1rem", overflowX: "auto", scrollSnapType: "x mandatory",
+                       paddingLeft: "1rem", paddingRight: "1rem" }}>
               {countries.map(c => (
                 <div key={c.name}
-                  style={{ flexShrink: 0, width: "180px", scrollSnapAlign: "start",
+                  style={{ flexShrink: 0, width: "clamp(140px, 40vw, 200px)", scrollSnapAlign: "start",
                            borderRadius: "0.5rem", overflow: "hidden", position: "relative" }}>
                   <img src={COUNTRY_IMAGES[c.name]} alt={c.name}
                     style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover", display: "block" }}
@@ -386,7 +387,7 @@ export default function Home() {
         <Divider />
 
         {/* ══ O MANIFESTO ═══════════════════════════════════════ */}
-        <motion.section {...fadeUp} className="editorial-container section-reveal py-24">
+        <motion.section {...fadeUp} className="editorial-container section-reveal py-14 md:py-24">
           <div className="mx-auto max-w-3xl">
             <p className="mb-8 text-xs uppercase tracking-[0.3em] text-muted-foreground">Manifesto Bonaparte</p>
             <blockquote className="space-y-6 border-l-2 border-primary pl-8">
@@ -426,7 +427,7 @@ export default function Home() {
         <Divider />
 
         {/* ══ AS MENINAS ════════════════════════════════════════ */}
-        <motion.section {...fadeUp} className="section-reveal py-24 relative overflow-hidden">
+        <motion.section {...fadeUp} className="section-reveal py-14 md:py-24 relative overflow-hidden">
           <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80"
             alt="" aria-hidden="true"
             style={{ position: "absolute", inset: 0, width: "100%", height: "100%",
@@ -436,7 +437,7 @@ export default function Home() {
           <div className="editorial-container relative" style={{ zIndex: 2 }}>
             <p className="mb-2 text-xs uppercase tracking-[0.3em] text-primary">Worldschooling</p>
             <h2 className="font-serif text-4xl md:text-5xl text-white">Sarah & Ana Maria</h2>
-            <div className="mt-8 grid gap-8 md:grid-cols-2">
+            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="rounded-lg border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
                 <p className="font-serif text-5xl text-primary/40">10</p>
                 <h3 className="mt-2 font-serif text-2xl text-white">Sarah Hadassa</h3>
@@ -551,10 +552,10 @@ export default function Home() {
         <Divider />
 
         {/* ══ BLOCO 2 — ECOSSISTEMA VISUAL ══════════════════════ */}
-        <motion.section {...fadeUp} className="editorial-container section-reveal py-24">
+        <motion.section {...fadeUp} className="editorial-container section-reveal py-14 md:py-24">
           <p className="mb-2 text-xs uppercase tracking-[0.3em] text-muted-foreground">Universo Bonaparte</p>
           <h2 className="font-serif text-3xl mb-8">Explore o ecossistema</h2>
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {ECO_LINKS.map(link => (
               <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer"
                 style={{ position: "relative", overflow: "hidden", borderRadius: "0.5rem",
@@ -601,7 +602,7 @@ export default function Home() {
           <div className="editorial-container">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
               {/* Esquerda — texto */}
-              <div>
+              <div className="order-1">
                 <p style={{ color: "var(--color-sunset-orange)", fontSize: "0.7rem",
                             letterSpacing: "0.3em", textTransform: "uppercase",
                             fontWeight: 700, marginBottom: "1.25rem" }}>
@@ -635,7 +636,7 @@ export default function Home() {
                 </div>
               </div>
               {/* Direita — capa */}
-              <div style={{ textAlign: "center" }}>
+              <div className="order-2 text-center">
                 <img
                   src="https://casabonaparte.com.br/images/livros/fruto-proibido.jpg"
                   alt="O Fruto Proibido"
@@ -690,13 +691,15 @@ export default function Home() {
                   { nome: "Fundador", valor: "R$ 97/mês",    cor: "var(--color-sunset-orange)", destaque: false,
                     beneficios: ["Tudo do Viajante", "Acesso ao manuscrito", "Menção no livro Dominó"] },
                 ].map(p => (
-                  <div key={p.nome} style={{
-                    border: `2px solid ${p.cor}`,
-                    borderRadius: "0.5rem", padding: "1.5rem",
-                    background: p.destaque ? "var(--color-forest-dark)" : "transparent",
-                    color: p.destaque ? "var(--color-cream)" : "var(--color-foreground)",
-                    textAlign: "left",
-                  }}>
+                  <div key={p.nome}
+                    className={p.destaque ? "sm:scale-105 ring-2 ring-[var(--color-forest-mid)]" : ""}
+                    style={{
+                      border: `2px solid ${p.cor}`,
+                      borderRadius: "0.5rem", padding: "1.5rem",
+                      background: p.destaque ? "var(--color-forest-dark)" : "transparent",
+                      color: p.destaque ? "var(--color-cream)" : "var(--color-foreground)",
+                      textAlign: "left",
+                    }}>
                     <p style={{ fontSize: "0.65rem", letterSpacing: "0.2em",
                                 textTransform: "uppercase", fontWeight: 700,
                                 color: p.cor, marginBottom: "0.5rem" }}>
@@ -749,7 +752,7 @@ export default function Home() {
               Uma palavra de apoio, uma pergunta, uma história parecida com a nossa.
               Lemos tudo. Respondemos quando a estrada deixa.
             </p>
-            <div style={{ maxWidth: "520px", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+            <div className="w-full md:max-w-[520px] flex flex-col gap-3">
               <textarea
                 placeholder="Escreva sua mensagem aqui..."
                 id="mural-msg"
