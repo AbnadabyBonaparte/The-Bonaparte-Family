@@ -131,7 +131,7 @@ export default function Escrever() {
                   type="text"
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
-                  placeholder="Fazenda da bisavó · Aragarças, GO"
+                  placeholder="Fazenda da bisavó · Amorinópolis, GO"
                   className={inputClass}
                   required
                 />
