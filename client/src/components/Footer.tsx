@@ -24,7 +24,25 @@ export default function Footer() {
             <p className="mt-3 text-muted-foreground">Desenvolvido por ALSHAM Global Commerce</p>
           </div>
         </div>
-        <p className="mt-10 border-t border-border pt-6 text-xs text-muted-foreground">
+        {/* Universo Bonaparte — caminho de minhoca */}
+        <div className="mt-8 border-t border-border pt-8 flex flex-wrap justify-center gap-6">
+          {[
+            { label: "Casa Bonaparte",     url: "https://casabonaparte.com.br" },
+            { label: "Livraria Bonaparte", url: "https://livraria.casabonaparte.com.br" },
+            { label: "Abnadaby Músico",    url: "https://abnadabybonaparte.alshamglobal.com.br" },
+          ].map((link) => (
+            <a
+              key={link.url}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-primary"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+        <p className="mt-8 text-xs text-muted-foreground text-center">
           © 2026 The Bonaparte Family. Todos os direitos reservados.
         </p>
       </div>

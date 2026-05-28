@@ -37,10 +37,10 @@ export const FEATURED_BOOKS: FamilyBook[] = [
     title: "O Fruto Proibido",
     subtitle: "Criando mentes autônomas em uma sociedade que pune quem pensa.",
     cover: "https://casabonaparte.com.br/images/livros/fruto-proibido.jpg",
-    amazonUrl: "https://casabonaparte.com.br/livros",
+    amazonUrl: "https://livraria.casabonaparte.com.br",
     category: "2029 · Apoie via PIX",
   },
 ];
 
-export const LIVROS_HUB_URL = "https://casabonaparte.com.br/livros";
+export const LIVROS_HUB_URL = "https://livraria.casabonaparte.com.br";
 export const PIX_KEY = "59332265000130";
