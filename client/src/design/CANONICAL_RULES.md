@@ -112,7 +112,7 @@ Nenhum site é fundo de saco. O usuário sempre pode se mover.
 ```
 casabonaparte.com.br (HUB)
 ├── the-bonaparte-family.vercel.app  (Família / Expedição)
-├── casabonaparte.com.br/livros      (Livraria)
+├── livraria.casabonaparte.com.br    (Livraria)
 ├── casabonaparte.com.br/bazar       (Bazar)
 └── abnadabybonaparte.alshamglobal.com.br  (Músico)
 ```

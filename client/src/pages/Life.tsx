@@ -11,8 +11,8 @@ const sections = [
   },
   {
     title: "O Sítio",
-    content: "Aragarças virou base por oferecer espaço, natureza e custo inteligente para construir autonomia em família.",
-    alt: "O sítio em Aragarças",
+    content: "O sítio virou base por oferecer espaço, natureza e custo inteligente para construir autonomia em família.",
+    alt: "O sítio da família Bonaparte",
   },
   {
     title: "Música",

@@ -52,7 +52,7 @@ export const EXPEDITION_STATS = {
   months: 13,
   countries: 12,
   continents: 4,
-  departure: "03 de Novembro de 2026",
-  origin: "Aragarças, Goiás, Brasil",
+  departure: "Previsão · Novembro 2026",
+  origin: "Brasil",
   firstDestination: "Cebu, Filipinas",
 };

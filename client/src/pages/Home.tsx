@@ -37,9 +37,9 @@ const ECO_LINKS = [
     accent: "var(--color-forest-mid)",
   },
   {
-    label: "19 Obras Bonaparte",
-    sub: "Livros publicados · Pré-vendas · PIX",
-    href: "https://casabonaparte.com.br/livros",
+    label: "Livraria Bonaparte",
+    sub: "9 obras publicadas · Edições Bonaparte",
+    href: "https://livraria.casabonaparte.com.br",
     image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&q=80",
     accent: "var(--color-forest-mid)",
   },
@@ -187,9 +187,6 @@ export default function Home() {
             style={{ zIndex: 1, backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.1'/%3E%3C/svg%3E\")" }} />
 
           <div className="relative px-4" style={{ zIndex: 2 }}>
-            <p className="mb-4 text-xs uppercase tracking-[0.4em] text-primary opacity-80">
-              Aragarças, Goiás · Brasil
-            </p>
             <h1 className="font-serif text-5xl font-light leading-tight text-white md:text-7xl lg:text-8xl">
               The Bonaparte<br />
               <span className="text-primary italic">Family</span>
@@ -203,7 +200,7 @@ export default function Home() {
               </p>
             </div>
             <div className="mt-14">
-              <p className="mb-4 text-xs uppercase tracking-[0.3em] text-primary/70">Partida para Cebu · 03 Nov 2026</p>
+              <p className="mb-4 text-xs uppercase tracking-[0.3em] text-primary/70">Previsão de partida · sujeita à venda da fazenda</p>
               <div className="flex items-center justify-center gap-4 md:gap-8">
                 {[
                   { value: countdown.days,    label: "dias" },
@@ -344,7 +341,7 @@ export default function Home() {
         <motion.section {...fadeUp} className="section-reveal py-14 md:py-24"
           style={{ background: "var(--color-forest-dark)" }}>
           <div className="editorial-container">
-            <p className="mb-2 text-xs uppercase tracking-[0.3em] text-primary/70">03 Novembro 2026</p>
+            <p className="mb-2 text-xs uppercase tracking-[0.3em] text-primary/70">Previsão · Novembro 2026</p>
             <h2 className="font-serif text-4xl text-white md:text-5xl">
               Expedição Bonaparte<br />
               <span className="text-primary italic">Fase 1 · Ásia</span>
@@ -797,8 +794,7 @@ export default function Home() {
           <div className="editorial-container text-center">
             <p className="mb-3 text-xs uppercase tracking-[0.3em] text-primary/60">Não perca nenhuma parada</p>
             <h2 className="font-serif text-3xl text-white md:text-4xl">
-              A jornada começa em{" "}
-              <span className="text-primary">03 de Novembro de 2026</span>
+              A jornada começa em breve
             </h2>
             <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed"
               style={{ color: "rgba(248,247,241,0.4)" }}>

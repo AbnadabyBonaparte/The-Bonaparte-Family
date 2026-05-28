@@ -43,7 +43,7 @@ export default function Footer() {
           ))}
         </div>
         <p className="mt-8 text-xs text-muted-foreground text-center">
-          © 2026 The Bonaparte Family. Todos os direitos reservados.
+          © The Bonaparte Family. Todos os direitos reservados.
         </p>
       </div>
     </footer>

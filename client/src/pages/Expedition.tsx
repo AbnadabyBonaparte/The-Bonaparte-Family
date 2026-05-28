@@ -124,7 +124,7 @@ function ExpeditionMap() {
         iconAnchor: [18, 18],
       });
       L.marker([-15.7942, -47.8822], { icon: startIcon })
-        .bindPopup("<strong>Aragarças, Goiás · Brasil</strong><br/><small>Ponto de partida · 03 Nov 2026</small>")
+        .bindPopup("<strong>Brasil · Ponto de partida</strong><br/><small>Previsão · Novembro 2026</small>")
         .addTo(map);
 
       mapInstance.current = map;

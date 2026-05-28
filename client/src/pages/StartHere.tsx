@@ -25,7 +25,7 @@ export default function StartHere() {
             <ImagePlaceholder aspectRatio="hero" alt="Bem-vindo ao portal Bonaparte" />
           </div>
           <div className="mt-8 space-y-5 text-lg leading-relaxed text-muted-foreground">
-            <p>Somos uma família brasileira baseada em Aragarças que decidiu viver com intencionalidade: menos piloto automático, mais presença.</p>
+            <p>Somos uma família brasileira que decidiu viver com intencionalidade: menos piloto automático, mais presença.</p>
             <p>Este portal existe para reunir nossa história, nossos sistemas e os projetos que sustentam a jornada de estrada, educação e criação.</p>
             <p>Aqui você vai encontrar nossa visão sobre soberania familiar, fé vivida no cotidiano, worldschooling, saúde e construção de legado.</p>
             <p>Não é só conteúdo: é um laboratório aberto de vida real, com vitórias, ajustes e decisões feitas em movimento.</p>
