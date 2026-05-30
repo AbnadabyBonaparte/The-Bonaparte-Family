@@ -30,6 +30,7 @@ export default function Footer() {
             { label: "Casa Bonaparte",     url: "https://casabonaparte.com.br" },
             { label: "Livraria Bonaparte", url: "https://livraria.casabonaparte.com.br" },
             { label: "Abnadaby Músico",    url: "https://abnadabybonaparte.alshamglobal.com.br" },
+            { label: "ALSHAM Global",      url: "https://alshamglobal.com.br" },
           ].map((link) => (
             <a
               key={link.url}
