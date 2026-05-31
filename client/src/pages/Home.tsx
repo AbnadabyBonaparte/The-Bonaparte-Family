@@ -57,6 +57,13 @@ const ECO_LINKS = [
     image: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=600&q=80",
     accent: "var(--color-sunset-orange)",
   },
+  {
+    label: "ALSHAM Global",
+    sub: "Tecnologia · Agentes IA · Sistemas",
+    href: "https://alshamglobal.com.br",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+    accent: "#5B8CFF",
+  },
 ];
 
 // ── FAMÍLIA ───────────────────────────────────────────────────
@@ -393,7 +400,7 @@ export default function Home() {
                 todos os dias — não se herda e não se compra."
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Casa de madeira num sítio no Tocantins. Starlink. Duas filhas que aprendem o mundo
+                Casa de madeira entre cerrado e água. Starlink. Duas filhas que aprendem o mundo
                 em vez de aprender sobre ele. Um negócio que não tem patrão. Uma mesa que nunca
                 ficou sem carne. Uma fé que não precisa de templo.
               </p>
@@ -814,6 +821,85 @@ export default function Home() {
             </div>
           </div>
         </motion.section>
+
+        <Divider />
+
+        {/* ══ OS DEZ PRINCÍPIOS ═════════════════════════════════ */}
+        <section style={{
+          padding: "5rem 2rem",
+          background: "rgba(26,66,45,0.3)",
+          borderTop: "1px solid rgba(233,116,28,0.08)",
+        }}>
+          <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+            <p style={{
+              fontSize: "0.62rem", fontWeight: 700,
+              letterSpacing: "0.2em", textTransform: "uppercase",
+              color: "rgba(233,116,28,0.6)", marginBottom: "0.75rem",
+              textAlign: "center",
+            }}>
+              O código da Casa
+            </p>
+            <h2 style={{
+              fontFamily: "Cormorant Garamond, Georgia, serif",
+              fontSize: "clamp(1.6rem,3vw,2.2rem)", fontWeight: 700,
+              color: "#F8F7F1", textAlign: "center", marginBottom: "3rem",
+              fontStyle: "italic",
+            }}>
+              Os Dez Princípios
+            </h2>
+
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gap: "1rem",
+            }}>
+              {[
+                { num: "01", titulo: "Diga a Verdade",             texto: "Mesmo quando ela custa caro. Especialmente quando ela custa caro." },
+                { num: "02", titulo: "Pense por Si Mesmo",         texto: "Nenhuma instituição pode substituir sua responsabilidade de pensar." },
+                { num: "03", titulo: "Proteja a Mesa",              texto: "Nenhuma conquista compensa a destruição daquilo que realmente importa." },
+                { num: "04", titulo: "Esteja Presente",             texto: "A vida acontece onde sua atenção está. Proteja sua atenção." },
+                { num: "05", titulo: "Honre o Corpo",               texto: "O corpo é a primeira casa da consciência. Cuide dele." },
+                { num: "06", titulo: "Assuma Responsabilidade",     texto: "Quem deseja autoria deve aceitar responsabilidade." },
+                { num: "07", titulo: "Coloque a Família Primeiro",  texto: "A família não é o que sobra depois do sucesso. É a razão dele." },
+                { num: "08", titulo: "Aprenda com a Realidade",     texto: "A realidade tem prioridade sobre opiniões. Observe. Teste. Corrija." },
+                { num: "09", titulo: "Deixe o Mundo Melhor",        texto: "Você recebeu uma herança. Deixe uma herança." },
+                { num: "10", titulo: "Permaneça Desperto",           texto: "O despertar não é um evento. É uma prática diária." },
+              ].map(p => (
+                <div key={p.num} style={{
+                  background: "rgba(255,255,255,0.03)",
+                  border: "1px solid rgba(233,116,28,0.1)",
+                  borderRadius: "10px", padding: "1.25rem 1.5rem",
+                  display: "flex", gap: "1rem", alignItems: "flex-start",
+                }}>
+                  <span style={{
+                    fontSize: "0.65rem", fontWeight: 800,
+                    color: "rgba(233,116,28,0.5)", letterSpacing: "0.1em",
+                    minWidth: "24px", paddingTop: "2px",
+                  }}>{p.num}</span>
+                  <div>
+                    <p style={{
+                      fontSize: "0.85rem", fontWeight: 700,
+                      color: "#E9741C", margin: "0 0 0.3rem",
+                    }}>{p.titulo}</p>
+                    <p style={{
+                      fontSize: "0.78rem", color: "rgba(248,247,241,0.6)",
+                      lineHeight: 1.6, margin: 0,
+                    }}>{p.texto}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <p style={{
+              textAlign: "center", marginTop: "2.5rem",
+              fontFamily: "Cormorant Garamond, Georgia, serif",
+              fontStyle: "italic", fontSize: "0.95rem",
+              color: "rgba(248,247,241,0.4)",
+            }}>
+              — Bíblia ALSHAM · Casa Bonaparte
+            </p>
+          </div>
+        </section>
 
       </main>
       <Footer />

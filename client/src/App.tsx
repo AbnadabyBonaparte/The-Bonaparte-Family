@@ -56,7 +56,7 @@ function App() {
           <Toaster />
           <Router />
           <a
-            href="https://wa.me/5562992428800"
+            href="https://wa.me/5563992428800"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Falar no WhatsApp"
