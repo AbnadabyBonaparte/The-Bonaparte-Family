@@ -713,7 +713,7 @@ export default function Home() {
                 {[
                   { nome: "Apoiador", valor: "R$ 9,90/mês",  cor: "var(--color-border)",        destaque: false,
                     beneficios: ["Journal completo", "Atualizações da viagem"],
-                    waHref: "https://wa.me/5563992428800?text=Quero+ser+membro+Apoiador+da+Fam%C3%ADlia+Bonaparte+-+R%2489%2C90%2Fm%C3%AAs" },
+                    waHref: "https://wa.me/5563992428800?text=Quero+ser+membro+Apoiador+da+Fam%C3%ADlia+Bonaparte+-+R%249%2C90%2Fm%C3%AAs" },
                   { nome: "Viajante", valor: "R$ 29,90/mês", cor: "var(--color-forest-mid)",    destaque: true,
                     beneficios: ["Tudo do Apoiador", "Bastidores exclusivos", "Lives mensais da estrada"],
                     waHref: "https://wa.me/5563992428800?text=Quero+ser+membro+Viajante+da+Fam%C3%ADlia+Bonaparte+-+R%2429%2C90%2Fm%C3%AAs" },
