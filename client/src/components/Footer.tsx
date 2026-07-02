@@ -20,7 +20,23 @@ export default function Footer() {
             <Link href="/legacy"><a className="text-muted-foreground hover:text-primary">Legado</a></Link>
           </div>
           <div className="text-sm">
-            <p className="text-muted-foreground">Instagram • YouTube (em breve)</p>
+            <div className="flex gap-4">
+              <a href="https://youtube.com/@FamiliaBonaparte" target="_blank"
+                 rel="noopener noreferrer"
+                 className="text-muted-foreground hover:text-primary text-sm">
+                YouTube →
+              </a>
+              <a href="https://instagram.com/familiabonaparte" target="_blank"
+                 rel="noopener noreferrer"
+                 className="text-muted-foreground hover:text-primary text-sm">
+                Instagram →
+              </a>
+              <a href="https://tiktok.com/@familiabonaparte" target="_blank"
+                 rel="noopener noreferrer"
+                 className="text-muted-foreground hover:text-primary text-sm">
+                TikTok →
+              </a>
+            </div>
             <p className="mt-3 text-muted-foreground">Desenvolvido por ALSHAM Global Commerce</p>
           </div>
         </div>
@@ -29,10 +45,11 @@ export default function Footer() {
           {[
             { label: "Casa Bonaparte",     url: "https://casabonaparte.com.br" },
             { label: "Livraria",           url: "https://livraria.casabonaparte.com.br" },
+            { label: "Podcast",            url: "https://podcast.casabonaparte.com.br" },
             { label: "ALSHAM Global",      url: "https://alshamglobal.com.br" },
             { label: "Aby Bonaparte",      url: "https://abnadabybonaparte.alshamglobal.com.br" },
             { label: "ALSHAM Ascension",   url: "https://select.alshamglobal.com.br" },
-            { label: "Canta & Siriema",    url: "https://canta-siriema.alshamglobal.com.br" },
+            { label: "ALSHAM Pulso",       url: "https://pulso.alshamglobal.com.br" },
           ].map((link) => (
             <a
               key={link.url}
