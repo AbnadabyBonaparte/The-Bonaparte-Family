@@ -942,7 +942,7 @@ export default function Home() {
                       color: "#E9741C", margin: "0 0 0.3rem",
                     }}>{p.titulo}</p>
                     <p style={{
-                      fontSize: "0.78rem", color: "rgba(248,247,241,0.6)",
+                      fontSize: "0.78rem", color: "rgba(255,255,255,0.85)",
                       lineHeight: 1.6, margin: 0,
                     }}>{p.texto}</p>
                   </div>
