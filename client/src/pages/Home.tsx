@@ -546,9 +546,9 @@ export default function Home() {
             </p>
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
               {[
-                { label: "YouTube",   href: "https://youtube.com/@bonapartefamily",  icon: "▶" },
-                { label: "Instagram", href: "https://instagram.com/bonapartefamily", icon: "◈" },
-                { label: "TikTok",    href: "https://tiktok.com/@bonapartefamily",   icon: "♪" },
+                { label: "YouTube",   href: "https://youtube.com/@FamiliaBonaparte",  icon: "▶" },
+                { label: "Instagram", href: "https://instagram.com/familiabonaparte", icon: "◈" },
+                { label: "TikTok",    href: "https://tiktok.com/@familiabonaparte",   icon: "♪" },
                 { label: "Facebook",  href: "https://facebook.com/bonapartefamily",  icon: "f" },
                 { label: "WhatsApp",  href: "https://wa.me/5563992428800",           icon: "✆" },
               ].map(s => (
