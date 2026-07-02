@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="editorial-container py-12">
         <div className="grid gap-10 md:grid-cols-3">
           <div>
-            <h3 className="text-xl font-serif">The Bonaparte Family</h3>
+            <h3 className="text-xl font-serif">A Família Bonaparte</h3>
             <p className="mt-3 text-sm text-muted-foreground">
               Portal-hub da jornada entre sítio, estrada, educação, fé, saúde e legado.
             </p>
@@ -60,7 +60,7 @@ export default function Footer() {
           ))}
         </div>
         <p className="mt-8 text-xs text-muted-foreground text-center">
-          © The Bonaparte Family. Todos os direitos reservados.
+          © A Família Bonaparte. Todos os direitos reservados.
         </p>
       </div>
     </footer>

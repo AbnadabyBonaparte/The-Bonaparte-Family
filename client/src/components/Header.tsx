@@ -53,7 +53,7 @@ export default function Header() {
                 className="font-serif text-base md:text-lg font-semibold transition-colors duration-300"
                 style={{ color: scrolled ? "var(--color-cream)" : "var(--primary)" }}
               >
-                The Bonaparte Family
+                A Família Bonaparte
               </span>
             </a>
           </Link>
