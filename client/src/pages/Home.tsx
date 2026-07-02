@@ -86,12 +86,12 @@ const FAMILY = [
 
 // ── PILARES ───────────────────────────────────────────────────
 const PILLARS = [
-  { icon: "🏡", title: "Casa de madeira no sítio", text: "Sem condomínio. Sem barulheira. Natureza, silêncio e presença integral com as filhas.", image: "/familia/ana-peru.jpg" },
-  { icon: "📡", title: "Starlink no sertão",        text: "Negócio remoto, escola online, liberdade geográfica real — não prometida.",           image: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=600&q=80" },
-  { icon: "📚", title: "Worldschooling",             text: "O mundo é a sala de aula. Cada país é uma disciplina. Cada cultura é um professor.",   image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80" },
-  { icon: "🎵", title: "Música como ofício",         text: "25 anos de palco. 888 músicas compostas. A arte que sustenta a travessia.",            image: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=600&q=80" },
-  { icon: "🍖", title: "Mesa como ritual",           text: "Nunca faltou carne. Nunca faltou presença. A mesa é o altar da família Bonaparte.",    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" },
-  { icon: "✝️", title: "Fé sem instituição",         text: "Cristo antes da Igreja. Oração que não precisa de templo para subir.",                 image: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=600&q=80" },
+  { title: "Casa de madeira no sítio", text: "Sem condomínio. Sem barulheira. Natureza, silêncio e presença integral com as filhas.", image: "/familia/ana-peru.jpg" },
+  { title: "Starlink no sertão",        text: "Negócio remoto, escola online, liberdade geográfica real — não prometida.",           image: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=600&q=80" },
+  { title: "Worldschooling",             text: "O mundo é a sala de aula. Cada país é uma disciplina. Cada cultura é um professor.",   image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80" },
+  { title: "Música como ofício",         text: "25 anos de palco. 888 músicas compostas. A arte que sustenta a travessia.",            image: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=600&q=80" },
+  { title: "Mesa como ritual",           text: "Nunca faltou carne. Nunca faltou presença. A mesa é o altar da família Bonaparte.",    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" },
+  { title: "Fé sem instituição",         text: "Cristo antes da Igreja. Oração que não precisa de templo para subir.",                 image: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=600&q=80" },
 ];
 
 // ── MANIFESTO ─────────────────────────────────────────────────
@@ -331,7 +331,6 @@ export default function Home() {
                 <div style={{ position: "absolute", inset: 0,
                               background: "linear-gradient(to top, rgba(26,66,45,0.92) 0%, rgba(26,66,45,0.2) 60%, transparent 100%)" }} />
                 <div style={{ position: "absolute", bottom: 0, left: 0, padding: "1.25rem" }}>
-                  <span style={{ fontSize: "1.5rem" }}>{p.icon}</span>
                   <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem",
                                color: "white", margin: "0.5rem 0 0.25rem" }}>{p.title}</h3>
                   <p style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.75)",
