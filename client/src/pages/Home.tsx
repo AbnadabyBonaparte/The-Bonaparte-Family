@@ -72,21 +72,32 @@ const FAMILY = [
     name: "Abnadaby Bonaparte",
     role: "O fundador",
     desc: "Músico, escritor e arquiteto do ecossistema Bonaparte. 46 anos, 25 de palco, 888 composições. A asa da família.",
-    photo: "/familia/abnadaby_fundador.jpeg",
+    // SUBSTITUIR: /familia/abnadaby_fundador.jpeg — retrato do Abnadaby
+    photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=80",
   },
-  { name: "Laurice",        role: "A raiz",              photo: "/familia/laurice.jpg",
+  { name: "Laurice",        role: "A raiz",
+    // SUBSTITUIR: /familia/laurice.jpg — retrato da Laurice
+    photo: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80",
     desc: "A força que ancora tudo. Educadora das filhas, guardiã da estabilidade, presença insubstituível da Casa Bonaparte." },
-  { name: "Sarah Hadassa",  role: "10 anos",             photo: "/familia/sarah_hadassa.jpg",
+  { name: "Sarah Hadassa",  role: "10 anos",
+    // SUBSTITUIR: /familia/sarah_hadassa.jpg — retrato da Sarah Hadassa
+    photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&q=80",
     desc: "A primeira. Nascida para observar o mundo com olhos que não se conformam com a resposta fácil." },
-  { name: "Ana Maria",      role: "8 anos",              photo: "/familia/ana_maria.jpg",
+  { name: "Ana Maria",      role: "8 anos",
+    // SUBSTITUIR: /familia/ana_maria.jpg — retrato da Ana Maria
+    photo: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
     desc: "A segunda. Nascida para sentir o que os outros passam rápido. Uma alma que habita o presente." },
-  { name: "Mel",            role: "Yorkshire · A quinta", photo: "/familia/mel.jpg",
+  { name: "Mel",            role: "Yorkshire · A quinta",
+    // SUBSTITUIR: /familia/mel.jpg — foto do Mel (Yorkshire Terrier)
+    photo: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80",
     desc: "A cachorrinha que não sabe que é pequena. Viaja, late e ama como se fosse a dona da estrada." },
 ];
 
 // ── PILARES ───────────────────────────────────────────────────
 const PILLARS = [
-  { title: "Casa de madeira no sítio", text: "Sem condomínio. Sem barulheira. Natureza, silêncio e presença integral com as filhas.", image: "/familia/ana-peru.jpg" },
+  { title: "Casa de madeira no sítio", text: "Sem condomínio. Sem barulheira. Natureza, silêncio e presença integral com as filhas.",
+    // SUBSTITUIR: /familia/ana-peru.jpg — foto da casa/sítio Bonaparte
+    image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&q=80" },
   { title: "Starlink no sertão",        text: "Negócio remoto, escola online, liberdade geográfica real — não prometida.",           image: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=600&q=80" },
   { title: "Worldschooling",             text: "O mundo é a sala de aula. Cada país é uma disciplina. Cada cultura é um professor.",   image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80" },
   { title: "Música como ofício",         text: "25 anos de palco. 888 músicas compostas. A arte que sustenta a travessia.",            image: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=600&q=80" },
@@ -183,8 +194,9 @@ export default function Home() {
           className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden text-center"
           style={{ background: "var(--color-forest-dark)" }}
         >
+          {/* SUBSTITUIR: /familia/hero.jpg — foto da família Bonaparte completa (família feliz, tons naturais, ao ar livre) */}
           <img
-            src="/familia/hero.jpg"
+            src="https://images.unsplash.com/photo-1511895426328-dc8714191011?w=1600&q=80"
             alt="" aria-hidden="true"
             style={{ position: "absolute", inset: 0, width: "100%", height: "100%",
                      objectFit: "cover", objectPosition: "center",
@@ -431,7 +443,8 @@ export default function Home() {
 
         {/* ══ AS MENINAS ════════════════════════════════════════ */}
         <motion.section {...fadeUp} className="section-reveal py-14 md:py-24 relative overflow-hidden">
-          <img src="/familia/meninas-cordeiro.jpg"
+          {/* SUBSTITUIR: /familia/meninas-cordeiro.jpg — Sarah e Ana Maria juntas */}
+          <img src="https://images.unsplash.com/photo-1536640712-4d4c36ff0e4e?w=1200&q=80"
             alt="" aria-hidden="true"
             style={{ position: "absolute", inset: 0, width: "100%", height: "100%",
                      objectFit: "cover", objectPosition: "center top", zIndex: 0 }} />
