@@ -491,29 +491,52 @@ export default function Home() {
             </h2>
           </div>
 
-          {/* Placeholder — substituir pelo iframe quando houver vídeo publicado */}
-          {/* <div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
-            <iframe
-              src="https://www.youtube.com/embed/[ID_DO_VIDEO]?autoplay=0&rel=0&modestbranding=1"
-              title="The Bonaparte Family"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
-            />
-          </div> */}
-          <div style={{ aspectRatio: "16/9", background: "rgba(0,0,0,0.4)",
-                        display: "flex", alignItems: "center", justifyContent: "center",
-                        borderTop: "1px solid rgba(255,255,255,0.05)",
-                        borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-            <div style={{ textAlign: "center" }}>
-              <p style={{ fontSize: "3rem", marginBottom: "0.5rem" }}>▶</p>
-              <p style={{ color: "rgba(255,255,255,0.3)", fontSize: "1rem" }}>
-                Primeiro vídeo em breve
-              </p>
-              <p style={{ color: "rgba(255,255,255,0.15)", fontSize: "0.75rem", marginTop: "0.5rem" }}>
-                Substituir pelo YouTube embed quando publicado
-              </p>
+          <div style={{
+            aspectRatio: "16/9",
+            background: "var(--color-forest-dark)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            borderTop: "1px solid rgba(255,255,255,0.05)",
+            borderBottom: "1px solid rgba(255,255,255,0.05)",
+            flexDirection: "column", gap: "2rem", padding: "3rem",
+          }}>
+            <p style={{
+              fontSize: "0.65rem", fontWeight: 700,
+              letterSpacing: "0.25em", textTransform: "uppercase",
+              color: "rgba(233,116,28,0.7)",
+            }}>
+              A jornada começa em
+            </p>
+            <div style={{ display: "flex", gap: "3rem", justifyContent: "center", flexWrap: "wrap" }}>
+              {[
+                { value: countdown.days,    label: "dias" },
+                { value: countdown.hours,   label: "horas" },
+                { value: countdown.minutes, label: "min" },
+                { value: countdown.seconds, label: "seg" },
+              ].map(({ value, label }) => (
+                <div key={label} style={{ textAlign: "center" }}>
+                  <div style={{
+                    fontFamily: "'Cormorant Garamond', serif",
+                    fontSize: "clamp(3rem, 8vw, 6rem)",
+                    fontWeight: 300, color: "white", lineHeight: 1,
+                  }}>
+                    {String(value).padStart(2, "0")}
+                  </div>
+                  <div style={{
+                    marginTop: "0.5rem", fontSize: "0.65rem",
+                    textTransform: "uppercase", letterSpacing: "0.3em",
+                    color: "rgba(255,255,255,0.3)",
+                  }}>{label}</div>
+                </div>
+              ))}
             </div>
+            <p style={{
+              fontSize: "0.78rem", color: "rgba(255,255,255,0.35)",
+              fontStyle: "italic", textAlign: "center",
+            }}>
+              Novembro 2026 · Filipinas → China → Tailândia → Camboja →
+              Vietnã → Malásia → Indonésia → Índia → Uzbequistão →
+              Egito → Jordânia → Marrocos
+            </p>
           </div>
 
           <div className="editorial-container py-8">
@@ -689,11 +712,14 @@ export default function Home() {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
                 {[
                   { nome: "Apoiador", valor: "R$ 9,90/mês",  cor: "var(--color-border)",        destaque: false,
-                    beneficios: ["Journal completo", "Atualizações da viagem"] },
+                    beneficios: ["Journal completo", "Atualizações da viagem"],
+                    waHref: "https://wa.me/5563992428800?text=Quero+ser+membro+Apoiador+da+Fam%C3%ADlia+Bonaparte+-+R%2489%2C90%2Fm%C3%AAs" },
                   { nome: "Viajante", valor: "R$ 29,90/mês", cor: "var(--color-forest-mid)",    destaque: true,
-                    beneficios: ["Tudo do Apoiador", "Bastidores exclusivos", "Lives mensais da estrada"] },
+                    beneficios: ["Tudo do Apoiador", "Bastidores exclusivos", "Lives mensais da estrada"],
+                    waHref: "https://wa.me/5563992428800?text=Quero+ser+membro+Viajante+da+Fam%C3%ADlia+Bonaparte+-+R%2429%2C90%2Fm%C3%AAs" },
                   { nome: "Fundador", valor: "R$ 97/mês",    cor: "var(--color-sunset-orange)", destaque: false,
-                    beneficios: ["Tudo do Viajante", "Acesso ao manuscrito", "Menção no livro Dominó"] },
+                    beneficios: ["Tudo do Viajante", "Acesso ao manuscrito", "Menção no livro Dominó"],
+                    waHref: "https://wa.me/5563992428800?text=Quero+ser+membro+Fundador+da+Fam%C3%ADlia+Bonaparte+-+R%2497%2Fm%C3%AAs" },
                 ].map(p => (
                   <div key={p.nome}
                     className={p.destaque ? "sm:scale-105 ring-2 ring-[var(--color-forest-mid)]" : ""}
@@ -703,6 +729,7 @@ export default function Home() {
                       background: p.destaque ? "var(--color-forest-dark)" : "transparent",
                       color: p.destaque ? "var(--color-cream)" : "var(--color-foreground)",
                       textAlign: "left",
+                      display: "flex", flexDirection: "column",
                     }}>
                     <p style={{ fontSize: "0.65rem", letterSpacing: "0.2em",
                                 textTransform: "uppercase", fontWeight: 700,
@@ -717,6 +744,27 @@ export default function Home() {
                         ✓ {b}
                       </p>
                     ))}
+                    <a href={p.waHref} target="_blank" rel="noopener noreferrer"
+                      style={{
+                        display: "block", marginTop: "auto",
+                        textAlign: "center", padding: "0.75rem 1rem",
+                        border: `1px solid ${p.cor}`,
+                        color: p.destaque ? "var(--color-cream)" : p.cor,
+                        fontSize: "0.72rem", fontWeight: 700,
+                        letterSpacing: "0.1em", textTransform: "uppercase",
+                        textDecoration: "none", transition: "all 220ms ease",
+                      }}
+                      onMouseEnter={e => {
+                        (e.currentTarget as HTMLElement).style.background = p.cor;
+                        (e.currentTarget as HTMLElement).style.color = p.destaque ? "var(--color-cream)" : "white";
+                      }}
+                      onMouseLeave={e => {
+                        (e.currentTarget as HTMLElement).style.background = "transparent";
+                        (e.currentTarget as HTMLElement).style.color = p.destaque ? "var(--color-cream)" : p.cor;
+                      }}
+                    >
+                      Quero ser {p.nome} →
+                    </a>
                   </div>
                 ))}
               </div>

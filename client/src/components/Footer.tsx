@@ -24,20 +24,36 @@ export default function Footer() {
             <p className="mt-3 text-muted-foreground">Desenvolvido por ALSHAM Global Commerce</p>
           </div>
         </div>
-        {/* Universo Bonaparte — caminho de minhoca */}
+        {/* Universo Bonaparte — ecossistema completo */}
         <div className="mt-8 border-t border-border pt-8 flex flex-wrap justify-center gap-6">
           {[
             { label: "Casa Bonaparte",     url: "https://casabonaparte.com.br" },
-            { label: "Livraria Bonaparte", url: "https://livraria.casabonaparte.com.br" },
-            { label: "Abnadaby Músico",    url: "https://abnadabybonaparte.alshamglobal.com.br" },
+            { label: "Livraria",           url: "https://livraria.casabonaparte.com.br" },
             { label: "ALSHAM Global",      url: "https://alshamglobal.com.br" },
+            { label: "Aby Bonaparte",      url: "https://abnadabybonaparte.alshamglobal.com.br" },
+            { label: "ALSHAM Ascension",   url: "https://select.alshamglobal.com.br" },
+            { label: "Canta & Siriema",    url: "https://canta-siriema.alshamglobal.com.br" },
           ].map((link) => (
             <a
               key={link.url}
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-primary"
+              style={{
+                fontSize: "0.72rem",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "0.2em",
+                color: "rgba(26,66,45,0.45)",
+                textDecoration: "none",
+                transition: "color 220ms ease",
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.color = "var(--color-sunset-orange)";
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.color = "rgba(26,66,45,0.45)";
+              }}
             >
               {link.label}
             </a>
