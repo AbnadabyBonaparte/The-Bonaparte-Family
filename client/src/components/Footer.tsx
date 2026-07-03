@@ -21,20 +21,24 @@ export default function Footer() {
           </div>
           <div className="text-sm">
             <div className="flex gap-4">
-              <a href="https://youtube.com/@FamiliaBonaparte" target="_blank"
+              <a href="https://www.youtube.com/@FamíliaBonaparte" target="_blank"
                  rel="noopener noreferrer"
                  className="text-muted-foreground hover:text-primary text-sm">
                 YouTube →
               </a>
-              <a href="https://instagram.com/familiabonaparte" target="_blank"
+              <a href="https://www.instagram.com/familiabonaparte" target="_blank"
                  rel="noopener noreferrer"
                  className="text-muted-foreground hover:text-primary text-sm">
                 Instagram →
               </a>
-              <a href="https://tiktok.com/@familiabonaparte" target="_blank"
+              <a href="https://www.tiktok.com/@familiabonaparteoficial" target="_blank"
                  rel="noopener noreferrer"
                  className="text-muted-foreground hover:text-primary text-sm">
                 TikTok →
+              </a>
+              <a href="mailto:familiabonaparteoficial@gmail.com"
+                 className="text-muted-foreground hover:text-primary text-sm">
+                Email →
               </a>
             </div>
             <p className="mt-3 text-muted-foreground">Desenvolvido por ALSHAM Global Commerce</p>

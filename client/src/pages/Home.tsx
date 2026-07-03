@@ -588,9 +588,10 @@ export default function Home() {
             </p>
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
               {[
-                { label: "YouTube",   href: "https://youtube.com/@FamiliaBonaparte",  icon: "▶" },
-                { label: "Instagram", href: "https://instagram.com/familiabonaparte", icon: "◈" },
-                { label: "TikTok",    href: "https://tiktok.com/@familiabonaparte",   icon: "♪" },
+                { label: "YouTube",   href: "https://www.youtube.com/@FamíliaBonaparte",       icon: "▶" },
+                { label: "Instagram", href: "https://www.instagram.com/familiabonaparte",      icon: "◈" },
+                { label: "TikTok",    href: "https://www.tiktok.com/@familiabonaparteoficial", icon: "♪" },
+                { label: "Email",     href: "mailto:familiabonaparteoficial@gmail.com",        icon: "✉" },
                 { label: "Facebook",  href: "https://facebook.com/bonapartefamily",  icon: "f" },
                 { label: "WhatsApp",  href: "https://wa.me/5563992428800",           icon: "✆" },
               ].map(s => (
