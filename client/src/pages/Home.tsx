@@ -217,68 +217,137 @@ export default function Home() {
       <Header />
       <main>
 
-        {/* ══ HERO ══════════════════════════════════════════════ */}
+        {/* ══ HERO — composição galeria em camadas ═════════════ */}
         <motion.section
           {...fadeUp}
-          className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden text-center"
-          style={{ background: "var(--color-forest-dark)" }}
+          className="relative flex min-h-[92vh] flex-col items-center justify-center overflow-hidden px-4 text-center"
+          style={{ background: "var(--color-obsidian)" }}
         >
-          {/* SUBSTITUIR: /familia/hero.jpg — foto da família Bonaparte completa (família feliz, tons naturais, ao ar livre) */}
+          {/* camada 0 — imagem focal: /brand/hero.jpg (arte gerada) → fallback foto real → gradiente puro */}
           <img
-            src="https://images.unsplash.com/photo-1511895426328-dc8714191011?w=1600&q=80"
+            src="/brand/hero.jpg"
             alt="" aria-hidden="true"
-            style={{ position: "absolute", inset: 0, width: "100%", height: "100%",
-                     objectFit: "cover", objectPosition: "center",
-                     opacity: 0.45, zIndex: 0 }}
+            data-fallback="0"
+            onError={e => {
+              const el = e.currentTarget as HTMLImageElement;
+              if (el.dataset.fallback === "0") { el.dataset.fallback = "1"; el.src = "/hero-documentary.jpg"; }
+              else { el.style.display = "none"; }
+            }}
+            className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-center opacity-[0.42]"
+            style={{ WebkitMaskImage: "radial-gradient(120% 100% at 50% 30%, black 45%, transparent 100%)",
+                     maskImage: "radial-gradient(120% 100% at 50% 30%, black 45%, transparent 100%)" }}
           />
-          <div className="pointer-events-none absolute inset-0 opacity-20"
-            style={{ zIndex: 1, backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.1'/%3E%3C/svg%3E\")" }} />
 
-          <div className="relative px-4" style={{ zIndex: 2 }}>
-            <h1 className="font-serif text-5xl font-light leading-tight text-white md:text-7xl lg:text-8xl">
-              The Bonaparte<br />
-              <span className="text-primary italic">Family</span>
+          {/* camada 1 — mesh / aurora radial-gradients da paleta da marca */}
+          <div className="pointer-events-none absolute inset-0 z-[1]"
+            style={{ background:
+              "radial-gradient(60% 55% at 18% 20%, color-mix(in oklab, var(--color-forest-mid) 42%, transparent), transparent 70%)," +
+              "radial-gradient(55% 50% at 85% 78%, color-mix(in oklab, var(--color-sunset-orange) 32%, transparent), transparent 72%)," +
+              "radial-gradient(70% 60% at 55% 8%, color-mix(in oklab, var(--color-forest-dark) 55%, transparent), transparent 75%)" }} />
+
+          {/* camada 2 — vinheta profunda nas bordas */}
+          <div className="pointer-events-none absolute inset-0 z-[2]"
+            style={{ background: "radial-gradient(115% 90% at 50% 42%, transparent 55%, color-mix(in oklab, var(--color-obsidian) 92%, transparent) 100%)" }} />
+
+          {/* camada 3 — grão de filme */}
+          <div className="pointer-events-none absolute inset-0 z-[3] opacity-[0.06] mix-blend-overlay"
+            style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")" }} />
+
+          {/* camada 4 — glow volumétrico sob o título */}
+          <div className="pointer-events-none absolute left-1/2 top-[38%] z-[3] h-[42vh] w-[80vw] max-w-3xl -translate-x-1/2 -translate-y-1/2 rounded-full blur-[110px] motion-safe:animate-pulse motion-reduce:animate-none"
+            style={{ background: "radial-gradient(closest-side, color-mix(in oklab, var(--color-forest-mid) 55%, transparent), transparent 78%)", animationDuration: "6s" }} />
+
+          {/* camada 5 — conteúdo */}
+          <div className="relative z-[4] mx-auto max-w-4xl">
+            {/* eyebrow glass */}
+            <span className="inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.28em] backdrop-blur-md"
+              style={{ borderColor: "color-mix(in oklab, var(--color-cream) 22%, transparent)",
+                       background: "color-mix(in oklab, var(--color-cream) 8%, transparent)",
+                       color: "color-mix(in oklab, var(--color-cream) 82%, transparent)" }}>
+              <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--color-sunset-orange)" }} />
+              Portal-hub da família Bonaparte
+            </span>
+
+            <h1 className="mt-8 font-serif font-light leading-[0.95] tracking-tight"
+              style={{ fontSize: "clamp(3rem, 9vw, 7.5rem)", color: "var(--color-cream)" }}>
+              The Bonaparte
+              <span className="mt-1 block italic"
+                style={{ backgroundImage: "linear-gradient(100deg, var(--color-forest-mid) 0%, color-mix(in oklab, var(--color-sunset-orange) 85%, var(--color-cream)) 100%)",
+                         WebkitBackgroundClip: "text", backgroundClip: "text",
+                         WebkitTextFillColor: "transparent", color: "transparent" }}>
+                Family
+              </span>
             </h1>
-            <p className="mx-auto mt-6 max-w-lg text-base text-white/50 font-sans font-light leading-relaxed">
-              Uma família em movimento. Uma civilização portátil.
+
+            <p className="mx-auto mt-7 max-w-xl font-sans text-base font-light leading-relaxed md:text-lg"
+              style={{ color: "color-mix(in oklab, var(--color-cream) 68%, transparent)" }}>
+              Uma família real construindo liberdade na vida real — {EXPEDITION_STATS.countries} países,
+              {" "}{EXPEDITION_STATS.continents} continentes, worldschooling e um legado documentado em público.
             </p>
-            <div className="mx-auto mt-10 h-12 max-w-2xl">
-              <p key={manifestoIdx} className="font-serif text-lg italic text-white/70 transition-all duration-700 md:text-xl">
+
+            {/* frase rotativa do manifesto */}
+            <div className="mx-auto mt-6 flex h-10 max-w-2xl items-center justify-center">
+              <p key={manifestoIdx} className="font-serif text-base italic transition-all duration-700 md:text-xl"
+                style={{ color: "color-mix(in oklab, var(--color-cream) 55%, transparent)" }}>
                 "{MANIFESTO[manifestoIdx]}"
               </p>
             </div>
-            <div className="mt-14">
-              <p className="mb-4 text-xs uppercase tracking-[0.3em] text-primary/70">Previsão de partida · sujeita à venda da fazenda</p>
-              <div className="flex items-center justify-center gap-4 md:gap-8">
+
+            {/* CTAs */}
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+              <Link href="/expedition">
+                <a className="rounded-full bg-accent px-8 py-3.5 text-sm font-semibold uppercase tracking-widest text-accent-foreground shadow-lg transition hover:scale-[1.03] hover:opacity-95"
+                  style={{ boxShadow: "0 18px 50px -12px color-mix(in oklab, var(--color-sunset-orange) 55%, transparent)" }}>
+                  A Expedição →
+                </a>
+              </Link>
+              <Link href="/family">
+                <a className="rounded-full border px-8 py-3.5 text-sm font-semibold uppercase tracking-widest backdrop-blur-md transition hover:border-[var(--color-cream)]"
+                  style={{ borderColor: "color-mix(in oklab, var(--color-cream) 28%, transparent)",
+                           color: "color-mix(in oklab, var(--color-cream) 85%, transparent)",
+                           background: "color-mix(in oklab, var(--color-cream) 6%, transparent)" }}>
+                  Conheça a Família
+                </a>
+              </Link>
+            </div>
+
+            {/* countdown em painel glass */}
+            <div className="mx-auto mt-12 inline-flex flex-col items-center rounded-2xl border px-6 py-5 backdrop-blur-md md:px-10"
+              style={{ borderColor: "color-mix(in oklab, var(--color-cream) 14%, transparent)",
+                       background: "color-mix(in oklab, var(--color-obsidian) 45%, transparent)" }}>
+              <p className="mb-4 text-[0.62rem] uppercase tracking-[0.3em]"
+                style={{ color: "color-mix(in oklab, var(--color-sunset-orange) 82%, transparent)" }}>
+                Previsão de partida · sujeita à venda da fazenda
+              </p>
+              <div className="flex items-start justify-center gap-5 md:gap-9">
                 {[
                   { value: countdown.days,    label: "dias" },
                   { value: countdown.hours,   label: "horas" },
                   { value: countdown.minutes, label: "min" },
                   { value: countdown.seconds, label: "seg" },
-                ].map(({ value, label }) => (
-                  <div key={label} className="text-center">
-                    <div className="font-serif text-4xl font-light text-white md:text-6xl">
-                      {String(value).padStart(2, "0")}
+                ].map(({ value, label }, i) => (
+                  <div key={label} className="flex items-start gap-5 md:gap-9">
+                    <div className="text-center">
+                      <div className="font-serif text-4xl font-light leading-none md:text-6xl"
+                        style={{ color: "var(--color-cream)" }}>
+                        {String(value).padStart(2, "0")}
+                      </div>
+                      <div className="mt-2 text-[0.6rem] uppercase tracking-[0.25em]"
+                        style={{ color: "color-mix(in oklab, var(--color-cream) 40%, transparent)" }}>{label}</div>
                     </div>
-                    <div className="mt-1 text-xs uppercase tracking-widest text-white/30">{label}</div>
+                    {i < 3 && <span className="font-serif text-3xl font-light md:text-5xl"
+                      style={{ color: "color-mix(in oklab, var(--color-cream) 18%, transparent)" }}>:</span>}
                   </div>
                 ))}
               </div>
             </div>
-            <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
-              <Link href="/expedition">
-                <a className="rounded-sm bg-accent px-8 py-3 text-sm font-semibold uppercase tracking-widest text-accent-foreground transition hover:opacity-90">
-                  A Expedição →
-                </a>
-              </Link>
-              <Link href="/family">
-                <a className="rounded-sm border border-white/20 px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white/70 transition hover:border-primary hover:text-primary">
-                  Conheça a Família
-                </a>
-              </Link>
-            </div>
           </div>
-          <p className="absolute bottom-8 text-xs text-white/20 animate-pulse" style={{ zIndex: 2 }}>
+
+          {/* fade inferior p/ emendar na próxima seção */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-32"
+            style={{ background: "linear-gradient(to top, var(--color-obsidian), transparent)" }} />
+          <p className="absolute bottom-7 z-[4] text-xs animate-pulse"
+            style={{ color: "color-mix(in oklab, var(--color-cream) 30%, transparent)" }}>
             Role para conhecer ↓
           </p>
         </motion.section>

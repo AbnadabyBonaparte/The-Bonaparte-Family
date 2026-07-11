@@ -1,0 +1,21 @@
+{
+  "brand": "the-bonaparte-family",
+  "palette": ["oklch(0.12 0.04 155) obsidian-verde", "oklch(0.52 0.13 155) forest-oliva", "oklch(0.65 0.18 50) ambar-terroso", "oklch(0.97 0.01 80) cream"],
+  "pieces": [
+    {
+      "name": "hero",
+      "aspect": "16:9",
+      "prompt": "Cinematic editorial wide shot of a vast Brazilian cerrado landscape at golden hour — rolling savanna, twisted ipê trees, a distant wooden homestead and dirt road disappearing toward the horizon, warm low sun casting long shadows, deep olive-green foliage bathed in terroso amber light, misty valley, a sense of family journey and legacy about to begin, volumetric god rays, film grain, muted painterly tones, ultra-detailed, dramatic depth, National Geographic documentary aesthetic, premium, no people faces, no text, no logo, no watermark, no words"
+    },
+    {
+      "name": "legacy",
+      "aspect": "3:2",
+      "prompt": "Cinematic still life of a heritage family table at dusk in a rustic wooden cabin in the Brazilian countryside — warm candlelight, open leather-bound books and a handwritten manuscript, worn wooden surface, olive-green and amber tones, soft volumetric glow, intimate and timeless, sense of legacy passed between generations, ultra-detailed, painterly, film grain, premium editorial, no people, no text, no logo, no watermark, no words"
+    },
+    {
+      "name": "expedition",
+      "aspect": "3:2",
+      "prompt": "Cinematic aerial view of a lone dirt road winding through dramatic Southeast Asian and Brazilian frontier terrain merging — terraced hills, jungle canopy, distant mountains under a warm hazy sky, olive greens and sunset amber, a single trail suggesting a long overland expedition, atmospheric depth, volumetric light, film grain, muted premium tones, documentary cinematic, no people, no text, no logo, no watermark, no words"
+    }
+  ]
+}

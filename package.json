@@ -9,6 +9,7 @@
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
     "format": "prettier --write .",
+    "art:generate": "node scripts/generate-brand-art.mjs",
     "test": "vitest run",
     "test:watch": "vitest"
   },
