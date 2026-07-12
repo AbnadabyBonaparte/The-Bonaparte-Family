@@ -1,32 +1,51 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { ImagePlaceholder } from "@/components/ImagePlaceholder";
-import { Card } from "@/components/ui/card";
+import PageHero from "@/components/PageHero";
+import { FeatureCard } from "@/components/editorial";
+import { Building2, Cpu, Map } from "lucide-react";
+
+const pillars = [
+  {
+    icon: <Building2 className="h-5 w-5" />,
+    title: "O que é",
+    content:
+      "Holding que integra Garimpo IA, SUPREMA BELEZA e Casa Bonaparte SaaS.",
+  },
+  {
+    icon: <Cpu className="h-5 w-5" />,
+    title: "Tecnologia",
+    content:
+      "Operação cloud-based com automações proprietárias para escala enxuta e distribuição global.",
+  },
+  {
+    icon: <Map className="h-5 w-5" />,
+    title: "Roadmap 2026-2027",
+    content:
+      "Consolidar produtos digitais, ampliar distribuição global e financiar a expedição contínua.",
+  },
+];
 
 export default function ALSHAM() {
   return (
     <div className="page-shell">
       <Header />
-      <main className="editorial-container py-16">
-        <h1 className="hero-title">ALSHAM Global Commerce</h1>
-        <p className="mt-4 text-lg text-muted-foreground">O motor econômico da família.</p>
-        <div className="mt-8 w-full">
-          <ImagePlaceholder aspectRatio="hero" alt="ALSHAM Global Commerce" />
-        </div>
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
-          <Card className="p-6">
-            <h2 className="text-2xl">O que é</h2>
-            <p className="mt-3 text-muted-foreground">Holding que integra Garimpo IA, SUPREMA BELEZA e Casa Bonaparte SaaS.</p>
-          </Card>
-          <Card className="p-6">
-            <h2 className="text-2xl">Tecnologia</h2>
-            <p className="mt-3 text-muted-foreground">Operação cloud-based com n8n, Supabase, Vercel e automações para escala enxuta.</p>
-          </Card>
-          <Card className="p-6">
-            <h2 className="text-2xl">Roadmap 2026-2027</h2>
-            <p className="mt-3 text-muted-foreground">Consolidar produtos digitais, ampliar distribuição global e financiar a expedição contínua.</p>
-          </Card>
-        </div>
+      <main>
+        <PageHero
+          eyebrow="Negócios da família"
+          title="ALSHAM"
+          accent="Global Commerce"
+          subtitle="O motor econômico da família — tecnologia e produtos digitais que financiam a liberdade."
+        />
+
+        <section className="editorial-container py-16 md:py-24">
+          <div className="grid gap-5 md:grid-cols-3">
+            {pillars.map((p) => (
+              <FeatureCard key={p.title} icon={p.icon} title={p.title}>
+                {p.content}
+              </FeatureCard>
+            ))}
+          </div>
+        </section>
       </main>
       <Footer />
     </div>

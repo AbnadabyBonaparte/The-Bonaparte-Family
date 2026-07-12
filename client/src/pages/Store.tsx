@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import PageHero from "@/components/PageHero";
 import {
   BAZAR_HUB_URL,
   FAMILY_CATEGORIES,
@@ -24,15 +25,21 @@ export default function Store() {
     <div className="page-shell">
       <Header />
       <main>
+        <PageHero
+          eyebrow="Bazar & Livros"
+          title="O que a família"
+          accent="carrega e escreve"
+          subtitle="Equipamentos testados na estrada e livros que formam a base — curadoria da família Bonaparte."
+        />
 
         {/* ══ BAZAR ═══════════════════════════════════════════════ */}
         <section className="editorial-container py-16 md:py-24">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-primary">
             Expedição Bonaparte
           </p>
-          <h1 className="font-serif text-4xl md:text-5xl">
+          <h2 className="font-serif text-3xl md:text-4xl">
             O que a família carrega
-          </h1>
+          </h2>
           <p className="mt-4 max-w-2xl text-muted-foreground leading-relaxed">
             Curadoria de equipamentos, materiais e essenciais para uma família
             que vive em movimento — testados na estrada.
@@ -64,7 +71,7 @@ export default function Store() {
                 href={product.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex flex-col overflow-hidden rounded-lg border border-border bg-card transition hover:border-primary"
+                className="premium-card group relative flex flex-col"
               >
                 {/* Imagem */}
                 <div className="relative overflow-hidden">
@@ -143,7 +150,7 @@ export default function Store() {
                 return (
                   <div
                     key={book.id}
-                    className="flex flex-col overflow-hidden rounded-lg border border-border bg-background transition hover:border-primary"
+                    className="premium-card group flex flex-col bg-background"
                   >
                     {/* Capa */}
                     <div className="overflow-hidden bg-secondary">

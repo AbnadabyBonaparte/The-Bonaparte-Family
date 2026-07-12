@@ -1,56 +1,90 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import PageHero from "@/components/PageHero";
 import { ImagePlaceholder } from "@/components/ImagePlaceholder";
-import { Card } from "@/components/ui/card";
+import { SectionHeader, fadeUp } from "@/components/editorial";
 import { familyMembers, familyValues, pets } from "@/data/family";
+import { motion } from "framer-motion";
 
 export default function Family() {
   return (
     <div className="page-shell">
       <Header />
-      <main className="editorial-container py-16">
-        <h1 className="hero-title">A Família</h1>
-        <p className="mt-4 text-lg text-muted-foreground">Quatro pessoas, dois cachorros, um sítio e uma missão.</p>
-        <div className="mt-8 w-full">
-          <ImagePlaceholder aspectRatio="hero" alt="A família Bonaparte" />
-        </div>
+      <main>
+        <PageHero
+          eyebrow="Quem somos"
+          title="A Família"
+          accent="quatro pessoas, uma missão"
+          subtitle="Dois pais, duas filhas, uma matilha e um sítio — construindo liberdade na vida real."
+        />
 
-        <section className="mt-12 grid gap-5 md:grid-cols-2">
-          {familyMembers.map(member => (
-            <Card key={member.name} className="overflow-hidden p-0">
-              <ImagePlaceholder aspectRatio="portrait" alt={member.name} />
-              <div className="p-6">
-                <h2 className="text-2xl">{member.name}</h2>
-                <p className="mt-1 text-sm text-primary">{member.role}</p>
-                <p className="mt-4 text-muted-foreground">{member.description}</p>
-                <p className="mt-4 font-serif italic text-muted-foreground">"{member.quote}"</p>
-              </div>
-            </Card>
-          ))}
-        </section>
-
-        <section className="mt-14">
-          <h2 className="text-3xl">Valores da casa</h2>
-          <div className="mt-5 grid gap-3 md:grid-cols-3">
-            {familyValues.map(value => <Card key={value} className="p-4 text-muted-foreground">{value}</Card>)}
-          </div>
-        </section>
-
-        <section className="mt-14">
-          <h2 className="text-3xl">Nossos Animais</h2>
-          <div className="mt-5 grid gap-4 md:grid-cols-3">
-            {pets.map(pet => (
-              <Card key={pet.name} className="overflow-hidden p-0">
-                <ImagePlaceholder aspectRatio="square" alt={pet.name} />
-                <div className="p-4">
-                  <h3 className="text-xl">{pet.name}</h3>
-                  <p className="text-sm text-primary">{pet.breed}</p>
-                  <p className="mt-2 text-muted-foreground">{pet.personality}</p>
+        <div className="editorial-container py-16 md:py-24">
+          {/* Membros */}
+          <SectionHeader eyebrow="Os Bonaparte" title="Cada um, um capítulo" />
+          <section className="mt-8 grid gap-6 md:grid-cols-2">
+            {familyMembers.map((member) => (
+              <motion.div
+                {...fadeUp}
+                key={member.name}
+                className="premium-card group flex flex-col"
+              >
+                <ImagePlaceholder aspectRatio="portrait" alt={member.name} className="rounded-none" />
+                <div className="p-6 md:p-7">
+                  <h2 className="font-serif text-2xl text-foreground">{member.name}</h2>
+                  <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-primary">
+                    {member.role}
+                  </p>
+                  <p className="mt-4 leading-relaxed text-muted-foreground">
+                    {member.description}
+                  </p>
+                  <p className="mt-5 border-l-2 border-primary/40 pl-4 font-serif text-lg italic text-foreground">
+                    “{member.quote}”
+                  </p>
                 </div>
-              </Card>
+              </motion.div>
             ))}
-          </div>
-        </section>
+          </section>
+
+          {/* Valores */}
+          <section className="mt-20">
+            <SectionHeader eyebrow="A casa por dentro" title="Valores da casa" />
+            <div className="mt-8 flex flex-wrap gap-3">
+              {familyValues.map((value) => (
+                <span
+                  key={value}
+                  className="premium-card px-5 py-2.5 text-sm font-medium text-foreground"
+                >
+                  {value}
+                </span>
+              ))}
+            </div>
+          </section>
+
+          {/* Pets */}
+          <section className="mt-20">
+            <SectionHeader eyebrow="A matilha" title="Nossos animais" />
+            <div className="mt-8 grid gap-6 md:grid-cols-3">
+              {pets.map((pet) => (
+                <motion.div
+                  {...fadeUp}
+                  key={pet.name}
+                  className="premium-card group flex flex-col"
+                >
+                  <ImagePlaceholder aspectRatio="square" alt={pet.name} className="rounded-none" />
+                  <div className="p-5">
+                    <h3 className="font-serif text-xl text-foreground">{pet.name}</h3>
+                    <p className="text-sm font-semibold uppercase tracking-wide text-primary">
+                      {pet.breed}
+                    </p>
+                    <p className="mt-2 leading-relaxed text-muted-foreground">
+                      {pet.personality}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </section>
+        </div>
       </main>
       <Footer />
     </div>

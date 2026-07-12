@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import PageHero from "@/components/PageHero";
 import { supabase, type JournalEntry } from "@/lib/supabase";
+import { BookText } from "lucide-react";
 
 function formatDate(dateStr: string): string {
   const [year, month, day] = dateStr.split("-").map(Number);
@@ -30,37 +32,50 @@ export default function Journal() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col">
+    <div className="page-shell flex flex-col">
       <Header />
 
-      <main className="flex-1 editorial-container py-12 md:py-20">
-        <header className="mb-12 md:mb-16">
-          <h1 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-3">
-            Journal Bonaparte
-          </h1>
-          <p className="text-muted-foreground text-lg font-sans">
-            A vida acontecendo. Sem filtro.
-          </p>
-        </header>
+      <PageHero
+        eyebrow="Diário de bordo"
+        title="Journal"
+        accent="a vida sem filtro"
+        subtitle="Registros da estrada, do sítio e da travessia — escritos enquanto acontecem."
+      />
 
+      <main className="flex-1 editorial-container py-16 md:py-24 max-w-3xl">
         {loading && (
-          <div className="space-y-8">
+          <div className="space-y-6">
             {[1, 2].map((n) => (
-              <div key={n} className="animate-pulse space-y-3">
-                <div className="h-4 bg-secondary rounded w-32" />
-                <div className="h-3 bg-secondary rounded w-48" />
-                <div className="h-24 bg-secondary rounded w-full" />
+              <div key={n} className="premium-card animate-pulse space-y-3 p-6">
+                <div className="h-4 w-32 rounded bg-secondary" />
+                <div className="h-3 w-48 rounded bg-secondary" />
+                <div className="h-24 w-full rounded bg-secondary" />
               </div>
             ))}
           </div>
         )}
 
         {error && (
-          <p className="text-muted-foreground font-sans">{error}</p>
+          <div className="premium-card p-10 text-center">
+            <div className="icon-chip mx-auto mb-4">
+              <BookText className="h-5 w-5" />
+            </div>
+            <p className="font-serif text-xl text-foreground">Não foi possível carregar</p>
+            <p className="mt-2 text-muted-foreground">{error}</p>
+          </div>
         )}
 
         {!loading && !error && entries.length === 0 && (
-          <p className="text-muted-foreground font-sans">Nenhuma entrada ainda.</p>
+          <div className="premium-card p-12 text-center">
+            <div className="icon-chip mx-auto mb-5">
+              <BookText className="h-5 w-5" />
+            </div>
+            <p className="font-serif text-2xl text-foreground">O diário começa aqui</p>
+            <p className="mx-auto mt-3 max-w-md leading-relaxed text-muted-foreground">
+              Ainda não há entradas publicadas. Cada parada da expedição será registrada
+              neste espaço — volte em breve.
+            </p>
+          </div>
         )}
 
         {!loading && !error && entries.length > 0 && (

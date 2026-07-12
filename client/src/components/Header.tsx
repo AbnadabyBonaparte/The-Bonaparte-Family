@@ -29,9 +29,13 @@ export default function Header() {
     <header
       className="sticky top-0 z-50 border-b transition-all duration-300"
       style={{
-        borderColor: scrolled ? "rgba(26,66,45,0.4)" : "transparent",
-        background: scrolled ? "rgba(26,66,45,0.95)" : "transparent",
-        backdropFilter: scrolled ? "blur(12px)" : "none",
+        borderColor: scrolled || open
+          ? "color-mix(in oklab, var(--color-cream) 14%, transparent)"
+          : "transparent",
+        background: scrolled || open
+          ? "color-mix(in oklab, var(--color-obsidian) 88%, transparent)"
+          : "transparent",
+        backdropFilter: scrolled || open ? "blur(12px)" : "none",
       }}
     >
       <div className="editorial-container">
@@ -50,8 +54,8 @@ export default function Header() {
                 }}
               />
               <span
-                className="font-serif text-base md:text-lg font-semibold transition-colors duration-300"
-                style={{ color: scrolled ? "var(--color-cream)" : "var(--primary)" }}
+                className="font-serif text-base md:text-lg font-semibold"
+                style={{ color: "var(--color-cream)" }}
               >
                 A Família Bonaparte
               </span>
@@ -62,8 +66,8 @@ export default function Header() {
             {navItems.map(item => (
               <Link key={item.href} href={item.href}>
                 <a
-                  className="rounded-md px-3 py-2 text-sm transition-colors duration-300"
-                  style={{ color: scrolled ? "rgba(248,247,241,0.75)" : "var(--muted-foreground)" }}
+                  className="rounded-md px-3 py-2 text-sm transition-colors duration-300 hover:opacity-100"
+                  style={{ color: "color-mix(in oklab, var(--color-cream) 72%, transparent)" }}
                 >
                   {item.label}
                 </a>
@@ -93,12 +97,16 @@ export default function Header() {
           </div>
         </div>
         {open && (
-          <nav className="xl:hidden grid grid-cols-1 gap-2 border-t border-border py-4">
+          <nav
+            className="xl:hidden grid grid-cols-1 gap-1 border-t py-4"
+            style={{ borderColor: "color-mix(in oklab, var(--color-cream) 12%, transparent)" }}
+          >
             {navItems.map(item => (
               <Link key={item.href} href={item.href}>
                 <a
                   onClick={() => setOpen(false)}
-                  className="rounded-md px-3 py-3 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                  className="rounded-md px-3 py-3 text-sm transition-colors"
+                  style={{ color: "color-mix(in oklab, var(--color-cream) 78%, transparent)" }}
                 >
                   {item.label}
                 </a>

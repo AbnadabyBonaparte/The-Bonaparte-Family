@@ -1,33 +1,57 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { ImagePlaceholder } from "@/components/ImagePlaceholder";
-import { Card } from "@/components/ui/card";
+import PageHero from "@/components/PageHero";
+import { FeatureCard } from "@/components/editorial";
+import { Compass, BookOpen, Globe2, Sprout } from "lucide-react";
 
 const sections = [
-  ["Por que Homeschool", "Para preservar curiosidade, autonomia intelectual e participação ativa da família no processo formativo."],
-  ["Como educamos", "Combinamos trilhas estruturadas, leitura, música, projetos práticos e mentorias direcionadas."],
-  ["Worldschooling", "A expedição integra currículo vivo: geografia aplicada, idiomas, história e resolução de problemas reais."],
-  ["Resultados", "As meninas aprendem com contexto, propósito e repertório multicultural desde cedo."],
+  {
+    icon: <Sprout className="h-5 w-5" />,
+    title: "Por que Homeschool",
+    content:
+      "Para preservar curiosidade, autonomia intelectual e participação ativa da família no processo formativo.",
+  },
+  {
+    icon: <BookOpen className="h-5 w-5" />,
+    title: "Como educamos",
+    content:
+      "Combinamos trilhas estruturadas, leitura, música, projetos práticos e mentorias direcionadas.",
+  },
+  {
+    icon: <Globe2 className="h-5 w-5" />,
+    title: "Worldschooling",
+    content:
+      "A expedição integra currículo vivo: geografia aplicada, idiomas, história e resolução de problemas reais.",
+  },
+  {
+    icon: <Compass className="h-5 w-5" />,
+    title: "Resultados",
+    content:
+      "As meninas aprendem com contexto, propósito e repertório multicultural desde cedo.",
+  },
 ];
 
 export default function Education() {
   return (
     <div className="page-shell">
       <Header />
-      <main className="editorial-container py-16">
-        <h1 className="hero-title">Educação</h1>
-        <p className="mt-4 text-lg text-muted-foreground">Worldschooling — o mundo é a sala de aula.</p>
-        <div className="mt-8 w-full">
-          <ImagePlaceholder aspectRatio="hero" alt="Worldschooling Bonaparte" />
-        </div>
-        <div className="mt-12 grid gap-5 md:grid-cols-2">
-          {sections.map(([title, content]) => (
-            <Card key={title} className="p-6">
-              <h2 className="text-2xl">{title}</h2>
-              <p className="mt-3 text-muted-foreground">{content}</p>
-            </Card>
-          ))}
-        </div>
+      <main>
+        <PageHero
+          eyebrow="Formação Bonaparte"
+          title="Educação"
+          accent="o mundo é a sala de aula"
+          subtitle="Worldschooling — cada país uma disciplina, cada cultura um professor. Aprender vivendo, não decorando."
+        />
+
+        <section className="editorial-container py-16 md:py-24">
+          <div className="grid gap-5 md:grid-cols-2">
+            {sections.map((s) => (
+              <FeatureCard key={s.title} icon={s.icon} title={s.title}>
+                {s.content}
+              </FeatureCard>
+            ))}
+          </div>
+        </section>
       </main>
       <Footer />
     </div>

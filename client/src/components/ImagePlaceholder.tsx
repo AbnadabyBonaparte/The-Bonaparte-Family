@@ -5,6 +5,11 @@ interface ImagePlaceholderProps {
   className?: string;
 }
 
+/**
+ * When a real photo exists it renders framed and warm. Until then it degrades
+ * to a composed gallery panel — a soft brand mesh with an engraved Bonaparte
+ * monogram — never a dashed box with a loose grey icon.
+ */
 export function ImagePlaceholder({
   src,
   alt,
@@ -24,30 +29,50 @@ export function ImagePlaceholder({
         src={src}
         alt={alt}
         loading="lazy"
-        className={`w-full rounded-lg object-cover ${ratioClass} ${className}`}
+        className={`w-full rounded-2xl object-cover ${ratioClass} ${className}`}
       />
     );
   }
 
   return (
     <div
-      className={`flex w-full items-center justify-center rounded-lg border-2 border-dashed border-border bg-muted/30 ${ratioClass} ${className}`}
+      className={`relative flex w-full items-center justify-center overflow-hidden rounded-2xl border border-border ${ratioClass} ${className}`}
+      role="img"
+      aria-label={alt}
+      style={{
+        background:
+          "radial-gradient(120% 90% at 20% 15%, color-mix(in oklab, var(--color-forest-mid) 22%, var(--card)), var(--card) 62%)," +
+          "radial-gradient(90% 80% at 85% 90%, color-mix(in oklab, var(--color-sunset-orange) 14%, transparent), transparent 60%)",
+      }}
     >
-      <div className="text-center">
-        <svg
-          className="mx-auto h-10 w-10 text-muted-foreground/40"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+      {/* corner frame accents */}
+      <span className="pointer-events-none absolute left-4 top-4 h-6 w-6 border-l border-t"
+        style={{ borderColor: "color-mix(in oklab, var(--primary) 45%, transparent)" }} />
+      <span className="pointer-events-none absolute right-4 top-4 h-6 w-6 border-r border-t"
+        style={{ borderColor: "color-mix(in oklab, var(--primary) 45%, transparent)" }} />
+      <span className="pointer-events-none absolute bottom-4 left-4 h-6 w-6 border-b border-l"
+        style={{ borderColor: "color-mix(in oklab, var(--primary) 45%, transparent)" }} />
+      <span className="pointer-events-none absolute bottom-4 right-4 h-6 w-6 border-b border-r"
+        style={{ borderColor: "color-mix(in oklab, var(--primary) 45%, transparent)" }} />
+
+      <div className="flex flex-col items-center gap-3 px-6 text-center">
+        {/* engraved monogram mark */}
+        <span
+          className="flex h-14 w-14 items-center justify-center rounded-full border font-serif text-2xl"
+          style={{
+            borderColor: "color-mix(in oklab, var(--primary) 40%, transparent)",
+            color: "color-mix(in oklab, var(--primary) 85%, var(--foreground))",
+            background: "color-mix(in oklab, var(--primary) 10%, transparent)",
+          }}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z"
-          />
-        </svg>
-        <p className="mt-2 text-xs text-muted-foreground/40">{alt}</p>
+          B
+        </span>
+        <span
+          className="text-[0.68rem] font-semibold uppercase tracking-[0.24em]"
+          style={{ color: "color-mix(in oklab, var(--muted-foreground) 90%, transparent)" }}
+        >
+          {alt}
+        </span>
       </div>
     </div>
   );

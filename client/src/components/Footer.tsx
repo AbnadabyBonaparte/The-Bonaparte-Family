@@ -65,15 +65,16 @@ export default function Footer() {
                 fontWeight: 600,
                 textTransform: "uppercase",
                 letterSpacing: "0.2em",
-                color: "rgba(26,66,45,0.45)",
+                color: "color-mix(in oklab, var(--muted-foreground) 85%, transparent)",
                 textDecoration: "none",
                 transition: "color 220ms ease",
               }}
               onMouseEnter={e => {
-                (e.currentTarget as HTMLElement).style.color = "var(--color-sunset-orange)";
+                (e.currentTarget as HTMLElement).style.color = "var(--accent)";
               }}
               onMouseLeave={e => {
-                (e.currentTarget as HTMLElement).style.color = "rgba(26,66,45,0.45)";
+                (e.currentTarget as HTMLElement).style.color =
+                  "color-mix(in oklab, var(--muted-foreground) 85%, transparent)";
               }}
             >
               {link.label}

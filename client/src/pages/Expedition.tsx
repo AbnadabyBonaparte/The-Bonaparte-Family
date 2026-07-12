@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import PageHero from "@/components/PageHero";
 import { motion } from "framer-motion";
 import { countries, checkpoints, EXPEDITION_STATS, DEPARTURE_DATE } from "@/data/expedition";
 
@@ -156,27 +157,22 @@ export default function Expedition() {
       <Header />
       <main>
 
-        {/* ══ HERO ══════════════════════════════════════════════ */}
-        <motion.section
-          {...fadeUp}
-          className="flex min-h-[70vh] flex-col items-center justify-center py-20 text-center"
-          style={{ background: "linear-gradient(160deg, oklch(0.12 0.02 80) 0%, oklch(0.16 0.04 130) 100%)" }}
+        {/* ══ HERO — composição galeria em camadas ══════════════ */}
+        <PageHero
+          eyebrow={`${EXPEDITION_STATS.origin} → ${EXPEDITION_STATS.firstDestination}`}
+          title="Expedição Bonaparte"
+          accent="2026 – 2027"
+          subtitle={`${EXPEDITION_STATS.months} meses · ${EXPEDITION_STATS.countries} países · ${EXPEDITION_STATS.continents} continentes`}
+          back={false}
         >
-          <p className="mb-3 text-xs uppercase tracking-[0.4em] text-primary/60">
-            {EXPEDITION_STATS.origin} → {EXPEDITION_STATS.firstDestination}
-          </p>
-          <h1 className="font-serif text-5xl font-light text-white md:text-7xl">
-            Expedição Bonaparte<br />
-            <span className="text-primary italic">2026 – 2027</span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-xl text-base text-white/50 font-sans font-light">
-            {EXPEDITION_STATS.months} meses · {EXPEDITION_STATS.countries} países · {EXPEDITION_STATS.continents} continentes
-          </p>
-
-          {/* Countdown */}
-          <div className="mt-12">
-            <p className="mb-4 text-xs uppercase tracking-widest text-primary/50">Partida em</p>
-            <div className="flex items-center justify-center gap-8">
+          <div className="inline-flex flex-col items-center rounded-2xl border px-6 py-5 backdrop-blur-md md:px-10"
+            style={{ borderColor: "color-mix(in oklab, var(--color-cream) 14%, transparent)",
+                     background: "color-mix(in oklab, var(--color-obsidian) 45%, transparent)" }}>
+            <p className="mb-4 text-[0.62rem] uppercase tracking-[0.3em]"
+              style={{ color: "color-mix(in oklab, var(--color-sunset-orange) 82%, transparent)" }}>
+              Partida em
+            </p>
+            <div className="flex items-center justify-center gap-6 md:gap-9">
               {[
                 { v: countdown.days, l: "dias" },
                 { v: countdown.hours, l: "h" },
@@ -184,15 +180,19 @@ export default function Expedition() {
                 { v: countdown.seconds, l: "seg" },
               ].map(({ v, l }) => (
                 <div key={l} className="text-center">
-                  <div className="font-serif text-5xl font-light text-white md:text-6xl">
+                  <div className="font-serif text-4xl font-light md:text-5xl"
+                    style={{ color: "var(--color-cream)" }}>
                     {String(v).padStart(2, "0")}
                   </div>
-                  <div className="mt-1 text-xs uppercase tracking-widest text-white/30">{l}</div>
+                  <div className="mt-1 text-[0.6rem] uppercase tracking-widest"
+                    style={{ color: "color-mix(in oklab, var(--color-cream) 40%, transparent)" }}>
+                    {l}
+                  </div>
                 </div>
               ))}
             </div>
           </div>
-        </motion.section>
+        </PageHero>
 
         {/* ══ MAPA INTERATIVO ═══════════════════════════════════ */}
         <motion.section {...fadeUp} className="editorial-container py-16">
@@ -267,24 +267,40 @@ export default function Expedition() {
         {/* ══ WORLDSCHOOLING ════════════════════════════════════ */}
         <motion.section
           {...fadeUp}
-          className="py-20"
-          style={{ background: "linear-gradient(160deg, oklch(0.12 0.02 80) 0%, oklch(0.16 0.04 130) 100%)" }}
+          className="film-grain relative overflow-hidden py-20"
+          style={{ background: "var(--color-obsidian)" }}
         >
-          <div className="editorial-container">
-            <p className="mb-2 text-xs uppercase tracking-[0.3em] text-primary/60">Sarah & Ana Maria</p>
-            <h2 className="font-serif text-4xl text-white md:text-5xl">
+          <div className="pointer-events-none absolute inset-0"
+            style={{ background:
+              "radial-gradient(60% 55% at 12% 20%, color-mix(in oklab, var(--color-forest-mid) 34%, transparent), transparent 70%)," +
+              "radial-gradient(55% 50% at 90% 85%, color-mix(in oklab, var(--color-sunset-orange) 22%, transparent), transparent 72%)" }} />
+          <div className="editorial-container relative z-[4]">
+            <p className="mb-2 text-xs uppercase tracking-[0.3em]"
+              style={{ color: "color-mix(in oklab, var(--color-sunset-orange) 80%, transparent)" }}>
+              Sarah &amp; Ana Maria
+            </p>
+            <h2 className="font-serif text-4xl md:text-5xl" style={{ color: "var(--color-cream)" }}>
               Worldschooling<br />
-              <span className="text-primary italic">em ação</span>
+              <span className="italic"
+                style={{ backgroundImage: "linear-gradient(100deg, var(--color-forest-mid), color-mix(in oklab, var(--color-sunset-orange) 85%, var(--color-cream)))",
+                         WebkitBackgroundClip: "text", backgroundClip: "text",
+                         WebkitTextFillColor: "transparent", color: "transparent" }}>
+                em ação
+              </span>
             </h2>
-            <p className="mt-4 max-w-2xl text-white/50 font-sans font-light leading-relaxed">
+            <p className="mt-4 max-w-2xl font-sans font-light leading-relaxed"
+              style={{ color: "color-mix(in oklab, var(--color-cream) 55%, transparent)" }}>
               Cada país é uma sala de aula. História no Egito. Biodiversidade na Indonésia.
               Gastronomia no Vietnã. Civilização na Índia. Nenhum livro didático consegue
               substituir o choque cultural real de chegar num lugar e ter que entender como viver.
             </p>
             <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-4">
               {["História viva", "Idiomas reais", "Ciências no campo", "Arte e cultura"].map(item => (
-                <div key={item} className="rounded-lg border border-white/10 bg-white/5 p-4 text-white/70 text-sm">
-                  ✓ {item}
+                <div key={item} className="rounded-xl border p-4 text-sm"
+                  style={{ borderColor: "color-mix(in oklab, var(--color-cream) 12%, transparent)",
+                           background: "color-mix(in oklab, var(--color-cream) 5%, transparent)",
+                           color: "color-mix(in oklab, var(--color-cream) 72%, transparent)" }}>
+                  <span style={{ color: "var(--color-sunset-orange)" }}>✓</span> {item}
                 </div>
               ))}
             </div>

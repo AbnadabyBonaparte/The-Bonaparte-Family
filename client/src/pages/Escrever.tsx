@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "wouter";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import PageHero from "@/components/PageHero";
 import { supabase } from "@/lib/supabase";
 
 const today = new Date().toISOString().split("T")[0];
@@ -58,14 +59,18 @@ export default function Escrever() {
     "w-full rounded-md border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition";
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col">
+    <div className="page-shell flex flex-col">
       <Header />
 
-      <main className="flex-1 editorial-container py-12 md:py-20 max-w-2xl">
-        <h1 className="font-serif text-3xl md:text-4xl font-bold mb-8">
-          Escrever no Journal
-        </h1>
+      <PageHero
+        eyebrow="Área reservada"
+        title="Escrever"
+        accent="no Journal"
+        subtitle="Registre uma nova entrada da travessia."
+        back={false}
+      />
 
+      <main className="flex-1 editorial-container py-16 md:py-24 max-w-2xl">
         {!authed ? (
           <form onSubmit={handleAuth} className="space-y-4 max-w-sm">
             <div>

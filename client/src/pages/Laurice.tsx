@@ -96,10 +96,10 @@ function Ring({ pct, label }: { pct: number; label: string }) {
   const r = 44;
   const circ = 2 * Math.PI * r;
   const offset = circ - (pct / 100) * circ;
-  const color = pct === 100 ? "#16a34a" : "#d4a843";
+  const color = pct === 100 ? "var(--primary)" : "var(--accent)";
   return (
     <svg width="120" height="120" viewBox="0 0 120 120" aria-label={`${Math.round(pct)}% ${label}`}>
-      <circle cx="60" cy="60" r={r} fill="none" stroke="#e8e3da" strokeWidth="8" />
+      <circle cx="60" cy="60" r={r} fill="none" stroke="var(--border)" strokeWidth="8" />
       <circle
         cx="60" cy="60" r={r} fill="none"
         stroke={color} strokeWidth="8"
@@ -109,10 +109,10 @@ function Ring({ pct, label }: { pct: number; label: string }) {
         transform="rotate(-90 60 60)"
         style={{ transition: "stroke-dashoffset 0.5s ease" }}
       />
-      <text x="60" y="55" textAnchor="middle" fontSize="22" fontWeight="700" fill="#1a1208">
+      <text x="60" y="55" textAnchor="middle" fontSize="22" fontWeight="700" fill="var(--foreground)">
         {Math.round(pct)}%
       </text>
-      <text x="60" y="72" textAnchor="middle" fontSize="10" fill="#8b7355">
+      <text x="60" y="72" textAnchor="middle" fontSize="10" fill="var(--muted-foreground)">
         {label}
       </text>
     </svg>
@@ -129,9 +129,9 @@ function TaskBtn({
       style={{
         display: "flex", alignItems: "center", gap: "1rem",
         padding: "1rem 1.1rem",
-        border: `1.5px solid ${done ? "#d4a843" : "#e8e3da"}`,
+        border: `1.5px solid ${done ? "var(--accent)" : "var(--border)"}`,
         borderRadius: 10,
-        background: done ? "#fffbf0" : "#fff",
+        background: done ? "var(--secondary)" : "var(--card)",
         cursor: "pointer", textAlign: "left",
         transition: "all 0.2s", width: "100%",
       }}
@@ -139,7 +139,7 @@ function TaskBtn({
       <span style={{ fontSize: "1.4rem", flexShrink: 0 }}>{emoji}</span>
       <span style={{
         flex: 1, fontSize: "0.9rem",
-        color: done ? "#1a1208" : "#5a4a35",
+        color: done ? "var(--foreground)" : "var(--foreground)",
         textDecoration: done ? "line-through" : "none",
         lineHeight: 1.4,
       }}>
@@ -147,11 +147,11 @@ function TaskBtn({
       </span>
       <span style={{
         width: 24, height: 24, borderRadius: "50%", flexShrink: 0,
-        background: done ? "#d4a843" : "none",
-        border: done ? "none" : "1.5px solid #d3d1c7",
+        background: done ? "var(--accent)" : "none",
+        border: done ? "none" : "1.5px solid var(--border)",
         display: "flex", alignItems: "center", justifyContent: "center",
       }}>
-        {done && <span style={{ color: "#fff", fontSize: 13 }}>✓</span>}
+        {done && <span style={{ color: "var(--color-cream)", fontSize: 13 }}>✓</span>}
       </span>
     </button>
   );
@@ -178,17 +178,17 @@ export default function Laurice() {
   const s: Record<string, React.CSSProperties> = {
     shell:   { maxWidth: 480, margin: "0 auto", padding: "1.5rem 1rem 4rem" },
     hdr:     { textAlign: "center", marginBottom: "2rem" },
-    eyebrow: { fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "#8b7355", marginBottom: "0.5rem", fontWeight: 600 },
-    h1:      { fontFamily: "Georgia, serif", fontSize: "2rem", fontWeight: 700, color: "#1a1208", margin: 0 },
-    sub:     { color: "#8b7355", fontSize: "0.9rem", marginTop: "0.4rem" },
-    pill:    { marginTop: "1.25rem", background: "#1a1208", borderRadius: 10, padding: "0.75rem 1.25rem", display: "inline-block" },
-    tabs:    { display: "flex", borderBottom: "1.5px solid #e8e3da", marginBottom: "1.5rem" },
-    scoreBox:{ display: "flex", alignItems: "center", gap: "1.25rem", marginBottom: "1.5rem", background: "#faf8f4", borderRadius: 12, padding: "1.25rem" },
+    eyebrow: { fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "var(--muted-foreground)", marginBottom: "0.5rem", fontWeight: 600 },
+    h1:      { fontFamily: "Georgia, serif", fontSize: "2rem", fontWeight: 700, color: "var(--foreground)", margin: 0 },
+    sub:     { color: "var(--muted-foreground)", fontSize: "0.9rem", marginTop: "0.4rem" },
+    pill:    { marginTop: "1.25rem", background: "var(--color-forest-dark)", borderRadius: 10, padding: "0.75rem 1.25rem", display: "inline-block" },
+    tabs:    { display: "flex", borderBottom: "1.5px solid var(--border)", marginBottom: "1.5rem" },
+    scoreBox:{ display: "flex", alignItems: "center", gap: "1.25rem", marginBottom: "1.5rem", background: "var(--secondary)", borderRadius: 12, padding: "1.25rem" },
     tasks:   { display: "flex", flexDirection: "column" as const, gap: "0.6rem" },
-    win:     { marginTop: "1.25rem", background: "#1a1208", borderRadius: 10, padding: "1rem 1.25rem", textAlign: "center" as const },
-    tip:     { background: "#faf8f4", borderRadius: 10, padding: "1rem 1.25rem" },
-    label:   { fontSize: "0.8rem", color: "#8b7355", letterSpacing: "0.1em", textTransform: "uppercase" as const, fontWeight: 600, marginBottom: "0.5rem" },
-    dayCard: { border: "1.5px solid #e8e3da", borderRadius: 10, padding: "0.9rem 1rem", background: "#fff", marginBottom: "0.6rem" },
+    win:     { marginTop: "1.25rem", background: "var(--color-forest-dark)", borderRadius: 10, padding: "1rem 1.25rem", textAlign: "center" as const },
+    tip:     { background: "var(--secondary)", borderRadius: 10, padding: "1rem 1.25rem" },
+    label:   { fontSize: "0.8rem", color: "var(--muted-foreground)", letterSpacing: "0.1em", textTransform: "uppercase" as const, fontWeight: 600, marginBottom: "0.5rem" },
+    dayCard: { border: "1.5px solid var(--border)", borderRadius: 10, padding: "0.9rem 1rem", background: "var(--card)", marginBottom: "0.6rem" },
     cross:   { display: "flex", gap: "0.5rem", alignItems: "flex-start", marginBottom: "0.4rem" },
   };
 
@@ -203,8 +203,8 @@ export default function Laurice() {
           <h1 style={s.h1}>Painel da Laurice 💛</h1>
           <p style={s.sub}>{formatDate(dKey)}</p>
           <div style={s.pill}>
-            <span style={{ color: "#d4a843", fontSize: "1.6rem", fontWeight: 700 }}>{days}</span>
-            <span style={{ color: "#f5f0e8", fontSize: "0.85rem", marginLeft: "0.5rem", opacity: 0.75 }}>
+            <span style={{ color: "var(--accent)", fontSize: "1.6rem", fontWeight: 700 }}>{days}</span>
+            <span style={{ color: "var(--color-cream)", fontSize: "0.85rem", marginLeft: "0.5rem", opacity: 0.75 }}>
               dias para Cebu
             </span>
           </div>
@@ -221,8 +221,8 @@ export default function Laurice() {
                 fontSize: "0.85rem", fontWeight: 600,
                 letterSpacing: "0.08em",
                 border: "none", background: "none", cursor: "pointer",
-                borderBottom: tab === t ? "2.5px solid #d4a843" : "2.5px solid transparent",
-                color: tab === t ? "#1a1208" : "#8b7355",
+                borderBottom: tab === t ? "2.5px solid var(--accent)" : "2.5px solid transparent",
+                color: tab === t ? "var(--foreground)" : "var(--muted-foreground)",
                 transition: "all 0.2s",
               }}
             >
@@ -237,10 +237,10 @@ export default function Laurice() {
             <div style={s.scoreBox}>
               <Ring pct={dayPct} label="hoje" />
               <div>
-                <div style={{ fontSize: "1.1rem", fontWeight: 700, color: "#1a1208" }}>
+                <div style={{ fontSize: "1.1rem", fontWeight: 700, color: "var(--foreground)" }}>
                   {dayDone} de {DAILY.length} tarefas
                 </div>
-                <div style={{ fontSize: "0.85rem", color: "#8b7355", marginTop: "0.3rem" }}>
+                <div style={{ fontSize: "0.85rem", color: "var(--muted-foreground)", marginTop: "0.3rem" }}>
                   {feedbackMsg(dayPct)}
                 </div>
               </div>
@@ -257,8 +257,8 @@ export default function Laurice() {
             {dayDone === DAILY.length && (
               <div style={s.win}>
                 <div style={{ fontSize: "1.5rem" }}>🏆</div>
-                <div style={{ color: "#d4a843", fontWeight: 700, marginTop: "0.25rem" }}>Dia completo!</div>
-                <div style={{ color: "#f5f0e8", opacity: 0.6, fontSize: "0.8rem", marginTop: "0.2rem" }}>
+                <div style={{ color: "var(--accent)", fontWeight: 700, marginTop: "0.25rem" }}>Dia completo!</div>
+                <div style={{ color: "var(--color-cream)", opacity: 0.6, fontSize: "0.8rem", marginTop: "0.2rem" }}>
                   Você registrou a família hoje. Isso conta.
                 </div>
               </div>
@@ -272,10 +272,10 @@ export default function Laurice() {
             <div style={s.scoreBox}>
               <Ring pct={wkPct} label="semana" />
               <div>
-                <div style={{ fontSize: "1.1rem", fontWeight: 700, color: "#1a1208" }}>
+                <div style={{ fontSize: "1.1rem", fontWeight: 700, color: "var(--foreground)" }}>
                   {wkDone} de {WEEKLY.length} desta semana
                 </div>
-                <div style={{ fontSize: "0.85rem", color: "#8b7355", marginTop: "0.3rem" }}>
+                <div style={{ fontSize: "0.85rem", color: "var(--muted-foreground)", marginTop: "0.3rem" }}>
                   Semana de {formatDate(wKey)}
                 </div>
               </div>
@@ -291,7 +291,7 @@ export default function Laurice() {
             </div>
             <div style={{ ...s.tip, marginTop: "1.5rem" }}>
               <div style={s.label}>Lembrete</div>
-              <p style={{ fontSize: "0.88rem", color: "#3d3528", lineHeight: 1.6, margin: 0 }}>
+              <p style={{ fontSize: "0.88rem", color: "var(--foreground)", lineHeight: 1.6, margin: 0 }}>
                 Essas tarefas <strong>reiniciam toda segunda-feira</strong> automaticamente.
                 Não tem acúmulo. Cada semana é uma semana nova.
               </p>
@@ -302,11 +302,11 @@ export default function Laurice() {
         {/* ── SOCIAL ── */}
         {tab === "social" && (
           <div>
-            <div style={{ background: "#1a1208", borderRadius: 10, padding: "1rem 1.25rem", marginBottom: "1.25rem" }}>
-              <div style={{ color: "#d4a843", fontSize: "0.8rem", letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 600 }}>
+            <div style={{ background: "var(--color-forest-dark)", borderRadius: 10, padding: "1rem 1.25rem", marginBottom: "1.25rem" }}>
+              <div style={{ color: "var(--accent)", fontSize: "0.8rem", letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 600 }}>
                 O plano
               </div>
-              <p style={{ color: "#f5f0e8", fontSize: "0.88rem", lineHeight: 1.6, margin: "0.4rem 0 0" }}>
+              <p style={{ color: "var(--color-cream)", fontSize: "0.88rem", lineHeight: 1.6, margin: "0.4rem 0 0" }}>
                 Uma coisa por dia. Sem pressão. Você aparece quando quiser e como quiser.
               </p>
             </div>
@@ -314,17 +314,17 @@ export default function Laurice() {
             {SOCIAL_PLAN.map((item, i) => (
               <div key={i} style={s.dayCard}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.3rem" }}>
-                  <span style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#8b7355" }}>
+                  <span style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--muted-foreground)" }}>
                     {item.day}
                   </span>
-                  <span style={{ fontSize: "0.75rem", background: "#f0ebe1", color: "#8b7355", padding: "2px 8px", borderRadius: 20 }}>
+                  <span style={{ fontSize: "0.75rem", background: "var(--secondary)", color: "var(--muted-foreground)", padding: "2px 8px", borderRadius: 20 }}>
                     opcional
                   </span>
                 </div>
-                <div style={{ fontSize: "0.92rem", fontWeight: 600, color: "#1a1208", marginBottom: "0.25rem" }}>
+                <div style={{ fontSize: "0.92rem", fontWeight: 600, color: "var(--foreground)", marginBottom: "0.25rem" }}>
                   {item.theme}
                 </div>
-                <div style={{ fontSize: "0.82rem", color: "#8b7355", lineHeight: 1.5 }}>
+                <div style={{ fontSize: "0.82rem", color: "var(--muted-foreground)", lineHeight: 1.5 }}>
                   {item.tip}
                 </div>
               </div>
@@ -340,8 +340,8 @@ export default function Laurice() {
                 "Não precisa entender de redes sociais",
               ].map((r, i) => (
                 <div key={i} style={s.cross}>
-                  <span style={{ color: "#d4a843", fontSize: "0.8rem", marginTop: 2, flexShrink: 0 }}>✕</span>
-                  <span style={{ fontSize: "0.85rem", color: "#5a4a35", lineHeight: 1.5 }}>{r}</span>
+                  <span style={{ color: "var(--accent)", fontSize: "0.8rem", marginTop: 2, flexShrink: 0 }}>✕</span>
+                  <span style={{ fontSize: "0.85rem", color: "var(--foreground)", lineHeight: 1.5 }}>{r}</span>
                 </div>
               ))}
             </div>
