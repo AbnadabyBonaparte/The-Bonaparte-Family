@@ -33,8 +33,17 @@ Anotar o `Project URL` e o `anon key` (ficam em Settings → API).
 
 Abrir **SQL Editor** no painel do Supabase e executar:
 
+Copie e cole o conteúdo de **`supabase/journal_rls.sql`** (na raiz do repo) e execute.
+
+Esse script cria a tabela e aplica o Row Level Security correto:
+- **Leitura pública** (qualquer um lê o Journal).
+- **Escrita apenas para usuários autenticados** — o `anon key` sozinho só lê;
+  inserir/editar/apagar exige uma sessão real do Supabase Auth. A segurança é
+  garantida no servidor (RLS), não mais por uma senha embutida no site.
+
 ```sql
-CREATE TABLE journal_entries (
+-- resumo (fonte da verdade: supabase/journal_rls.sql)
+CREATE TABLE IF NOT EXISTS journal_entries (
   id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
   entry_date date NOT NULL,
   location text NOT NULL,
@@ -44,9 +53,17 @@ CREATE TABLE journal_entries (
 );
 
 ALTER TABLE journal_entries ENABLE ROW LEVEL SECURITY;
-CREATE POLICY "public read"  ON journal_entries FOR SELECT USING (true);
-CREATE POLICY "auth insert"  ON journal_entries FOR INSERT WITH CHECK (true);
+CREATE POLICY "journal_public_read" ON journal_entries FOR SELECT USING (true);
+CREATE POLICY "journal_auth_insert" ON journal_entries FOR INSERT TO authenticated WITH CHECK (true);
+-- (+ update/delete para authenticated — ver o arquivo .sql)
 ```
+
+### PASSO 2.1 — Criar o usuário que publica
+
+No painel do Supabase: **Authentication → Users → Add user**.
+Defina um e-mail e uma senha para o dono do Journal e marque como confirmado.
+É com esse e-mail/senha que a família entra em `/escrever`. Não existe mais
+senha única embutida no código.
 
 ---
 
@@ -83,13 +100,15 @@ A vida aqui continua.'
 
 Acessar: `vercel.com` → projeto `the-bonaparte-family` → **Settings → Environment Variables**
 
-Adicionar as três variáveis:
+Adicionar as duas variáveis:
 
 | Nome | Valor |
 |------|-------|
 | `VITE_SUPABASE_URL` | `https://<project-ref>.supabase.co` |
 | `VITE_SUPABASE_ANON_KEY` | anon key copiada do painel Supabase |
-| `VITE_JOURNAL_PASSWORD` | senha escolhida pela família (ex: `bonaparteXXXX`) |
+
+> Não existe mais `VITE_JOURNAL_PASSWORD`. O controle de quem publica é o
+> usuário do Supabase Auth criado no Passo 2.1 (a senha nunca vai para o site).
 
 Após salvar → clicar em **Redeploy** no Vercel.
 
@@ -99,8 +118,8 @@ Após salvar → clicar em **Redeploy** no Vercel.
 
 **Para ler:** qualquer pessoa acessa `the-bonaparte-family.vercel.app/journal`
 
-**Para escrever:** qualquer pessoa da família acessa `the-bonaparte-family.vercel.app/escrever`
-- Digita a senha definida no VITE_JOURNAL_PASSWORD
+**Para escrever:** quem tem o usuário do Journal acessa `the-bonaparte-family.vercel.app/escrever`
+- Entra com o e-mail e a senha do usuário criado no Supabase Auth (Passo 2.1)
 - Preenche: data, local, texto, foto (opcional — URL de imagem)
 - Clica em Publicar
 - Aparece no Journal imediatamente
@@ -159,7 +178,7 @@ Abre o celular
       ↓
 the-bonaparte-family.vercel.app/escrever
       ↓
-Digita a senha
+Entra com e-mail e senha (Supabase Auth)
       ↓
 Escreve (5 minutos ou menos)
       ↓
@@ -179,7 +198,8 @@ Se precisar de ajustes futuros no Journal, os arquivos relevantes são:
 - **Adicionar campo novo** (ex: categoria) → editar `supabase.ts` + `Journal.tsx` + `Escrever.tsx`
 - **Mudar o visual do Journal** → editar apenas `Journal.tsx`
 - **Mudar o formulário de escrita** → editar apenas `Escrever.tsx`
-- **Mudar a senha** → atualizar só a env var no Vercel (sem commit)
+- **Mudar a senha de quem publica** → trocar no Supabase (Authentication → Users), sem commit
+- **Regras de acesso ao banco** → `supabase/journal_rls.sql`
 
 ---
 

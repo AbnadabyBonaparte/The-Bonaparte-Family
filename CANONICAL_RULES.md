@@ -166,8 +166,8 @@ Nenhuma página pode ser "fundo de saco" — sempre há uma saída para o próxi
 
 - **Fonte:** `the-bonaparte-family.vercel.app/journal`
 - **Frequência mínima:** 1 entrada/semana
-- **Quem pode publicar:** qualquer membro da família via `/escrever`
-- **Senha:** variável de ambiente `VITE_JOURNAL_PASSWORD` (definida no Vercel)
+- **Quem pode publicar:** quem tem um usuário do Supabase Auth (login em `/escrever`)
+- **Autenticação:** Supabase Auth (e-mail/senha) + Row Level Security (`supabase/journal_rls.sql`). Sem senha embutida no bundle.
 - **Ativação:** requer Supabase regularizado (faturas ALSHAM em aberto)
 - **Fluxo:** Site publica → adapta para redes sociais (não o contrário)
 
