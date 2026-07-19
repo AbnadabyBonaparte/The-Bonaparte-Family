@@ -6,10 +6,14 @@ describe("expedition data", () => {
     expect(countries.length).toBeGreaterThan(0);
   });
 
-  it("each country is non-empty string", () => {
+  it("each country has name, flag and window as non-empty strings", () => {
     countries.forEach((c) => {
-      expect(typeof c).toBe("string");
-      expect(c.length).toBeGreaterThan(0);
+      expect(typeof c.name).toBe("string");
+      expect(c.name.length).toBeGreaterThan(0);
+      expect(typeof c.flag).toBe("string");
+      expect(c.flag.length).toBeGreaterThan(0);
+      expect(typeof c.window).toBe("string");
+      expect(c.window.length).toBeGreaterThan(0);
     });
   });
 
