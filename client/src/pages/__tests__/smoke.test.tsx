@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 import Home from "../Home";
 import Family from "../Family";
 import Work from "../Work";
+import Alfredo from "../Alfredo";
 
 function Wrapper({ children }: { children: React.ReactNode }) {
   return (
@@ -37,6 +38,15 @@ describe("page smoke tests", () => {
     const { container } = render(
       <Wrapper>
         <Work />
+      </Wrapper>
+    );
+    expect(container).toBeTruthy();
+  });
+
+  it("Alfredo renders without crashing", () => {
+    const { container } = render(
+      <Wrapper>
+        <Alfredo />
       </Wrapper>
     );
     expect(container).toBeTruthy();

@@ -9,6 +9,7 @@ const navItems = [
   { label: "Expedição",      href: "/expedition" },
   { label: "Journal",        href: "/journal" },
   { label: "Família",        href: "/family" },
+  { label: "Alfredo",        href: "/alfredo" },
   { label: "Educação",       href: "/education" },
   { label: "Bazar & Livros", href: "/store" },
   { label: "Legado",         href: "/legacy" },

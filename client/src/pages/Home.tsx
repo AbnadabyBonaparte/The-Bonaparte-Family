@@ -5,6 +5,20 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { countries, DEPARTURE_DATE, EXPEDITION_STATS } from "@/data/expedition";
 import { familyMembers, pets } from "@/data/family";
+import manifestoRaw from "@/content/manifesto.md?raw";
+
+// ── MANIFESTO — texto-espinha (fonte única: content/manifesto.md) ──
+// Lê o markdown verbatim e extrai título + parágrafos. Nada de copy inventada:
+// o texto vem inteiro do arquivo, sem edição.
+function parseManifesto(raw: string): { title: string; paragraphs: string[] } {
+  const lines = raw.replace(/\r\n/g, "\n").split("\n");
+  const title = (lines.find(l => l.startsWith("# ")) ?? "").replace(/^#\s+/, "").trim();
+  const sepIdx = lines.findIndex(l => l.trim() === "---");
+  const body = (sepIdx >= 0 ? lines.slice(sepIdx + 1) : lines).join("\n");
+  const paragraphs = body.split(/\n\s*\n/).map(p => p.trim()).filter(Boolean);
+  return { title, paragraphs };
+}
+const MANIFESTO_DOC = parseManifesto(manifestoRaw);
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -326,6 +340,36 @@ export default function Home() {
             style={{ color: "color-mix(in oklab, var(--color-papel) 32%, transparent)" }}>
             Role para conhecer ↓
           </p>
+        </motion.section>
+
+        <Divider />
+
+        {/* ══ MANIFESTO — texto-espinha (fonte: content/manifesto.md) ══ */}
+        <motion.section {...fadeUp} className="section-reveal py-16 md:py-28 bg-background">
+          <div className="editorial-container">
+            <div className="mx-auto max-w-3xl">
+              <p className="mb-3 text-xs uppercase tracking-[0.3em] text-primary">Nosso manifesto</p>
+              <h2 className="font-serif text-4xl leading-tight md:text-5xl">{MANIFESTO_DOC.title}</h2>
+              <div
+                className="mt-6 h-px w-16"
+                style={{ background: "linear-gradient(to right, var(--color-gold), transparent)" }}
+              />
+              <div className="mt-8 space-y-6">
+                {MANIFESTO_DOC.paragraphs.map((paragraph, i) => (
+                  <p
+                    key={i}
+                    className={
+                      i === 0
+                        ? "font-serif text-xl leading-relaxed text-foreground md:text-2xl"
+                        : "text-base leading-relaxed text-muted-foreground md:text-lg"
+                    }
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </div>
         </motion.section>
 
         <Divider />
