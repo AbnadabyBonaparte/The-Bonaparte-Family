@@ -332,6 +332,36 @@ export default function Home() {
 
         <Divider />
 
+        {/* ══ MANIFESTO — texto-espinha (fonte: content/manifesto.md) ══ */}
+        <motion.section {...fadeUp} className="section-reveal py-16 md:py-28 bg-background">
+          <div className="editorial-container">
+            <div className="mx-auto max-w-3xl">
+              <p className="mb-3 text-xs uppercase tracking-[0.3em] text-primary">Nosso manifesto</p>
+              <h2 className="font-serif text-4xl leading-tight md:text-5xl">{MANIFESTO_DOC.title}</h2>
+              <div
+                className="mt-6 h-px w-16"
+                style={{ background: "linear-gradient(to right, var(--color-gold), transparent)" }}
+              />
+              <div className="mt-8 space-y-6">
+                {MANIFESTO_DOC.paragraphs.map((paragraph, i) => (
+                  <p
+                    key={i}
+                    className={
+                      i === 0
+                        ? "font-serif text-xl leading-relaxed text-foreground md:text-2xl"
+                        : "text-base leading-relaxed text-muted-foreground md:text-lg"
+                    }
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
+        <Divider />
+
         {/* ══ AS TRÊS PERGUNTAS ═════════════════════════════════ */}
         <motion.section {...fadeUp} className="editorial-container section-reveal py-14 md:py-24">
           <div className="mx-auto max-w-4xl">

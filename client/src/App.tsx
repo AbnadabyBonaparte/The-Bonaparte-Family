@@ -8,6 +8,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 const Home       = lazy(() => import("./pages/Home"));
 const StartHere  = lazy(() => import("./pages/StartHere"));
 const Family     = lazy(() => import("./pages/Family"));
+const Alfredo    = lazy(() => import("./pages/Alfredo"));
 const Life       = lazy(() => import("./pages/Life"));
 const Expedition = lazy(() => import("./pages/Expedition"));
 const Education  = lazy(() => import("./pages/Education"));
@@ -29,6 +30,7 @@ function Router() {
         <Route path="/"           component={Home} />
         <Route path="/start-here" component={StartHere} />
         <Route path="/family"     component={Family} />
+        <Route path="/alfredo"    component={Alfredo} />
         <Route path="/life"       component={Life} />
         <Route path="/expedition" component={Expedition} />
         <Route path="/education"  component={Education} />
