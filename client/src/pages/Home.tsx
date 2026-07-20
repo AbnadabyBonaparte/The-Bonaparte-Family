@@ -5,6 +5,8 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { countries, DEPARTURE_DATE, EXPEDITION_STATS } from "@/data/expedition";
 import { familyMembers, pets } from "@/data/family";
+import BazarCollection from "@/components/BazarCollection";
+import { COLECAO_GERAL } from "@/data/bazar";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -715,6 +717,11 @@ export default function Home() {
             ))}
           </div>
         </motion.section>
+
+        <Divider />
+
+        {/* ══ COLEÇÃO GERAL — curadoria puxada do Bazar central ══ */}
+        <BazarCollection collection={COLECAO_GERAL} />
 
         <Divider />
 
