@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { countries, DEPARTURE_DATE, EXPEDITION_STATS } from "@/data/expedition";
+import { familyMembers, pets } from "@/data/family";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -47,7 +48,7 @@ const ECO_LINKS = [
   },
   {
     label: "Aby Bonaparte",
-    sub: "Músico · 25 anos de palco · 888 músicas",
+    sub: "Músico · Voz e violão · 25 anos de palco",
     href: "https://abnadabybonaparte.alshamglobal.com.br",
     // SUBSTITUIR: foto do Aby no palco
     image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80",
@@ -95,31 +96,26 @@ const ECO_LINKS = [
   },
 ];
 
-// ── FAMÍLIA ───────────────────────────────────────────────────
+// ── FAMÍLIA (fonte única: data/family.ts) ─────────────────────
+// Fotos reais de /public/familia/. Sem stock de estranhos.
+const melPet = pets.find((p) => p.name === "Mel");
 const FAMILY = [
-  {
-    name: "Abnadaby Bonaparte",
-    role: "O fundador",
-    desc: "Músico, escritor e arquiteto do ecossistema Bonaparte. 46 anos, 25 de palco, 888 composições. A asa da família.",
-    // SUBSTITUIR: /familia/abnadaby_fundador.jpeg — retrato do Abnadaby
-    photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=80",
-  },
-  { name: "Laurice",        role: "A raiz",
-    // SUBSTITUIR: /familia/laurice.jpg — retrato da Laurice
-    photo: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80",
-    desc: "A força que ancora tudo. Educadora das filhas, guardiã da estabilidade, presença insubstituível da Casa Bonaparte." },
-  { name: "Sarah Hadassa",  role: "10 anos",
-    // SUBSTITUIR: /familia/sarah_hadassa.jpg — retrato da Sarah Hadassa
-    photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&q=80",
-    desc: "A primeira. Nascida para observar o mundo com olhos que não se conformam com a resposta fácil." },
-  { name: "Ana Maria",      role: "8 anos",
-    // SUBSTITUIR: /familia/ana_maria.jpg — retrato da Ana Maria
-    photo: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
-    desc: "A segunda. Nascida para sentir o que os outros passam rápido. Uma alma que habita o presente." },
-  { name: "Mel",            role: "Yorkshire · A quinta",
-    // SUBSTITUIR: /familia/mel.jpg — foto do Mel (Yorkshire Terrier)
-    photo: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80",
-    desc: "A cachorrinha que não sabe que é pequena. Viaja, late e ama como se fosse a dona da estrada." },
+  ...familyMembers.map((m) => ({
+    name: m.name,
+    role: m.role,
+    desc: m.description,
+    photo: m.photo,
+  })),
+  ...(melPet
+    ? [
+        {
+          name: melPet.name,
+          role: `${melPet.breed} · A quinta`,
+          desc: melPet.personality,
+          photo: melPet.photo ?? "",
+        },
+      ]
+    : []),
 ];
 
 // ── PILARES ───────────────────────────────────────────────────
@@ -129,7 +125,7 @@ const PILLARS = [
     image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&q=80" },
   { title: "Starlink no sertão",        text: "Negócio remoto, escola online, liberdade geográfica real — não prometida.",           image: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=600&q=80" },
   { title: "Worldschooling",             text: "O mundo é a sala de aula. Cada país é uma disciplina. Cada cultura é um professor.",   image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80" },
-  { title: "Música como ofício",         text: "25 anos de palco. 888 músicas compostas. A arte que sustenta a travessia.",            image: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=600&q=80" },
+  { title: "Música como ofício",         text: "25 anos de palco. A arte que sustenta a travessia.",                                   image: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=600&q=80" },
   { title: "Mesa como ritual",           text: "Nunca faltou carne. Nunca faltou presença. A mesa é o altar da família Bonaparte.",    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" },
   { title: "Fé sem instituição",         text: "Cristo antes da Igreja. Oração que não precisa de templo para subir.",                 image: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=600&q=80" },
 ];
@@ -230,8 +226,7 @@ export default function Home() {
             data-fallback="0"
             onError={e => {
               const el = e.currentTarget as HTMLImageElement;
-              if (el.dataset.fallback === "0") { el.dataset.fallback = "1"; el.src = "/hero-documentary.jpg"; }
-              else { el.style.display = "none"; }
+              el.style.display = "none"; // sem foto → cai nos gradientes da marca (camadas 1-4)
             }}
             className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-center opacity-[0.42]"
             style={{ WebkitMaskImage: "radial-gradient(120% 100% at 50% 30%, black 45%, transparent 100%)",
@@ -382,8 +377,8 @@ export default function Home() {
             <p className="mb-2 text-xs uppercase tracking-[0.3em] text-primary">A família</p>
             <h2 className="font-serif text-4xl md:text-5xl">Os Bonaparte</h2>
             <p className="mt-4 max-w-2xl text-muted-foreground leading-relaxed">
-              Uma família no top 5% mundial em qualidade de vida — não por riqueza,
-              mas por uma combinação rara que pouquíssimas pessoas no planeta conseguem:
+              Uma família que escolheu uma vida rara — não por riqueza,
+              mas por uma combinação que pouca gente monta:
               <strong className="text-foreground"> presença, natureza, autonomia e propósito</strong>.
             </p>
             <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
@@ -514,10 +509,10 @@ export default function Home() {
                 ficou sem carne. Uma fé que não precisa de templo.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Isso coloca a família Bonaparte entre{" "}
-                <strong className="text-foreground">0,1% a 1% da humanidade</strong>{" "}
-                em liberdade estrutural — não porque temos mais dinheiro,
-                mas porque temos um design de vida que a maioria nunca tentou montar.
+                Isso não é privilégio de dinheiro — é{" "}
+                <strong className="text-foreground">liberdade estrutural</strong>:
+                tempo, presença e direção nas próprias mãos. Um design de vida
+                que a maioria nunca tentou montar.
               </p>
               <p className="font-serif text-lg italic text-primary">
                 "O livre vive todos os dias o que muitos só vivem nas férias."
@@ -541,8 +536,8 @@ export default function Home() {
 
         {/* ══ AS MENINAS ════════════════════════════════════════ */}
         <motion.section {...fadeUp} className="section-reveal py-14 md:py-24 relative overflow-hidden">
-          {/* SUBSTITUIR: /familia/meninas-cordeiro.jpg — Sarah e Ana Maria juntas */}
-          <img src="https://images.unsplash.com/photo-1536640712-4d4c36ff0e4e?w=1200&q=80"
+          {/* Foto real — Sarah e Ana Maria juntas */}
+          <img src="/familia/meninas-cordeiro.jpg"
             alt="" aria-hidden="true"
             style={{ position: "absolute", inset: 0, width: "100%", height: "100%",
                      objectFit: "cover", objectPosition: "center top", zIndex: 0 }} />
@@ -592,12 +587,12 @@ export default function Home() {
             <p style={{ color: "var(--color-sunset-orange)", fontSize: "0.7rem",
                         letterSpacing: "0.3em", textTransform: "uppercase",
                         fontWeight: 700, marginBottom: "1rem" }}>
-              Assista · A Jornada em Vídeo
+              Contagem regressiva · Partida
             </p>
             <h2 className="font-serif text-4xl md:text-5xl"
               style={{ color: "var(--color-cream)", marginBottom: "2rem" }}>
-              Veja como vivemos<br />
-              <span style={{ color: "var(--color-sunset-orange)", fontStyle: "italic" }}>de verdade.</span>
+              A estrada começa<br />
+              <span style={{ color: "var(--color-sunset-orange)", fontStyle: "italic" }}>em breve.</span>
             </h2>
           </div>
 
