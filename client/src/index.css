@@ -9,8 +9,9 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  --font-sans: "Manrope", sans-serif;
-  --font-serif: "Cormorant Garamond", serif;
+  /* Tipografia canônica da Casa — serifa editorial + sans humanista */
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "EB Garamond", serif;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -32,60 +33,70 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* Bonaparte palette — named tokens */
-  --color-forest-dark:    oklch(0.28 0.09 155);
-  --color-forest-mid:     oklch(0.52 0.13 155);
-  --color-sunset-orange:  oklch(0.65 0.18 50);
-  --color-cream:          oklch(0.97 0.01 80);
-  --color-obsidian:       oklch(0.12 0.04 155);
+  /* ═══ PALETA FAMÍLIA — os 8 tokens da pele da Casa (fonte: canon/PALETA-FAMILIA.md) ═══ */
+  --color-papel:     #F4F1EA;   /* fundo dominante (60%) — a Casa respira em papel */
+  --color-tinta:     #1A1814;   /* texto / fecho escuro (quase-preto quente) */
+  --color-couro:     #6B4A2A;   /* subtítulos, kicker, metadados */
+  --color-areia:     #C8B89A;   /* bordas, divisores, seções secundárias */
+  --color-oliva:     #4A5A3A;   /* tags, navegação secundária */
+  --color-verde:     #1A422D;   /* o novo preto — headers, wordmark, seção invertida */
+  --color-gold:      #C6A75E;   /* acento sagrado — CTA/link/kicker no escuro (máx 1%) */
+  --color-terracota: #8A4A2F;   /* acento quente emocional — CTA no claro, badge, hover */
+
+  /* Aliases legados → remapeados para a Paleta Família (mantêm o app coeso sem churn) */
+  --color-cream:         var(--color-papel);
+  --color-obsidian:      var(--color-verde);
+  --color-forest-dark:   var(--color-verde);
+  --color-forest-mid:    var(--color-verde);
+  --color-sunset-orange: var(--color-terracota);
 }
 
 :root {
   --radius: 0.85rem;
 
-  /* Paleta Bonaparte — canônica (os-bonaparts, 2024) */
-  --background: oklch(0.97 0.01 80);          /* Cream */
-  --foreground: oklch(0.15 0.03 155);
-  --card: oklch(0.94 0.01 80);
-  --card-foreground: oklch(0.15 0.03 155);
-  --popover: oklch(0.94 0.01 80);
-  --popover-foreground: oklch(0.15 0.03 155);
-  --primary: oklch(0.52 0.13 155);            /* Forest Mid #277C52 */
-  --primary-foreground: oklch(0.97 0.01 80);
-  --secondary: oklch(0.91 0.03 155);          /* tint suave forest para hover */
-  --secondary-foreground: oklch(0.25 0.04 155);
-  --accent: oklch(0.65 0.18 50);              /* Sunset Orange #E9741C — CTAs */
-  --accent-foreground: oklch(0.97 0.01 80);
-  --muted: oklch(0.9 0.01 80);
-  --muted-foreground: oklch(0.45 0.02 80);
-  --destructive: oklch(0.55 0.2 25);
-  --destructive-foreground: oklch(0.97 0.01 80);
-  --border: oklch(0.85 0.02 155);
-  --input: oklch(0.85 0.02 155);
-  --ring: oklch(0.52 0.13 155);               /* Forest Mid */
+  /* Modo DEFAULT — claro, papel-dominante (a alma é um livro aberto) */
+  --background: var(--color-papel);
+  --foreground: var(--color-tinta);
+  --card: #EDE7DB;                 /* papel um tom abaixo — superfície de card */
+  --card-foreground: var(--color-tinta);
+  --popover: #EDE7DB;
+  --popover-foreground: var(--color-tinta);
+  --primary: var(--color-verde);   /* verde = identidade/estrutura */
+  --primary-foreground: var(--color-papel);
+  --secondary: #E8DFCB;            /* areia clara — hover suave */
+  --secondary-foreground: var(--color-verde);
+  --accent: var(--color-terracota);/* terracota = ação no claro */
+  --accent-foreground: var(--color-papel);
+  --muted: #E8E2D6;
+  --muted-foreground: var(--color-couro);  /* couro sobre papel = AA */
+  --destructive: oklch(0.52 0.19 27);
+  --destructive-foreground: var(--color-papel);
+  --border: var(--color-areia);
+  --input: var(--color-areia);
+  --ring: var(--color-verde);
 }
 
 .dark {
-  /* Dark mode Bonaparte — Obsidian Verde */
-  --background: oklch(0.12 0.04 155);         /* Obsidian Verde */
-  --foreground: oklch(0.97 0.01 80);
-  --card: oklch(0.16 0.04 155);
-  --card-foreground: oklch(0.97 0.01 80);
-  --popover: oklch(0.16 0.04 155);
-  --popover-foreground: oklch(0.97 0.01 80);
-  --primary: oklch(0.58 0.13 155);            /* Forest Mid — mais brilhante no escuro */
-  --primary-foreground: oklch(0.12 0.04 155);
-  --secondary: oklch(0.20 0.05 155);          /* Forest Dark hover */
-  --secondary-foreground: oklch(0.85 0.02 155);
-  --accent: oklch(0.68 0.18 50);              /* Sunset Orange — mais brilhante no escuro */
-  --accent-foreground: oklch(0.12 0.04 155);
-  --muted: oklch(0.18 0.03 155);
-  --muted-foreground: oklch(0.55 0.03 155);
+  /* Modo escuro — inversão em verde profundo / tinta; ouro vira a joia */
+  --background: #14251B;           /* verde quase-preto */
+  --foreground: var(--color-papel);
+  --card: #1A3325;
+  --card-foreground: var(--color-papel);
+  --popover: #1A3325;
+  --popover-foreground: var(--color-papel);
+  --primary: var(--color-gold);    /* no escuro, o ouro carrega a identidade */
+  --primary-foreground: #14251B;
+  --secondary: #22402E;
+  --secondary-foreground: var(--color-papel);
+  --accent: var(--color-terracota);
+  --accent-foreground: var(--color-papel);
+  --muted: #20362A;
+  --muted-foreground: var(--color-areia);
   --destructive: oklch(0.55 0.2 25);
-  --destructive-foreground: oklch(0.97 0.01 80);
-  --border: oklch(0.24 0.05 155);
-  --input: oklch(0.24 0.05 155);
-  --ring: oklch(0.58 0.13 155);               /* Forest Mid */
+  --destructive-foreground: var(--color-papel);
+  --border: #2E4636;
+  --input: #2E4636;
+  --ring: var(--color-gold);
 }
 
 @layer base {
@@ -138,20 +149,20 @@
   .premium-card {
     @apply relative overflow-hidden rounded-2xl border border-border bg-card
            transition-all duration-300 ease-out;
-    box-shadow: 0 1px 2px color-mix(in oklab, var(--color-obsidian) 8%, transparent);
+    box-shadow: 0 1px 2px color-mix(in oklab, var(--color-tinta) 8%, transparent);
   }
   .premium-card:hover {
     @apply -translate-y-1 border-primary/50;
-    box-shadow: 0 22px 48px -24px color-mix(in oklab, var(--color-forest-dark) 55%, transparent);
+    box-shadow: 0 22px 48px -24px color-mix(in oklab, var(--color-verde) 45%, transparent);
   }
 
-  /* Accent hairline that reads on both themes */
+  /* Accent hairline — a fine gold thread (sagrado, ≤1%) */
   .hairline {
     height: 1px;
     background: linear-gradient(
       to right,
       transparent,
-      color-mix(in oklab, var(--primary) 55%, transparent),
+      color-mix(in oklab, var(--color-gold) 55%, transparent),
       transparent
     );
   }
@@ -164,7 +175,7 @@
     color: var(--primary);
   }
 
-  /* Film grain overlay — reused by every dark hero for depth */
+  /* Film grain overlay — reused by every inverted (verde) hero for depth */
   .film-grain::after {
     content: "";
     position: absolute;

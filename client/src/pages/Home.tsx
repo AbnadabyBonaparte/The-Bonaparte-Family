@@ -36,7 +36,7 @@ const ECO_LINKS = [
     href: "https://casabonaparte.com.br",
     // SUBSTITUIR: foto do sítio Bonaparte ou símbolo Bonaparte
     image: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800&q=80",
-    accent: "var(--color-forest-mid)",
+    accent: "var(--color-gold)",
   },
   {
     label: "Livraria Bonaparte",
@@ -44,7 +44,7 @@ const ECO_LINKS = [
     href: "https://livraria.casabonaparte.com.br",
     // SUBSTITUIR: foto de mesa com livros da Casa Bonaparte
     image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&q=80",
-    accent: "var(--color-forest-mid)",
+    accent: "var(--color-gold)",
   },
   {
     label: "Aby Bonaparte",
@@ -52,7 +52,7 @@ const ECO_LINKS = [
     href: "https://abnadabybonaparte.alshamglobal.com.br",
     // SUBSTITUIR: foto do Aby no palco
     image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80",
-    accent: "var(--color-sunset-orange)",
+    accent: "var(--color-terracota)",
   },
   {
     label: "ALSHAM Global",
@@ -60,7 +60,7 @@ const ECO_LINKS = [
     href: "https://alshamglobal.com.br",
     // SUBSTITUIR: foto do Abnadaby no computador/sítio
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
-    accent: "#5B8CFF",
+    accent: "var(--color-gold)",
   },
   {
     label: "ALSHAM Pulso",
@@ -68,7 +68,7 @@ const ECO_LINKS = [
     href: "https://pulso.alshamglobal.com.br",
     // SUBSTITUIR: foto de show ao vivo ou evento Bonaparte
     image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80",
-    accent: "var(--color-sunset-orange)",
+    accent: "var(--color-terracota)",
   },
   {
     label: "ALSHAM Ascension",
@@ -76,7 +76,7 @@ const ECO_LINKS = [
     href: "https://select.alshamglobal.com.br",
     // SUBSTITUIR: foto de reunião ou ambiente profissional
     image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80",
-    accent: "#5B8CFF",
+    accent: "var(--color-gold)",
   },
   {
     label: "Bonaparte Cast",
@@ -84,7 +84,7 @@ const ECO_LINKS = [
     href: "https://podcast.casabonaparte.com.br",
     // SUBSTITUIR: foto de microfone ou gravação
     image: "https://images.unsplash.com/photo-1478737270197-c2f5e0f5b3a5?w=800&q=80",
-    accent: "var(--color-forest-mid)",
+    accent: "var(--color-gold)",
   },
   {
     label: "Bazar Bonaparte",
@@ -92,7 +92,7 @@ const ECO_LINKS = [
     href: "https://casabonaparte.com.br/bazar",
     // SUBSTITUIR: foto dos objetos do bazar
     image: "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=800&q=80",
-    accent: "var(--color-sunset-orange)",
+    accent: "var(--color-terracota)",
   },
 ];
 
@@ -143,9 +143,9 @@ const MANIFESTO = [
 function Divider() {
   return (
     <div style={{
-      height: "2px",
-      background: "linear-gradient(to right, transparent, var(--color-forest-mid), transparent)",
-      opacity: 0.3,
+      height: "1px",
+      background: "linear-gradient(to right, transparent, var(--color-gold), transparent)",
+      opacity: 0.35,
     }} />
   );
 }
@@ -164,9 +164,9 @@ function PixCopyButton() {
       onClick={copy}
       style={{
         padding: "0.9rem",
-        background: copied ? "rgba(233,116,28,0.2)" : "var(--color-sunset-orange)",
-        color: copied ? "var(--color-sunset-orange)" : "white",
-        border: copied ? "1px solid var(--color-sunset-orange)" : "none",
+        background: copied ? "color-mix(in oklab, var(--color-gold) 22%, transparent)" : "var(--color-terracota)",
+        color: copied ? "var(--color-gold)" : "var(--color-papel)",
+        border: copied ? "1px solid var(--color-gold)" : "none",
         fontSize: "0.82rem", fontWeight: 700,
         letterSpacing: "0.1em", textTransform: "uppercase",
         cursor: "pointer", transition: "all 250ms ease",
@@ -213,61 +213,61 @@ export default function Home() {
       <Header />
       <main>
 
-        {/* ══ HERO — composição galeria em camadas ═════════════ */}
+        {/* ══ HERO — verde profundo, aurora quente da Casa ═════════ */}
         <motion.section
           {...fadeUp}
           className="relative flex min-h-[92vh] flex-col items-center justify-center overflow-hidden px-4 text-center"
-          style={{ background: "var(--color-obsidian)" }}
+          style={{ background: "var(--color-verde)" }}
         >
-          {/* camada 0 — imagem focal: /brand/hero.jpg (arte gerada) → fallback foto real → gradiente puro */}
+          {/* camada 0 — imagem de ambiente: /brand/hero.jpg (arte gerada) → some se faltar */}
           <img
             src="/brand/hero.jpg"
             alt="" aria-hidden="true"
             data-fallback="0"
             onError={e => {
               const el = e.currentTarget as HTMLImageElement;
-              el.style.display = "none"; // sem foto → cai nos gradientes da marca (camadas 1-4)
+              el.style.display = "none"; // sem foto → cai na aurora/gradientes da Casa
             }}
-            className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-center opacity-[0.42]"
+            className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-center opacity-[0.38]"
             style={{ WebkitMaskImage: "radial-gradient(120% 100% at 50% 30%, black 45%, transparent 100%)",
                      maskImage: "radial-gradient(120% 100% at 50% 30%, black 45%, transparent 100%)" }}
           />
 
-          {/* camada 1 — mesh / aurora radial-gradients da paleta da marca */}
+          {/* camada 1 — aurora quente (oliva + terracota + ouro) sobre o verde */}
           <div className="pointer-events-none absolute inset-0 z-[1]"
             style={{ background:
-              "radial-gradient(60% 55% at 18% 20%, color-mix(in oklab, var(--color-forest-mid) 42%, transparent), transparent 70%)," +
-              "radial-gradient(55% 50% at 85% 78%, color-mix(in oklab, var(--color-sunset-orange) 32%, transparent), transparent 72%)," +
-              "radial-gradient(70% 60% at 55% 8%, color-mix(in oklab, var(--color-forest-dark) 55%, transparent), transparent 75%)" }} />
+              "radial-gradient(60% 55% at 18% 20%, color-mix(in oklab, var(--color-oliva) 60%, transparent), transparent 70%)," +
+              "radial-gradient(55% 50% at 85% 78%, color-mix(in oklab, var(--color-terracota) 30%, transparent), transparent 72%)," +
+              "radial-gradient(70% 60% at 55% 8%, color-mix(in oklab, var(--color-gold) 16%, transparent), transparent 75%)" }} />
 
-          {/* camada 2 — vinheta profunda nas bordas */}
+          {/* camada 2 — vinheta profunda (tinta) nas bordas */}
           <div className="pointer-events-none absolute inset-0 z-[2]"
-            style={{ background: "radial-gradient(115% 90% at 50% 42%, transparent 55%, color-mix(in oklab, var(--color-obsidian) 92%, transparent) 100%)" }} />
+            style={{ background: "radial-gradient(115% 90% at 50% 42%, transparent 55%, color-mix(in oklab, var(--color-tinta) 82%, transparent) 100%)" }} />
 
           {/* camada 3 — grão de filme */}
           <div className="pointer-events-none absolute inset-0 z-[3] opacity-[0.06] mix-blend-overlay"
             style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")" }} />
 
-          {/* camada 4 — glow volumétrico sob o título */}
+          {/* camada 4 — glow dourado sob o título (a joia, sutil) */}
           <div className="pointer-events-none absolute left-1/2 top-[38%] z-[3] h-[42vh] w-[80vw] max-w-3xl -translate-x-1/2 -translate-y-1/2 rounded-full blur-[110px] motion-safe:animate-pulse motion-reduce:animate-none"
-            style={{ background: "radial-gradient(closest-side, color-mix(in oklab, var(--color-forest-mid) 55%, transparent), transparent 78%)", animationDuration: "6s" }} />
+            style={{ background: "radial-gradient(closest-side, color-mix(in oklab, var(--color-gold) 38%, transparent), transparent 78%)", animationDuration: "6s" }} />
 
           {/* camada 5 — conteúdo */}
           <div className="relative z-[4] mx-auto max-w-4xl">
             {/* eyebrow glass */}
             <span className="inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.28em] backdrop-blur-md"
-              style={{ borderColor: "color-mix(in oklab, var(--color-cream) 22%, transparent)",
-                       background: "color-mix(in oklab, var(--color-cream) 8%, transparent)",
-                       color: "color-mix(in oklab, var(--color-cream) 82%, transparent)" }}>
-              <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--color-sunset-orange)" }} />
+              style={{ borderColor: "color-mix(in oklab, var(--color-papel) 22%, transparent)",
+                       background: "color-mix(in oklab, var(--color-papel) 8%, transparent)",
+                       color: "color-mix(in oklab, var(--color-papel) 82%, transparent)" }}>
+              <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--color-gold)" }} />
               Portal-hub da família Bonaparte
             </span>
 
-            <h1 className="mt-8 font-serif font-light leading-[0.95] tracking-tight"
-              style={{ fontSize: "clamp(3rem, 9vw, 7.5rem)", color: "var(--color-cream)" }}>
+            <h1 className="mt-8 font-serif font-medium leading-[0.95] tracking-tight"
+              style={{ fontSize: "clamp(3rem, 9vw, 7.5rem)", color: "var(--color-papel)" }}>
               The Bonaparte
               <span className="mt-1 block italic"
-                style={{ backgroundImage: "linear-gradient(100deg, var(--color-forest-mid) 0%, color-mix(in oklab, var(--color-sunset-orange) 85%, var(--color-cream)) 100%)",
+                style={{ backgroundImage: "linear-gradient(100deg, var(--color-gold) 0%, color-mix(in oklab, var(--color-terracota) 85%, var(--color-papel)) 100%)",
                          WebkitBackgroundClip: "text", backgroundClip: "text",
                          WebkitTextFillColor: "transparent", color: "transparent" }}>
                 Family
@@ -275,7 +275,7 @@ export default function Home() {
             </h1>
 
             <p className="mx-auto mt-7 max-w-xl font-sans text-base font-light leading-relaxed md:text-lg"
-              style={{ color: "color-mix(in oklab, var(--color-cream) 68%, transparent)" }}>
+              style={{ color: "color-mix(in oklab, var(--color-papel) 72%, transparent)" }}>
               Uma família real construindo liberdade na vida real — {EXPEDITION_STATS.countries} países,
               {" "}{EXPEDITION_STATS.continents} continentes, worldschooling e um legado documentado em público.
             </p>
@@ -283,7 +283,7 @@ export default function Home() {
             {/* frase rotativa do manifesto */}
             <div className="mx-auto mt-6 flex h-10 max-w-2xl items-center justify-center">
               <p key={manifestoIdx} className="font-serif text-base italic transition-all duration-700 md:text-xl"
-                style={{ color: "color-mix(in oklab, var(--color-cream) 55%, transparent)" }}>
+                style={{ color: "color-mix(in oklab, var(--color-papel) 60%, transparent)" }}>
                 "{MANIFESTO[manifestoIdx]}"
               </p>
             </div>
@@ -292,15 +292,15 @@ export default function Home() {
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <Link href="/expedition">
                 <a className="rounded-full bg-accent px-8 py-3.5 text-sm font-semibold uppercase tracking-widest text-accent-foreground shadow-lg transition hover:scale-[1.03] hover:opacity-95"
-                  style={{ boxShadow: "0 18px 50px -12px color-mix(in oklab, var(--color-sunset-orange) 55%, transparent)" }}>
+                  style={{ boxShadow: "0 18px 50px -12px color-mix(in oklab, var(--color-terracota) 60%, transparent)" }}>
                   A Expedição →
                 </a>
               </Link>
               <Link href="/family">
-                <a className="rounded-full border px-8 py-3.5 text-sm font-semibold uppercase tracking-widest backdrop-blur-md transition hover:border-[var(--color-cream)]"
-                  style={{ borderColor: "color-mix(in oklab, var(--color-cream) 28%, transparent)",
-                           color: "color-mix(in oklab, var(--color-cream) 85%, transparent)",
-                           background: "color-mix(in oklab, var(--color-cream) 6%, transparent)" }}>
+                <a className="rounded-full border px-8 py-3.5 text-sm font-semibold uppercase tracking-widest backdrop-blur-md transition hover:border-[var(--color-papel)]"
+                  style={{ borderColor: "color-mix(in oklab, var(--color-papel) 28%, transparent)",
+                           color: "color-mix(in oklab, var(--color-papel) 85%, transparent)",
+                           background: "color-mix(in oklab, var(--color-papel) 6%, transparent)" }}>
                   Conheça a Família
                 </a>
               </Link>
@@ -308,10 +308,10 @@ export default function Home() {
 
             {/* countdown em painel glass */}
             <div className="mx-auto mt-12 inline-flex flex-col items-center rounded-2xl border px-6 py-5 backdrop-blur-md md:px-10"
-              style={{ borderColor: "color-mix(in oklab, var(--color-cream) 14%, transparent)",
-                       background: "color-mix(in oklab, var(--color-obsidian) 45%, transparent)" }}>
+              style={{ borderColor: "color-mix(in oklab, var(--color-papel) 14%, transparent)",
+                       background: "color-mix(in oklab, var(--color-tinta) 45%, transparent)" }}>
               <p className="mb-4 text-[0.62rem] uppercase tracking-[0.3em]"
-                style={{ color: "color-mix(in oklab, var(--color-sunset-orange) 82%, transparent)" }}>
+                style={{ color: "color-mix(in oklab, var(--color-gold) 90%, transparent)" }}>
                 Previsão de partida · sujeita à venda da fazenda
               </p>
               <div className="flex items-start justify-center gap-5 md:gap-9">
@@ -324,14 +324,14 @@ export default function Home() {
                   <div key={label} className="flex items-start gap-5 md:gap-9">
                     <div className="text-center">
                       <div className="font-serif text-4xl font-light leading-none md:text-6xl"
-                        style={{ color: "var(--color-cream)" }}>
+                        style={{ color: "var(--color-papel)" }}>
                         {String(value).padStart(2, "0")}
                       </div>
                       <div className="mt-2 text-[0.6rem] uppercase tracking-[0.25em]"
-                        style={{ color: "color-mix(in oklab, var(--color-cream) 40%, transparent)" }}>{label}</div>
+                        style={{ color: "color-mix(in oklab, var(--color-papel) 45%, transparent)" }}>{label}</div>
                     </div>
                     {i < 3 && <span className="font-serif text-3xl font-light md:text-5xl"
-                      style={{ color: "color-mix(in oklab, var(--color-cream) 18%, transparent)" }}>:</span>}
+                      style={{ color: "color-mix(in oklab, var(--color-papel) 22%, transparent)" }}>:</span>}
                   </div>
                 ))}
               </div>
@@ -340,9 +340,9 @@ export default function Home() {
 
           {/* fade inferior p/ emendar na próxima seção */}
           <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-32"
-            style={{ background: "linear-gradient(to top, var(--color-obsidian), transparent)" }} />
+            style={{ background: "linear-gradient(to top, var(--color-verde), transparent)" }} />
           <p className="absolute bottom-7 z-[4] text-xs animate-pulse"
-            style={{ color: "color-mix(in oklab, var(--color-cream) 30%, transparent)" }}>
+            style={{ color: "color-mix(in oklab, var(--color-papel) 32%, transparent)" }}>
             Role para conhecer ↓
           </p>
         </motion.section>
@@ -360,7 +360,7 @@ export default function Home() {
                 { n: "03", q: "Para onde vamos?",       t: "O vetor de uma casa em movimento." },
               ].map(({ n, q, t }) => (
                 <div key={n} className="border-t border-border pt-6">
-                  <p className="font-serif text-3xl text-primary/30">{n}</p>
+                  <p className="font-serif text-3xl text-primary/40">{n}</p>
                   <h3 className="mt-3 font-serif text-2xl">{q}</h3>
                   <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{t}</p>
                 </div>
@@ -398,10 +398,10 @@ export default function Home() {
                     )}
                     <div
                       className="flex h-full w-full items-center justify-center"
-                      style={member.photo ? { display: "none" } : { background: "var(--color-forest-dark)" }}
+                      style={member.photo ? { display: "none" } : { background: "var(--color-verde)" }}
                     >
-                      <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "5rem",
-                                     fontWeight: 300, color: "rgba(255,255,255,0.15)" }}>
+                      <span style={{ fontFamily: "'EB Garamond', serif", fontSize: "5rem",
+                                     fontWeight: 400, color: "color-mix(in oklab, var(--color-papel) 18%, transparent)" }}>
                         {member.name[0]}
                       </span>
                     </div>
@@ -434,11 +434,11 @@ export default function Home() {
                 <img src={p.image} alt={p.title}
                   style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" />
                 <div style={{ position: "absolute", inset: 0,
-                              background: "linear-gradient(to top, rgba(26,66,45,0.92) 0%, rgba(26,66,45,0.2) 60%, transparent 100%)" }} />
+                              background: "linear-gradient(to top, color-mix(in oklab, var(--color-verde) 92%, transparent) 0%, color-mix(in oklab, var(--color-verde) 20%, transparent) 60%, transparent 100%)" }} />
                 <div style={{ position: "absolute", bottom: 0, left: 0, padding: "1.25rem" }}>
-                  <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem",
-                               color: "white", margin: "0.5rem 0 0.25rem" }}>{p.title}</h3>
-                  <p style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.75)",
+                  <h3 style={{ fontFamily: "'EB Garamond', serif", fontSize: "1.35rem",
+                               color: "var(--color-papel)", margin: "0.5rem 0 0.25rem" }}>{p.title}</h3>
+                  <p style={{ fontSize: "0.78rem", color: "color-mix(in oklab, var(--color-papel) 78%, transparent)",
                               lineHeight: 1.5, margin: 0 }}>{p.text}</p>
                 </div>
               </div>
@@ -448,17 +448,18 @@ export default function Home() {
 
         <Divider />
 
-        {/* ══ A EXPEDIÇÃO — TEASER ══════════════════════════════ */}
+        {/* ══ A EXPEDIÇÃO — TEASER (seção invertida: verde) ═════ */}
         <motion.section {...fadeUp} className="section-reveal py-14 md:py-24"
-          style={{ background: "var(--color-forest-dark)" }}>
+          style={{ background: "var(--color-verde)" }}>
           <div className="editorial-container">
-            <p className="mb-2 text-xs uppercase tracking-[0.3em] text-primary/70">Previsão · Novembro 2026</p>
-            <h2 className="font-serif text-4xl text-white md:text-5xl">
+            <p className="mb-2 text-xs uppercase tracking-[0.3em]"
+              style={{ color: "color-mix(in oklab, var(--color-gold) 85%, transparent)" }}>Previsão · Novembro 2026</p>
+            <h2 className="font-serif text-4xl md:text-5xl" style={{ color: "var(--color-papel)" }}>
               Expedição Bonaparte<br />
-              <span className="text-primary italic">Fase 1 · Ásia</span>
+              <span className="italic" style={{ color: "var(--color-gold)" }}>Fase 1 · Ásia</span>
             </h2>
             <p className="mt-4 max-w-2xl font-sans font-light leading-relaxed"
-              style={{ color: "rgba(248,247,241,0.6)" }}>
+              style={{ color: "color-mix(in oklab, var(--color-papel) 65%, transparent)" }}>
               {EXPEDITION_STATS.months} meses · {EXPEDITION_STATS.countries} países · 4 continentes.
               De mochila. Sem motorhome. Escola real dentro de cada cultura visitada.
             </p>
@@ -474,10 +475,10 @@ export default function Home() {
                     loading="lazy" />
                   <div style={{ position: "absolute", bottom: 0, left: 0, right: 0,
                                 padding: "1rem",
-                                background: "linear-gradient(to top, rgba(0,0,0,0.85), transparent)" }}>
+                                background: "linear-gradient(to top, color-mix(in oklab, var(--color-tinta) 88%, transparent), transparent)" }}>
                     <p style={{ margin: 0, fontSize: "1.4rem" }}>{c.flag}</p>
-                    <p style={{ margin: "0.2rem 0 0", color: "white", fontSize: "0.85rem", fontWeight: 600 }}>{c.name}</p>
-                    <p style={{ margin: 0, color: "rgba(255,255,255,0.6)", fontSize: "0.7rem" }}>{c.window}</p>
+                    <p style={{ margin: "0.2rem 0 0", color: "var(--color-papel)", fontSize: "0.85rem", fontWeight: 600 }}>{c.name}</p>
+                    <p style={{ margin: 0, color: "color-mix(in oklab, var(--color-papel) 62%, transparent)", fontSize: "0.7rem" }}>{c.window}</p>
                   </div>
                 </div>
               ))}
@@ -534,7 +535,7 @@ export default function Home() {
 
         <Divider />
 
-        {/* ══ AS MENINAS ════════════════════════════════════════ */}
+        {/* ══ AS MENINAS (foto real + inversão verde) ═══════════ */}
         <motion.section {...fadeUp} className="section-reveal py-14 md:py-24 relative overflow-hidden">
           {/* Foto real — Sarah e Ana Maria juntas */}
           <img src="/familia/meninas-cordeiro.jpg"
@@ -542,25 +543,30 @@ export default function Home() {
             style={{ position: "absolute", inset: 0, width: "100%", height: "100%",
                      objectFit: "cover", objectPosition: "center top", zIndex: 0 }} />
           <div style={{ position: "absolute", inset: 0, zIndex: 1,
-                        background: "linear-gradient(160deg, rgba(26,66,45,0.93) 0%, rgba(26,66,45,0.75) 100%)" }} />
+                        background: "linear-gradient(160deg, color-mix(in oklab, var(--color-verde) 94%, transparent) 0%, color-mix(in oklab, var(--color-verde) 78%, transparent) 100%)" }} />
           <div className="editorial-container relative" style={{ zIndex: 2 }}>
-            <p className="mb-2 text-xs uppercase tracking-[0.3em] text-primary">Worldschooling</p>
-            <h2 className="font-serif text-4xl md:text-5xl text-white">Sarah & Ana Maria</h2>
+            <p className="mb-2 text-xs uppercase tracking-[0.3em]"
+              style={{ color: "color-mix(in oklab, var(--color-gold) 85%, transparent)" }}>Worldschooling</p>
+            <h2 className="font-serif text-4xl md:text-5xl" style={{ color: "var(--color-papel)" }}>Sarah &amp; Ana Maria</h2>
             <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="rounded-lg border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
-                <p className="font-serif text-5xl text-primary/40">10</p>
-                <h3 className="mt-2 font-serif text-2xl text-white">Sarah Hadassa</h3>
-                <p className="mt-4 leading-relaxed" style={{ color: "rgba(248,247,241,0.7)" }}>
+              <div className="rounded-lg border p-8 backdrop-blur-sm"
+                style={{ borderColor: "color-mix(in oklab, var(--color-papel) 12%, transparent)",
+                         background: "color-mix(in oklab, var(--color-papel) 6%, transparent)" }}>
+                <p className="font-serif text-5xl" style={{ color: "color-mix(in oklab, var(--color-gold) 55%, transparent)" }}>10</p>
+                <h3 className="mt-2 font-serif text-2xl" style={{ color: "var(--color-papel)" }}>Sarah Hadassa</h3>
+                <p className="mt-4 leading-relaxed" style={{ color: "color-mix(in oklab, var(--color-papel) 72%, transparent)" }}>
                   Nasceu dentro de uma família que já havia decidido não entregar a criação
                   ao sistema. Aprende português, inglês e espanhol. Estuda história real,
                   não a versão do livro didático. Vai chegar aos 18 anos com repertório
                   de mundo que poucos adultos têm.
                 </p>
               </div>
-              <div className="rounded-lg border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
-                <p className="font-serif text-5xl text-primary/40">8</p>
-                <h3 className="mt-2 font-serif text-2xl text-white">Ana Maria</h3>
-                <p className="mt-4 leading-relaxed" style={{ color: "rgba(248,247,241,0.7)" }}>
+              <div className="rounded-lg border p-8 backdrop-blur-sm"
+                style={{ borderColor: "color-mix(in oklab, var(--color-papel) 12%, transparent)",
+                         background: "color-mix(in oklab, var(--color-papel) 6%, transparent)" }}>
+                <p className="font-serif text-5xl" style={{ color: "color-mix(in oklab, var(--color-gold) 55%, transparent)" }}>8</p>
+                <h3 className="mt-2 font-serif text-2xl" style={{ color: "var(--color-papel)" }}>Ana Maria</h3>
+                <p className="mt-4 leading-relaxed" style={{ color: "color-mix(in oklab, var(--color-papel) 72%, transparent)" }}>
                   A caçula que sente o que os outros passam rápido. Aprendeu a dormir
                   em barraca na chuva, a acordar sem sino e a ter medo e ir mesmo assim.
                   Vai crescer sabendo que o mundo não é um lugar para ter medo
@@ -568,8 +574,10 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="mt-8 rounded-lg border border-primary/30 bg-primary/10 p-6 backdrop-blur-sm">
-              <p className="font-serif text-lg italic text-white">
+            <div className="mt-8 rounded-lg border p-6 backdrop-blur-sm"
+              style={{ borderColor: "color-mix(in oklab, var(--color-gold) 30%, transparent)",
+                       background: "color-mix(in oklab, var(--color-gold) 8%, transparent)" }}>
+              <p className="font-serif text-lg italic" style={{ color: "var(--color-papel)" }}>
                 "O objetivo não é forçá-las ao nomadismo para sempre. É arrancá-las da
                 redoma para que, aos 18 anos, quando qualquer pessoa tentar empurrar
                 uma 'verdade local e enviesada', elas tenham matéria-prima para discernir."
@@ -580,34 +588,34 @@ export default function Home() {
 
         <Divider />
 
-        {/* ══ BLOCO 1 — VÍDEO YOUTUBE + REDES SOCIAIS ══════════ */}
+        {/* ══ BLOCO 1 — CONTAGEM REGRESSIVA + REDES (inversão verde) ══ */}
         <motion.section {...fadeUp} className="w-full"
-          style={{ background: "var(--color-forest-dark)" }}>
+          style={{ background: "var(--color-verde)" }}>
           <div className="editorial-container py-16">
-            <p style={{ color: "var(--color-sunset-orange)", fontSize: "0.7rem",
+            <p style={{ color: "var(--color-gold)", fontSize: "0.7rem",
                         letterSpacing: "0.3em", textTransform: "uppercase",
                         fontWeight: 700, marginBottom: "1rem" }}>
               Contagem regressiva · Partida
             </p>
             <h2 className="font-serif text-4xl md:text-5xl"
-              style={{ color: "var(--color-cream)", marginBottom: "2rem" }}>
+              style={{ color: "var(--color-papel)", marginBottom: "2rem" }}>
               A estrada começa<br />
-              <span style={{ color: "var(--color-sunset-orange)", fontStyle: "italic" }}>em breve.</span>
+              <span style={{ color: "var(--color-gold)", fontStyle: "italic" }}>em breve.</span>
             </h2>
           </div>
 
           <div style={{
             aspectRatio: "16/9",
-            background: "var(--color-forest-dark)",
+            background: "var(--color-verde)",
             display: "flex", alignItems: "center", justifyContent: "center",
-            borderTop: "1px solid rgba(255,255,255,0.05)",
-            borderBottom: "1px solid rgba(255,255,255,0.05)",
+            borderTop: "1px solid color-mix(in oklab, var(--color-papel) 8%, transparent)",
+            borderBottom: "1px solid color-mix(in oklab, var(--color-papel) 8%, transparent)",
             flexDirection: "column", gap: "2rem", padding: "3rem",
           }}>
             <p style={{
               fontSize: "0.65rem", fontWeight: 700,
               letterSpacing: "0.25em", textTransform: "uppercase",
-              color: "rgba(233,116,28,0.7)",
+              color: "color-mix(in oklab, var(--color-gold) 80%, transparent)",
             }}>
               A jornada começa em
             </p>
@@ -620,22 +628,22 @@ export default function Home() {
               ].map(({ value, label }) => (
                 <div key={label} style={{ textAlign: "center" }}>
                   <div style={{
-                    fontFamily: "'Cormorant Garamond', serif",
+                    fontFamily: "'EB Garamond', serif",
                     fontSize: "clamp(3rem, 8vw, 6rem)",
-                    fontWeight: 300, color: "white", lineHeight: 1,
+                    fontWeight: 400, color: "var(--color-papel)", lineHeight: 1,
                   }}>
                     {String(value).padStart(2, "0")}
                   </div>
                   <div style={{
                     marginTop: "0.5rem", fontSize: "0.65rem",
                     textTransform: "uppercase", letterSpacing: "0.3em",
-                    color: "rgba(255,255,255,0.3)",
+                    color: "color-mix(in oklab, var(--color-papel) 40%, transparent)",
                   }}>{label}</div>
                 </div>
               ))}
             </div>
             <p style={{
-              fontSize: "0.78rem", color: "rgba(255,255,255,0.35)",
+              fontSize: "0.78rem", color: "color-mix(in oklab, var(--color-papel) 45%, transparent)",
               fontStyle: "italic", textAlign: "center",
             }}>
               Novembro 2026 · Filipinas → China → Tailândia → Camboja →
@@ -645,7 +653,7 @@ export default function Home() {
           </div>
 
           <div className="editorial-container py-8">
-            <p style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.7rem",
+            <p style={{ color: "color-mix(in oklab, var(--color-papel) 45%, transparent)", fontSize: "0.7rem",
                         letterSpacing: "0.2em", textTransform: "uppercase",
                         marginBottom: "1.5rem" }}>
               Siga a família Bonaparte
@@ -661,18 +669,18 @@ export default function Home() {
               ].map(s => (
                 <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
                   style={{ display: "flex", alignItems: "center", gap: "0.5rem",
-                           border: "1px solid rgba(255,255,255,0.15)",
+                           border: "1px solid color-mix(in oklab, var(--color-papel) 16%, transparent)",
                            padding: "0.6rem 1.25rem",
-                           color: "rgba(255,255,255,0.7)",
+                           color: "color-mix(in oklab, var(--color-papel) 72%, transparent)",
                            fontSize: "0.82rem", fontWeight: 600,
                            textDecoration: "none", transition: "all 220ms ease" }}
                   onMouseEnter={e => {
-                    (e.currentTarget as HTMLElement).style.borderColor = "var(--color-sunset-orange)";
-                    (e.currentTarget as HTMLElement).style.color = "var(--color-sunset-orange)";
+                    (e.currentTarget as HTMLElement).style.borderColor = "var(--color-gold)";
+                    (e.currentTarget as HTMLElement).style.color = "var(--color-gold)";
                   }}
                   onMouseLeave={e => {
-                    (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.15)";
-                    (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.7)";
+                    (e.currentTarget as HTMLElement).style.borderColor = "color-mix(in oklab, var(--color-papel) 16%, transparent)";
+                    (e.currentTarget as HTMLElement).style.color = "color-mix(in oklab, var(--color-papel) 72%, transparent)";
                   }}
                 >
                   <span>{s.icon}</span> {s.label}
@@ -706,18 +714,18 @@ export default function Home() {
                   style={{ width: "100%", height: "100%", objectFit: "cover",
                            transition: "transform 600ms ease" }} loading="lazy" />
                 <div style={{ position: "absolute", inset: 0,
-                              background: "linear-gradient(to top, rgba(10,30,20,0.95) 0%, rgba(10,30,20,0.4) 60%, transparent 100%)" }} />
+                              background: "linear-gradient(to top, color-mix(in oklab, var(--color-tinta) 95%, transparent) 0%, color-mix(in oklab, var(--color-tinta) 40%, transparent) 60%, transparent 100%)" }} />
                 <div style={{ position: "absolute", bottom: 0, left: 0, padding: "1.5rem" }}>
                   <p style={{ color: link.accent, fontSize: "0.65rem", fontWeight: 700,
                               letterSpacing: "0.2em", textTransform: "uppercase",
                               margin: "0 0 0.5rem" }}>
                     Acessar →
                   </p>
-                  <h3 className="font-serif" style={{ color: "white", fontSize: "1.4rem",
+                  <h3 className="font-serif" style={{ color: "var(--color-papel)", fontSize: "1.4rem",
                                                        margin: "0 0 0.4rem", lineHeight: 1.2 }}>
                     {link.label}
                   </h3>
-                  <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.78rem",
+                  <p style={{ color: "color-mix(in oklab, var(--color-papel) 62%, transparent)", fontSize: "0.78rem",
                               margin: 0, lineHeight: 1.5 }}>
                     {link.sub}
                   </p>
@@ -729,27 +737,27 @@ export default function Home() {
 
         <Divider />
 
-        {/* ══ BLOCO 3 — APOIE A EXPEDIÇÃO ═══════════════════════ */}
+        {/* ══ BLOCO 3 — APOIE A EXPEDIÇÃO (inversão verde) ══════ */}
         <motion.section {...fadeUp} className="py-20"
-          style={{ background: "var(--color-forest-dark)" }}>
+          style={{ background: "var(--color-verde)" }}>
           <div className="editorial-container">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
               {/* Esquerda — texto */}
               <div className="order-1">
-                <p style={{ color: "var(--color-sunset-orange)", fontSize: "0.7rem",
+                <p style={{ color: "var(--color-gold)", fontSize: "0.7rem",
                             letterSpacing: "0.3em", textTransform: "uppercase",
                             fontWeight: 700, marginBottom: "1.25rem" }}>
                   Apoie a Jornada
                 </p>
                 <h2 className="font-serif"
-                  style={{ fontSize: "clamp(2rem,4vw,3rem)", color: "var(--color-cream)",
+                  style={{ fontSize: "clamp(2rem,4vw,3rem)", color: "var(--color-papel)",
                            lineHeight: 1.15, marginBottom: "1.25rem" }}>
                   Ajude a família Bonaparte<br />
-                  <span style={{ color: "var(--color-sunset-orange)", fontStyle: "italic" }}>
+                  <span style={{ color: "var(--color-gold)", fontStyle: "italic" }}>
                     a chegar em 12 países.
                   </span>
                 </h2>
-                <p style={{ color: "rgba(255,255,255,0.55)", lineHeight: 1.75,
+                <p style={{ color: "color-mix(in oklab, var(--color-papel) 60%, transparent)", lineHeight: 1.75,
                             marginBottom: "2rem", maxWidth: "42ch" }}>
                   O rancho ainda não vendeu. A viagem está marcada. Cada contribuição
                   vai direto para passagens, hospedagem e educação das meninas na estrada.
@@ -760,8 +768,8 @@ export default function Home() {
                   <a href="https://wa.me/5563992428800?text=Quero+apoiar+a+Expedi%C3%A7%C3%A3o+Bonaparte!"
                     target="_blank" rel="noopener noreferrer"
                     style={{ textAlign: "center", padding: "0.75rem",
-                             border: "1px solid rgba(255,255,255,0.2)",
-                             color: "rgba(255,255,255,0.7)", textDecoration: "none",
+                             border: "1px solid color-mix(in oklab, var(--color-papel) 20%, transparent)",
+                             color: "color-mix(in oklab, var(--color-papel) 72%, transparent)", textDecoration: "none",
                              fontSize: "0.78rem", fontWeight: 600,
                              letterSpacing: "0.08em", textTransform: "uppercase" }}>
                     Apoiar via WhatsApp →
@@ -774,12 +782,12 @@ export default function Home() {
                   src="https://casabonaparte.com.br/images/livros/fruto-proibido.jpg"
                   alt="O Fruto Proibido"
                   style={{ maxWidth: "260px", width: "100%",
-                           boxShadow: "0 40px 80px rgba(0,0,0,0.6)", borderRadius: "2px" }}
+                           boxShadow: "0 40px 80px color-mix(in oklab, var(--color-tinta) 60%, transparent)", borderRadius: "2px" }}
                   onError={e => {
                     (e.currentTarget as HTMLImageElement).style.display = "none";
                   }}
                 />
-                <p style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.72rem",
+                <p style={{ color: "color-mix(in oklab, var(--color-papel) 40%, transparent)", fontSize: "0.72rem",
                             marginTop: "1rem", fontStyle: "italic" }}>
                   Apoie e receba o manuscrito antes de qualquer pessoa.
                 </p>
@@ -794,7 +802,7 @@ export default function Home() {
         <motion.section {...fadeUp} className="py-20 bg-background">
           <div className="editorial-container">
             <div style={{ maxWidth: "680px", margin: "0 auto", textAlign: "center" }}>
-              <p style={{ color: "var(--color-forest-mid)", fontSize: "0.7rem",
+              <p style={{ color: "var(--color-terracota)", fontSize: "0.7rem",
                           letterSpacing: "0.3em", textTransform: "uppercase",
                           fontWeight: 700, marginBottom: "1.25rem" }}>
                 Comunidade Bonaparte
@@ -803,7 +811,7 @@ export default function Home() {
                 style={{ fontSize: "clamp(2rem,4vw,3.5rem)", lineHeight: 1.1,
                          marginBottom: "1.25rem" }}>
                 Faça parte da jornada.<br />
-                <span style={{ color: "var(--color-sunset-orange)", fontStyle: "italic" }}>
+                <span style={{ color: "var(--color-terracota)", fontStyle: "italic" }}>
                   De perto. De verdade.
                 </span>
               </h2>
@@ -817,36 +825,36 @@ export default function Home() {
               {/* 3 planos */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
                 {[
-                  { nome: "Apoiador", valor: "R$ 9,90/mês",  cor: "var(--color-border)",        destaque: false,
+                  { nome: "Apoiador", valor: "R$ 9,90/mês",  cor: "var(--color-areia)",     destaque: false,
                     beneficios: ["Journal completo", "Atualizações da viagem"],
                     waHref: "https://wa.me/5563992428800?text=Quero+ser+membro+Apoiador+da+Fam%C3%ADlia+Bonaparte+-+R%249%2C90%2Fm%C3%AAs" },
-                  { nome: "Viajante", valor: "R$ 29,90/mês", cor: "var(--color-forest-mid)",    destaque: true,
+                  { nome: "Viajante", valor: "R$ 29,90/mês", cor: "var(--color-verde)",     destaque: true,
                     beneficios: ["Tudo do Apoiador", "Bastidores exclusivos", "Lives mensais da estrada"],
                     waHref: "https://wa.me/5563992428800?text=Quero+ser+membro+Viajante+da+Fam%C3%ADlia+Bonaparte+-+R%2429%2C90%2Fm%C3%AAs" },
-                  { nome: "Fundador", valor: "R$ 97/mês",    cor: "var(--color-sunset-orange)", destaque: false,
+                  { nome: "Fundador", valor: "R$ 97/mês",    cor: "var(--color-terracota)", destaque: false,
                     beneficios: ["Tudo do Viajante", "Acesso ao manuscrito", "Menção no livro Dominó"],
                     waHref: "https://wa.me/5563992428800?text=Quero+ser+membro+Fundador+da+Fam%C3%ADlia+Bonaparte+-+R%2497%2Fm%C3%AAs" },
                 ].map(p => (
                   <div key={p.nome}
-                    className={p.destaque ? "sm:scale-105 ring-2 ring-[var(--color-forest-mid)]" : ""}
+                    className={p.destaque ? "sm:scale-105 ring-2 ring-[var(--color-verde)]" : ""}
                     style={{
                       border: `2px solid ${p.cor}`,
                       borderRadius: "0.5rem", padding: "1.5rem",
-                      background: p.destaque ? "var(--color-forest-dark)" : "transparent",
-                      color: p.destaque ? "var(--color-cream)" : "var(--color-foreground)",
+                      background: p.destaque ? "var(--color-verde)" : "transparent",
+                      color: p.destaque ? "var(--color-papel)" : "var(--color-foreground)",
                       textAlign: "left",
                       display: "flex", flexDirection: "column",
                     }}>
                     <p style={{ fontSize: "0.65rem", letterSpacing: "0.2em",
                                 textTransform: "uppercase", fontWeight: 700,
-                                color: p.cor, marginBottom: "0.5rem" }}>
+                                color: p.destaque ? "var(--color-gold)" : p.cor, marginBottom: "0.5rem" }}>
                       {p.nome}
                     </p>
                     <p className="font-serif" style={{ fontSize: "1.5rem", margin: "0 0 1rem" }}>
                       {p.valor}
                     </p>
                     {p.beneficios.map(b => (
-                      <p key={b} style={{ fontSize: "0.78rem", margin: "0.35rem 0", opacity: 0.8 }}>
+                      <p key={b} style={{ fontSize: "0.78rem", margin: "0.35rem 0", opacity: 0.85 }}>
                         ✓ {b}
                       </p>
                     ))}
@@ -854,19 +862,19 @@ export default function Home() {
                       style={{
                         display: "block", marginTop: "auto",
                         textAlign: "center", padding: "0.75rem 1rem",
-                        border: `1px solid ${p.cor}`,
-                        color: p.destaque ? "var(--color-cream)" : p.cor,
+                        border: `1px solid ${p.destaque ? "var(--color-gold)" : p.cor}`,
+                        color: p.destaque ? "var(--color-gold)" : p.cor,
                         fontSize: "0.72rem", fontWeight: 700,
                         letterSpacing: "0.1em", textTransform: "uppercase",
                         textDecoration: "none", transition: "all 220ms ease",
                       }}
                       onMouseEnter={e => {
-                        (e.currentTarget as HTMLElement).style.background = p.cor;
-                        (e.currentTarget as HTMLElement).style.color = p.destaque ? "var(--color-cream)" : "white";
+                        (e.currentTarget as HTMLElement).style.background = p.destaque ? "var(--color-gold)" : p.cor;
+                        (e.currentTarget as HTMLElement).style.color = p.destaque ? "var(--color-verde)" : "var(--color-papel)";
                       }}
                       onMouseLeave={e => {
                         (e.currentTarget as HTMLElement).style.background = "transparent";
-                        (e.currentTarget as HTMLElement).style.color = p.destaque ? "var(--color-cream)" : p.cor;
+                        (e.currentTarget as HTMLElement).style.color = p.destaque ? "var(--color-gold)" : p.cor;
                       }}
                     >
                       Quero ser {p.nome} →
@@ -878,8 +886,8 @@ export default function Home() {
               <a href="https://wa.me/5563992428800?text=Quero+ser+membro+da+Comunidade+Bonaparte!"
                 target="_blank" rel="noopener noreferrer"
                 style={{ display: "inline-block",
-                         background: "var(--color-sunset-orange)",
-                         color: "white", padding: "1rem 2.5rem",
+                         background: "var(--color-terracota)",
+                         color: "var(--color-papel)", padding: "1rem 2.5rem",
                          fontSize: "0.85rem", fontWeight: 700,
                          letterSpacing: "0.12em", textTransform: "uppercase",
                          textDecoration: "none" }}>
@@ -898,7 +906,7 @@ export default function Home() {
         {/* ══ BLOCO 5 — MURAL DE MENSAGENS ══════════════════════ */}
         <motion.section {...fadeUp} className="py-16 bg-card">
           <div className="editorial-container">
-            <p style={{ color: "var(--color-forest-mid)", fontSize: "0.7rem",
+            <p style={{ color: "var(--color-terracota)", fontSize: "0.7rem",
                         letterSpacing: "0.3em", textTransform: "uppercase",
                         fontWeight: 700, marginBottom: "0.75rem" }}>
               Mural Bonaparte
@@ -932,8 +940,8 @@ export default function Home() {
                     );
                   }
                 }}
-                style={{ background: "var(--color-forest-mid)",
-                         color: "white", padding: "0.9rem",
+                style={{ background: "var(--color-verde)",
+                         color: "var(--color-papel)", padding: "0.9rem",
                          fontSize: "0.8rem", fontWeight: 700,
                          letterSpacing: "0.1em", textTransform: "uppercase",
                          border: "none", cursor: "pointer", fontFamily: "inherit" }}
@@ -949,16 +957,17 @@ export default function Home() {
 
         <Divider />
 
-        {/* ══ ACOMPANHE ═════════════════════════════════════════ */}
+        {/* ══ ACOMPANHE (inversão verde) ════════════════════════ */}
         <motion.section {...fadeUp} className="section-reveal py-20"
-          style={{ background: "var(--color-forest-dark)" }}>
+          style={{ background: "var(--color-verde)" }}>
           <div className="editorial-container text-center">
-            <p className="mb-3 text-xs uppercase tracking-[0.3em] text-primary/60">Não perca nenhuma parada</p>
-            <h2 className="font-serif text-3xl text-white md:text-4xl">
+            <p className="mb-3 text-xs uppercase tracking-[0.3em]"
+              style={{ color: "color-mix(in oklab, var(--color-gold) 75%, transparent)" }}>Não perca nenhuma parada</p>
+            <h2 className="font-serif text-3xl md:text-4xl" style={{ color: "var(--color-papel)" }}>
               A jornada começa em breve
             </h2>
             <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed"
-              style={{ color: "rgba(248,247,241,0.4)" }}>
+              style={{ color: "color-mix(in oklab, var(--color-papel) 55%, transparent)" }}>
               Acompanhe as 12 paradas pelo WhatsApp — ou explore as páginas do universo Bonaparte.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
@@ -968,7 +977,9 @@ export default function Home() {
                 Acompanhar no WhatsApp →
               </a>
               <Link href="/expedition">
-                <a className="rounded-sm border border-white/20 px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white/60 transition hover:border-primary hover:text-primary">
+                <a className="rounded-sm border px-8 py-3 text-sm font-semibold uppercase tracking-widest transition"
+                  style={{ borderColor: "color-mix(in oklab, var(--color-papel) 22%, transparent)",
+                           color: "color-mix(in oklab, var(--color-papel) 70%, transparent)" }}>
                   Ver o mapa
                 </a>
               </Link>
@@ -978,25 +989,25 @@ export default function Home() {
 
         <Divider />
 
-        {/* ══ OS DEZ PRINCÍPIOS ═════════════════════════════════ */}
+        {/* ══ OS DEZ PRINCÍPIOS (fecho — verde sólido) ══════════ */}
         <section style={{
           padding: "5rem 2rem",
-          background: "rgba(26,66,45,0.3)",
-          borderTop: "1px solid rgba(233,116,28,0.08)",
+          background: "var(--color-verde)",
+          borderTop: "1px solid color-mix(in oklab, var(--color-gold) 18%, transparent)",
         }}>
           <div style={{ maxWidth: "800px", margin: "0 auto" }}>
             <p style={{
               fontSize: "0.62rem", fontWeight: 700,
               letterSpacing: "0.2em", textTransform: "uppercase",
-              color: "rgba(233,116,28,0.6)", marginBottom: "0.75rem",
+              color: "color-mix(in oklab, var(--color-gold) 80%, transparent)", marginBottom: "0.75rem",
               textAlign: "center",
             }}>
               O código da Casa
             </p>
             <h2 style={{
-              fontFamily: "Cormorant Garamond, Georgia, serif",
-              fontSize: "clamp(1.6rem,3vw,2.2rem)", fontWeight: 700,
-              color: "#F8F7F1", textAlign: "center", marginBottom: "3rem",
+              fontFamily: "'EB Garamond', serif",
+              fontSize: "clamp(1.6rem,3vw,2.2rem)", fontWeight: 600,
+              color: "var(--color-papel)", textAlign: "center", marginBottom: "3rem",
               fontStyle: "italic",
             }}>
               Os Dez Princípios
@@ -1020,23 +1031,23 @@ export default function Home() {
                 { num: "10", titulo: "Permaneça Desperto",           texto: "O despertar não é um evento. É uma prática diária." },
               ].map(p => (
                 <div key={p.num} style={{
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px solid rgba(233,116,28,0.1)",
+                  background: "color-mix(in oklab, var(--color-papel) 4%, transparent)",
+                  border: "1px solid color-mix(in oklab, var(--color-gold) 14%, transparent)",
                   borderRadius: "10px", padding: "1.25rem 1.5rem",
                   display: "flex", gap: "1rem", alignItems: "flex-start",
                 }}>
                   <span style={{
                     fontSize: "0.65rem", fontWeight: 800,
-                    color: "rgba(233,116,28,0.5)", letterSpacing: "0.1em",
+                    color: "color-mix(in oklab, var(--color-gold) 70%, transparent)", letterSpacing: "0.1em",
                     minWidth: "24px", paddingTop: "2px",
                   }}>{p.num}</span>
                   <div>
                     <p style={{
                       fontSize: "0.85rem", fontWeight: 700,
-                      color: "#E9741C", margin: "0 0 0.3rem",
+                      color: "var(--color-gold)", margin: "0 0 0.3rem",
                     }}>{p.titulo}</p>
                     <p style={{
-                      fontSize: "0.78rem", color: "rgba(255,255,255,0.85)",
+                      fontSize: "0.78rem", color: "color-mix(in oklab, var(--color-papel) 85%, transparent)",
                       lineHeight: 1.6, margin: 0,
                     }}>{p.texto}</p>
                   </div>
@@ -1046,9 +1057,9 @@ export default function Home() {
 
             <p style={{
               textAlign: "center", marginTop: "2.5rem",
-              fontFamily: "Cormorant Garamond, Georgia, serif",
+              fontFamily: "'EB Garamond', serif",
               fontStyle: "italic", fontSize: "0.95rem",
-              color: "rgba(248,247,241,0.4)",
+              color: "color-mix(in oklab, var(--color-papel) 45%, transparent)",
             }}>
               — Bíblia ALSHAM · Casa Bonaparte
             </p>
