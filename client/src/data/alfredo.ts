@@ -19,14 +19,14 @@ export const ALFREDO_STATUS = "Em reforma · parado na oficina";
 /** A ficha do que Alfredo é (fatos, não promessa). */
 export const ALFREDO_FICHA: { label: string; value: string }[] = [
   { label: "Base", value: "Mercedes-Benz O364" },
-  { label: "Ano", value: "1995" },
+  { label: "Ano", value: "1980" },
   { label: "Virando", value: "Fortaleza sobre rodas" },
   { label: "Situação", value: "Reforma pausada por recursos" },
 ];
 
 /** Abertura — a história real, no tom do manifesto. Só fatos do dono. */
 export const ALFREDO_INTRO: string[] = [
-  "Alfredo é um Mercedes-Benz O364, ano 1995. Um ônibus que a gente escolheu pra virar fortaleza sobre rodas — a casa que anda, o lar da travessia.",
+  "Alfredo é um Mercedes-Benz O364, ano 1980. Um ônibus que a gente escolheu pra virar fortaleza sobre rodas — a casa que anda, o lar da travessia.",
   "O sonho tem endereço: descer até Ushuaia e subir até o Alaska. Ir de ponta a ponta do continente com a família dentro, sem pressa, vendo o mundo pela janela.",
   "Mas nada disso está pronto — é aí que mora a verdade. Alfredo está na oficina, em reforma, parado. A obra pausou porque sonho real se paga caro: a gente faz, desfaz, junta recurso e volta. A expedição pela Ásia é a ponte — sair pra sentir se é essa vida mesmo, e voltar com força pra terminar o Alfredo.",
 ];
@@ -55,7 +55,7 @@ export const ALFREDO_PHASES: AlfredoPhase[] = [
   {
     id: "compra",
     title: "Quando compramos",
-    blurb: "O começo de tudo — o dia em que Alfredo virou nosso. Um ônibus de 1995 e uma ideia grande demais pra caber nele ainda.",
+    blurb: "O começo de tudo — o dia em que Alfredo virou nosso. Um ônibus de 1980 e uma ideia grande demais pra caber nele ainda.",
     photos: [
       { id: "compra-1", caption: "Alfredo no dia da compra", src: "/alfredo/compra-1.jpg" },
       { id: "compra-2", caption: "Primeiro olhar de dentro", src: "/alfredo/compra-2.jpg" },

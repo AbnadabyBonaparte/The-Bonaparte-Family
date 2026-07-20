@@ -102,7 +102,7 @@ export default function Alfredo() {
         eyebrow="Família · A casa que anda"
         title="Alfredo"
         accent="a fortaleza sobre rodas"
-        subtitle="Um Mercedes-Benz O364 de 1995 virando lar de expedição. Em reforma, parado na oficina — obra em andamento, com pó, ferro e fé."
+        subtitle="Um Mercedes-Benz O364 de 1980 virando lar de expedição. Em reforma, parado na oficina — obra em andamento, com pó, ferro e fé."
         image="/alfredo/hero.jpg"
       >
         <div className="flex flex-col items-center gap-5">
