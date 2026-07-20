@@ -2,8 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import PageHero from "@/components/PageHero";
+import BazarCollection from "@/components/BazarCollection";
 import { motion } from "framer-motion";
 import { countries, checkpoints, EXPEDITION_STATS, DEPARTURE_DATE } from "@/data/expedition";
+import { COLECAO_EXPEDICAO } from "@/data/bazar";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -263,6 +265,9 @@ export default function Expedition() {
             </div>
           </div>
         </motion.section>
+
+        {/* ══ O QUE A FAMÍLIA CARREGA — coleção do Bazar central ══ */}
+        <BazarCollection collection={COLECAO_EXPEDICAO} surface="card" />
 
         {/* ══ WORLDSCHOOLING ════════════════════════════════════ */}
         <motion.section
