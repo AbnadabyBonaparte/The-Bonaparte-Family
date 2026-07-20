@@ -1,6 +1,16 @@
 import { Link } from "wouter";
 
 export default function Footer() {
+  const worldLinkStyle = {
+    fontSize: "0.72rem",
+    fontWeight: 600,
+    textTransform: "uppercase" as const,
+    letterSpacing: "0.2em",
+    color: "color-mix(in oklab, var(--muted-foreground) 85%, transparent)",
+    textDecoration: "none",
+    transition: "color 220ms ease",
+  };
+  const restColor = "color-mix(in oklab, var(--muted-foreground) 85%, transparent)";
   return (
     <footer className="mt-24 border-t border-border bg-card">
       <div className="editorial-container py-12">
@@ -44,42 +54,62 @@ export default function Footer() {
             <p className="mt-3 text-muted-foreground">Desenvolvido por ALSHAM Global Commerce</p>
           </div>
         </div>
-        {/* Universo Bonaparte — ecossistema completo */}
-        <div className="mt-8 border-t border-border pt-8 flex flex-wrap justify-center gap-6">
-          {[
-            { label: "Casa Bonaparte",     url: "https://casabonaparte.com.br" },
-            { label: "Livraria",           url: "https://livraria.casabonaparte.com.br" },
-            { label: "Podcast",            url: "https://podcast.casabonaparte.com.br" },
-            { label: "ALSHAM Global",      url: "https://alshamglobal.com.br" },
-            { label: "Aby Bonaparte",      url: "https://abnadabybonaparte.alshamglobal.com.br" },
-            { label: "ALSHAM Ascension",   url: "https://select.alshamglobal.com.br" },
-            { label: "ALSHAM Pulso",       url: "https://pulso.alshamglobal.com.br" },
-          ].map((link) => (
-            <a
-              key={link.url}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                fontSize: "0.72rem",
-                fontWeight: 600,
-                textTransform: "uppercase",
-                letterSpacing: "0.2em",
-                color: "color-mix(in oklab, var(--muted-foreground) 85%, transparent)",
-                textDecoration: "none",
-                transition: "color 220ms ease",
-              }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLElement).style.color = "var(--accent)";
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLElement).style.color =
-                  "color-mix(in oklab, var(--muted-foreground) 85%, transparent)";
-              }}
-            >
-              {link.label}
-            </a>
-          ))}
+        {/* Fronteira dos mundos — canon: Casa é a Bifröst (o caminho de volta) e os
+            tronos irmãos são as portas. Satélites (Pulso, Ascension/Select…) orbitam a
+            ALSHAM: vivem atrás da porta ALSHAM Global, não entram na fachada como par.
+            Podcast é Matusalém (raiz de mídia), não porta. */}
+        <div className="mt-8 border-t border-border pt-8 grid gap-8 sm:grid-cols-2">
+          {/* Universo Bonaparte — a Casa (Bifröst) + os tronos irmãos */}
+          <div>
+            <p className="mb-3 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-primary">
+              Universo Bonaparte
+            </p>
+            <div className="flex flex-wrap gap-x-6 gap-y-3">
+              {[
+                { label: "Casa Bonaparte", url: "https://casabonaparte.com.br" },
+                { label: "A Família",      current: true },
+                { label: "Aby Bonaparte",  url: "https://abnadabybonaparte.alshamglobal.com.br" },
+                { label: "Livraria",       url: "https://livraria.casabonaparte.com.br" },
+                { label: "Bazar",          url: "https://bazar.casabonaparte.com.br" },
+              ].map((link) =>
+                link.current ? (
+                  <span key={link.label} style={{ ...worldLinkStyle, color: "var(--accent)", cursor: "default" }}>
+                    {link.label} · você está aqui
+                  </span>
+                ) : (
+                  <a
+                    key={link.url}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={worldLinkStyle}
+                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "var(--accent)"; }}
+                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = restColor; }}
+                  >
+                    {link.label}
+                  </a>
+                )
+              )}
+            </div>
+          </div>
+          {/* Ecossistema ALSHAM — a porta da tecnologia; os satélites vivem atrás dela */}
+          <div>
+            <p className="mb-3 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-primary">
+              Ecossistema ALSHAM
+            </p>
+            <div className="flex flex-wrap gap-x-6 gap-y-3">
+              <a
+                href="https://alshamglobal.com.br"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={worldLinkStyle}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "var(--accent)"; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = restColor; }}
+              >
+                ALSHAM Global
+              </a>
+            </div>
+          </div>
         </div>
         <p className="mt-8 text-xs text-muted-foreground text-center">
           © A Família Bonaparte. Todos os direitos reservados.
