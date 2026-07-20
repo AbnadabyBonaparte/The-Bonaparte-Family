@@ -1,6 +1,6 @@
 # Dossiê de Arquitetura e Estratégia Canônica: Portal-Hub The Bonaparte Family (V1.1)
 
-**Autor:** Manus AI
+**Autor:** Casa Bonaparte
 **Data:** 19 de Janeiro de 2026
 **Status:** Versão Final Canônica (10/10 - 1000/10000)
 

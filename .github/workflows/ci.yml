@@ -41,9 +41,13 @@ jobs:
 
       - name: Audit — Zero Manus artifacts
         run: |
-          count=$(grep -rn 'manus\|Manus' --include="*.ts" --include="*.tsx" --include="*.json" client/src/ 2>/dev/null | grep -v node_modules | wc -l)
+          # Pega artefato Manus real (__manus__, ManusDialog, vite-plugin-manus-runtime, "Manus AI"),
+          # mas NÃO casa com "manuscrito"/"manuscript" — o lookahead (?!cri) exclui essas palavras.
+          # Varre client/src + package.json + vite.config.ts (vetores clássicos do plugin Manus).
+          count=$(grep -riPn 'manus(?!cri)' --include="*.ts" --include="*.tsx" --include="*.json" client/src/ package.json vite.config.ts 2>/dev/null | grep -v node_modules | wc -l)
           if [ "$count" -gt 0 ]; then
             echo "❌ Found $count Manus references"
+            grep -riPn 'manus(?!cri)' --include="*.ts" --include="*.tsx" --include="*.json" client/src/ package.json vite.config.ts | grep -v node_modules
             exit 1
           fi
           echo "✅ Zero Manus artifacts"
