@@ -1,21 +1,28 @@
 {
   "brand": "the-bonaparte-family",
-  "palette": ["oklch(0.12 0.04 155) obsidian-verde", "oklch(0.52 0.13 155) forest-oliva", "oklch(0.65 0.18 50) ambar-terroso", "oklch(0.97 0.01 80) cream"],
+  "note": "Pele da Família (canon/PALETA-FAMILIA.md) — papel/tinta/couro/areia/oliva/verde profundo/ouro quente/terracota. JAMAIS obsidian (é ALSHAM). Lei da Imagem: gerar SOMENTE ambiente/atmosfera/textura/fundo/ornamento — nunca pessoa, rosto, o ônibus, capa, nem objeto real. Saídas otimizadas para .webp (responsivo, ~72q) antes de commitar.",
+  "palette": [
+    "#F4F1EA papel", "#1A1814 tinta", "#6B4A2A couro", "#C8B89A areia",
+    "#4A5A3A oliva", "#1A422D verde-profundo", "#C6A75E ouro-quente", "#8A4A2F terracota"
+  ],
   "pieces": [
     {
-      "name": "hero",
+      "name": "paper-texture",
+      "type": "textura",
+      "aspect": "1:1",
+      "prompt": "Seamless tileable warm aged paper texture, cream linen paper color F4F1EA, subtle organic fibers and soft grain, gentle warm mottling, faint sand and ecru tones, even flat studio light, minimalist background surface, no people, no faces, no objects, no text, no logo, no watermark"
+    },
+    {
+      "name": "atmosphere-cerrado",
+      "type": "ambiente",
       "aspect": "16:9",
-      "prompt": "Cinematic editorial wide shot of a vast Brazilian cerrado landscape at golden hour — rolling savanna, twisted ipê trees, a distant wooden homestead and dirt road disappearing toward the horizon, warm low sun casting long shadows, deep olive-green foliage bathed in terroso amber light, misty valley, a sense of family journey and legacy about to begin, volumetric god rays, film grain, muted painterly tones, ultra-detailed, dramatic depth, National Geographic documentary aesthetic, premium, no people faces, no text, no logo, no watermark, no words"
+      "prompt": "Cinematic editorial wide landscape of vast Brazilian cerrado savanna at golden hour, rolling grassland, a few twisted ipe trees, distant hills, warm low sun, deep olive-green foliage bathed in warm terracotta amber light, misty valley, volumetric god rays, soft film grain, muted painterly warm paper tones, reverent and timeless, no people, no faces, no animals, no vehicles, no text, no logo, no watermark"
     },
     {
-      "name": "legacy",
-      "aspect": "3:2",
-      "prompt": "Cinematic still life of a heritage family table at dusk in a rustic wooden cabin in the Brazilian countryside — warm candlelight, open leather-bound books and a handwritten manuscript, worn wooden surface, olive-green and amber tones, soft volumetric glow, intimate and timeless, sense of legacy passed between generations, ultra-detailed, painterly, film grain, premium editorial, no people, no text, no logo, no watermark, no words"
-    },
-    {
-      "name": "expedition",
-      "aspect": "3:2",
-      "prompt": "Cinematic aerial view of a lone dirt road winding through dramatic Southeast Asian and Brazilian frontier terrain merging — terraced hills, jungle canopy, distant mountains under a warm hazy sky, olive greens and sunset amber, a single trail suggesting a long overland expedition, atmospheric depth, volumetric light, film grain, muted premium tones, documentary cinematic, no people, no text, no logo, no watermark, no words"
+      "name": "atmosphere-verde",
+      "type": "atmosfera",
+      "aspect": "16:9",
+      "prompt": "Abstract atmospheric background, deep forest green 1A422D, soft volumetric fog and faint out-of-focus botanical leaf silhouettes, a few warm gold light motes, dark green tonal gradient, cinematic calm reverent haze, painterly minimalist, warm not cold, no people, no faces, no objects, no text, no logo, no watermark"
     }
   ]
 }
