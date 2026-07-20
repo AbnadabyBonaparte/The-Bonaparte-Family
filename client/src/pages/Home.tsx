@@ -59,20 +59,21 @@ const ECO_LINKS = [
     accent: "var(--color-gold)",
   },
   {
-    label: "Bazar Bonaparte",
-    sub: "Objetos curados · Desk · Viagem · Escrita",
-    href: "https://bazar.casabonaparte.com.br",
-    // SUBSTITUIR: foto dos objetos do bazar
-    image: "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=800&q=80",
-    accent: "var(--color-terracota)",
-  },
-  {
     label: "ALSHAM Global",
     sub: "Tecnologia · Agentes IA · Sistemas",
     href: "https://alshamglobal.com.br",
     // SUBSTITUIR: foto do Abnadaby no computador/sítio
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
     accent: "var(--color-gold)",
+  },
+  // Bazar — o servo dos mundos: sempre por último na fachada.
+  {
+    label: "Bazar Bonaparte",
+    sub: "Objetos curados · Desk · Viagem · Escrita",
+    href: "https://bazar.casabonaparte.com.br",
+    // SUBSTITUIR: foto dos objetos do bazar
+    image: "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=800&q=80",
+    accent: "var(--color-terracota)",
   },
 ];
 
