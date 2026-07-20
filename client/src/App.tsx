@@ -3,6 +3,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
+import AtmosphereGrain from "./components/AtmosphereGrain";
 import { ThemeProvider } from "./contexts/ThemeContext";
 
 const Home       = lazy(() => import("./pages/Home"));
@@ -55,6 +56,7 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <Router />
+          <AtmosphereGrain />
           <a
             href="https://wa.me/5563992428800"
             target="_blank"

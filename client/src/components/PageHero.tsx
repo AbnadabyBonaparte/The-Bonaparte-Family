@@ -18,6 +18,11 @@ interface PageHeroProps {
   subtitle?: string;
   /** Optional focal art (path string — 404s degrade to the CSS composition) */
   image?: string;
+  /**
+   * Atmosfera gerada (Lei da Imagem: só ambiente/paisagem, nunca pessoa/objeto real)
+   * usada quando `image` não é passada. Default "cerrado". Skin da Família.
+   */
+  atmosphere?: "cerrado" | "verde";
   /** Extra content under the subtitle (stats, CTAs, countdown…) */
   children?: ReactNode;
   /** Show a "back to home" link */
@@ -36,22 +41,31 @@ export default function PageHero({
   accent,
   subtitle,
   image,
+  atmosphere = "cerrado",
   children,
   back = true,
   className = "",
 }: PageHeroProps) {
+  // Atmosfera on-brand por padrão (degrada em silêncio se o arquivo faltar).
+  const resolvedImage =
+    image ??
+    (atmosphere === "verde"
+      ? "/brand/atmosphere-verde.webp"
+      : "/brand/atmosphere-cerrado.webp");
   return (
     <motion.section
       {...fadeUp}
       className={`film-grain relative flex min-h-[54vh] flex-col items-center justify-center overflow-hidden px-4 py-24 text-center md:min-h-[60vh] ${className}`}
       style={{ background: "var(--color-obsidian)" }}
     >
-      {/* camada 0 — imagem focal opcional (degrada em silêncio) */}
-      {image && (
+      {/* camada 0 — atmosfera focal (degrada em silêncio) */}
+      {resolvedImage && (
         <img
-          src={image}
+          src={resolvedImage}
           alt=""
           aria-hidden="true"
+          loading="lazy"
+          decoding="async"
           onError={(e) => {
             (e.currentTarget as HTMLImageElement).style.display = "none";
           }}

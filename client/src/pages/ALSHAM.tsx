@@ -31,6 +31,7 @@ export default function ALSHAM() {
       <Header />
       <main>
         <PageHero
+          atmosphere="verde"
           eyebrow="Negócios da família"
           title="ALSHAM"
           accent="Global Commerce"
