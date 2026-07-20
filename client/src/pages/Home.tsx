@@ -28,7 +28,11 @@ const COUNTRY_IMAGES: Record<string, string> = {
   "Marrocos":    "https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=400&q=80",
 };
 
-// ── ECOSSISTEMA ───────────────────────────────────────────────
+// ── ECOSSISTEMA — as 5 portas (canon: Bifröst + tronos) ───────
+// Casa Bonaparte é a Bifröst (o caminho de volta); Aby, Livraria, Bazar e
+// ALSHAM Global são os tronos irmãos. Satélites (Pulso, Ascension/Select,
+// Kraken, PERITUS…) orbitam a ALSHAM — nunca na fachada. Podcast é Matusalém
+// (raiz de mídia), não porta.
 const ECO_LINKS = [
   {
     label: "Casa Bonaparte",
@@ -36,14 +40,6 @@ const ECO_LINKS = [
     href: "https://casabonaparte.com.br",
     // SUBSTITUIR: foto do sítio Bonaparte ou símbolo Bonaparte
     image: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800&q=80",
-    accent: "var(--color-gold)",
-  },
-  {
-    label: "Livraria Bonaparte",
-    sub: "9 obras publicadas · Edições Bonaparte",
-    href: "https://livraria.casabonaparte.com.br",
-    // SUBSTITUIR: foto de mesa com livros da Casa Bonaparte
-    image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&q=80",
     accent: "var(--color-gold)",
   },
   {
@@ -55,44 +51,28 @@ const ECO_LINKS = [
     accent: "var(--color-terracota)",
   },
   {
+    label: "Livraria Bonaparte",
+    sub: "9 obras publicadas · Edições Bonaparte",
+    href: "https://livraria.casabonaparte.com.br",
+    // SUBSTITUIR: foto de mesa com livros da Casa Bonaparte
+    image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&q=80",
+    accent: "var(--color-gold)",
+  },
+  {
+    label: "Bazar Bonaparte",
+    sub: "Objetos curados · Desk · Viagem · Escrita",
+    href: "https://bazar.casabonaparte.com.br",
+    // SUBSTITUIR: foto dos objetos do bazar
+    image: "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=800&q=80",
+    accent: "var(--color-terracota)",
+  },
+  {
     label: "ALSHAM Global",
     sub: "Tecnologia · Agentes IA · Sistemas",
     href: "https://alshamglobal.com.br",
     // SUBSTITUIR: foto do Abnadaby no computador/sítio
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
     accent: "var(--color-gold)",
-  },
-  {
-    label: "ALSHAM Pulso",
-    sub: "Acontecimentos · Eventos · Novidades",
-    href: "https://pulso.alshamglobal.com.br",
-    // SUBSTITUIR: foto de show ao vivo ou evento Bonaparte
-    image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80",
-    accent: "var(--color-terracota)",
-  },
-  {
-    label: "ALSHAM Ascension",
-    sub: "Parcerias · IP · B2B estratégico",
-    href: "https://select.alshamglobal.com.br",
-    // SUBSTITUIR: foto de reunião ou ambiente profissional
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80",
-    accent: "var(--color-gold)",
-  },
-  {
-    label: "Bonaparte Cast",
-    sub: "Podcast · Em breve",
-    href: "https://podcast.casabonaparte.com.br",
-    // SUBSTITUIR: foto de microfone ou gravação
-    image: "https://images.unsplash.com/photo-1478737270197-c2f5e0f5b3a5?w=800&q=80",
-    accent: "var(--color-gold)",
-  },
-  {
-    label: "Bazar Bonaparte",
-    sub: "Objetos curados · Desk · Viagem · Escrita",
-    href: "https://casabonaparte.com.br/bazar",
-    // SUBSTITUIR: foto dos objetos do bazar
-    image: "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=800&q=80",
-    accent: "var(--color-terracota)",
   },
 ];
 
