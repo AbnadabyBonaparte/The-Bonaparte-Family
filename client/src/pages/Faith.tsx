@@ -31,7 +31,7 @@ export default function Faith() {
       <Header />
       <main>
         <PageHero
-          atmosphere="verde"
+          image="/brand/atmosphere-fe.webp"
           eyebrow="Espiritualidade"
           title="Fé"
           accent="Cristo antes da Igreja"

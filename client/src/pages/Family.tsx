@@ -12,6 +12,7 @@ export default function Family() {
       <Header />
       <main>
         <PageHero
+          image="/brand/atmosphere-familia.webp"
           eyebrow="Quem somos"
           title="A Família"
           accent="quatro pessoas, uma missão"

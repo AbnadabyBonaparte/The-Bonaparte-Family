@@ -37,7 +37,7 @@ export default function Education() {
       <Header />
       <main>
         <PageHero
-          atmosphere="verde"
+          image="/brand/atmosphere-educacao.webp"
           eyebrow="Formação Bonaparte"
           title="Educação"
           accent="o mundo é a sala de aula"

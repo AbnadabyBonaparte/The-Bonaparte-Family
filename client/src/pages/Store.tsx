@@ -15,6 +15,7 @@ export default function Store() {
       <Header />
       <main>
         <PageHero
+          image="/brand/atmosphere-bazar.webp"
           eyebrow="Bazar & Livros"
           title="O que a família"
           accent="carrega e escreve"
