@@ -150,18 +150,45 @@ function Divider() {
 
 // ── CHECKOUT CENTRAL (Stripe via Banco do Universo) ───────────
 // A vitrine só redireciona; a sessão nasce na Edge Function central.
+const CHECKOUT_ERRO_MSG =
+  "Não foi possível abrir o pagamento agora. Tente de novo — ou chame a gente no WhatsApp.";
+
 function useFamiliaCheckout() {
   const [abrindo, setAbrindo] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
+
+  // Volta do Stripe pelo botão "voltar" do navegador: o bfcache restaura a página
+  // CONGELADA com abrindo=true — sem isto, os botões ficam "Iniciando…" pra sempre.
+  // pageshow(persisted) = restauração do bfcache → reseta o estado de TODOS os
+  // botões (tiers + apoios compartilham este hook).
+  useEffect(() => {
+    const onPageShow = (e: PageTransitionEvent) => {
+      if (e.persisted) {
+        setAbrindo(false);
+        setErro(null);
+      }
+    };
+    window.addEventListener("pageshow", onPageShow);
+    return () => window.removeEventListener("pageshow", onPageShow);
+  }, []);
+
   const abrir = async (payload: CheckoutPayload) => {
     if (abrindo) return;
     setAbrindo(true);
     setErro(null);
+    // Timeout de segurança: se o redirect não veio em 15s (rede travada, função
+    // fora do ar), destrava os botões com o erro honesto em vez de congelar.
+    const timeout = window.setTimeout(() => {
+      setAbrindo(false);
+      setErro(CHECKOUT_ERRO_MSG);
+    }, 15000);
     const url = await criarCheckout(payload);
     if (url) {
+      // 'abrindo' fica ligado até a navegação sair; na volta, o pageshow reseta.
       window.location.href = url;
     } else {
-      setErro("Não foi possível abrir o pagamento agora. Tente de novo — ou chame a gente no WhatsApp.");
+      window.clearTimeout(timeout);
+      setErro(CHECKOUT_ERRO_MSG);
       setAbrindo(false);
     }
   };
