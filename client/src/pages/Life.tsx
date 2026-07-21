@@ -27,7 +27,7 @@ const sections = [
   {
     title: "Pets",
     content:
-      "Mel, Amora e Apache participam da rotina como guardiões emocionais e companhia da jornada.",
+      "Mel e Apache participam da rotina como guardiões emocionais e companhia da jornada.",
     alt: "Nossos animais",
   },
 ];
