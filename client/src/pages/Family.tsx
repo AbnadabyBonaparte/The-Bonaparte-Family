@@ -1,7 +1,7 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import PageHero from "@/components/PageHero";
-import { ImagePlaceholder } from "@/components/ImagePlaceholder";
+import { FamilyPhoto } from "@/components/FamilyPhoto";
 import { SectionHeader, fadeUp } from "@/components/editorial";
 import { familyMembers, familyValues, pets } from "@/data/family";
 import { motion } from "framer-motion";
@@ -29,7 +29,7 @@ export default function Family() {
                 key={member.name}
                 className="premium-card group flex flex-col"
               >
-                <ImagePlaceholder aspectRatio="portrait" alt={member.name} className="rounded-none" />
+                <FamilyPhoto src={member.photo} name={member.name} aspect="portrait" />
                 <div className="p-6 md:p-7">
                   <h2 className="font-serif text-2xl text-foreground">{member.name}</h2>
                   <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-primary">
@@ -71,7 +71,7 @@ export default function Family() {
                   key={pet.name}
                   className="premium-card group flex flex-col"
                 >
-                  <ImagePlaceholder aspectRatio="square" alt={pet.name} className="rounded-none" />
+                  <FamilyPhoto src={pet.photo} name={pet.name} aspect="square" />
                   <div className="p-5">
                     <h3 className="font-serif text-xl text-foreground">{pet.name}</h3>
                     <p className="text-sm font-semibold uppercase tracking-wide text-primary">
