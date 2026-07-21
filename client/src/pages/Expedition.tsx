@@ -382,13 +382,13 @@ export default function Expedition() {
             <p className="mb-2 text-xs uppercase tracking-[0.3em] text-primary">Fase 2 · Condicional</p>
             <h2 className="font-serif text-4xl">Alfredo</h2>
             <p className="mt-4 max-w-2xl text-muted-foreground leading-relaxed">
-              O Mercedes Benz 1982 que a família está reformando para se tornar o quinto membro da família.
+              O Mercedes-Benz O364 1980 que a família está reformando para se tornar o quinto membro da família.
               Casa, estúdio, escola e base logística no mesmo corpo. Alfredo não vai na Fase 1 —
               a Ásia é de mochila. Mas já existe, já tem nome, e já tem destino.
             </p>
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
               {[
-                ["Mercedes Benz 1982", "O veículo"],
+                ["Mercedes-Benz O364 1980", "O veículo"],
                 ["Casa · Estúdio · Escola", "Tudo em um"],
                 ["Fase 2 — América do Sul / Europa", "Próximo destino"],
               ].map(([v, l]) => (
