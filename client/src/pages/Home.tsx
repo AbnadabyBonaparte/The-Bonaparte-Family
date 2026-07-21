@@ -96,7 +96,8 @@ const ECO_LINKS = [
 
 // ── FAMÍLIA (fonte única: data/family.ts) ─────────────────────
 // Fotos reais de /public/familia/. Sem stock de estranhos.
-const melPet = pets.find((p) => p.name === "Mel");
+// A matilha INTEIRA entra (Mel e Apache); sem foto → inicial no verde,
+// nunca cão de banco de imagem.
 const FAMILY = [
   ...familyMembers.map((m) => ({
     name: m.name,
@@ -104,16 +105,12 @@ const FAMILY = [
     desc: m.description,
     photo: m.photo,
   })),
-  ...(melPet
-    ? [
-        {
-          name: melPet.name,
-          role: `${melPet.breed} · A quinta`,
-          desc: melPet.personality,
-          photo: melPet.photo ?? "",
-        },
-      ]
-    : []),
+  ...pets.map((pet) => ({
+    name: pet.name,
+    role: `${pet.breed} · A matilha`,
+    desc: pet.personality,
+    photo: pet.photo ?? "",
+  })),
 ];
 
 // ── PILARES ───────────────────────────────────────────────────
