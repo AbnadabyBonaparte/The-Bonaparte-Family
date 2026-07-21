@@ -76,16 +76,9 @@ export default function Family() {
                     <p className="text-sm font-semibold uppercase tracking-wide text-primary">
                       {pet.breed}
                     </p>
-                    {/* Amora faleceu — espaço neutro, sem texto inventado (decisão do dono) */}
-                    {pet.memorial ? (
-                      <p className="mt-2 text-sm uppercase tracking-wide text-muted-foreground/70">
-                        Em memória
-                      </p>
-                    ) : (
-                      <p className="mt-2 leading-relaxed text-muted-foreground">
-                        {pet.personality}
-                      </p>
-                    )}
+                    <p className="mt-2 leading-relaxed text-muted-foreground">
+                      {pet.personality}
+                    </p>
                   </div>
                 </motion.div>
               ))}

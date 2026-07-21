@@ -63,11 +63,10 @@ export interface Pet {
   breed: string;
   personality: string; // "" quando não há descrição verdadeira a exibir
   photo?: string;
-  memorial?: boolean; // true = faleceu; UI mostra espaço neutro, sem texto inventado
 }
 
 // Matilha real. Raças corrigidas conforme o dono:
-// Mel = Yorkshire · Apache = Pastor Alemão (capa preta) · Amora = Chow Chow.
+// Mel = Yorkshire · Apache = Pastor Alemão (capa preta).
 export const pets: Pet[] = [
   {
     name: "Mel",
@@ -80,13 +79,5 @@ export const pets: Pet[] = [
     name: "Apache",
     breed: "Pastor Alemão (capa preta)",
     personality: "Leal, brincalhão e sempre pronto para a estrada.",
-  },
-  {
-    // Amora faleceu recentemente. Sem texto de homenagem inventado —
-    // espaço neutro/pendente até o dono decidir como honrá-la.
-    name: "Amora",
-    breed: "Chow Chow",
-    personality: "",
-    memorial: true,
   },
 ];

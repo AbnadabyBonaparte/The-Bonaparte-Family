@@ -17,7 +17,6 @@ function formatDate(dateStr: string): string {
 export default function Journal() {
   const [entries, setEntries] = useState<JournalEntry[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     supabase
@@ -25,8 +24,10 @@ export default function Journal() {
       .select("*")
       .order("entry_date", { ascending: false })
       .then(({ data, error: err }) => {
-        if (err) setError("Não foi possível carregar as entradas.");
-        else setEntries(data ?? []);
+        // Diário ainda não semeado / backend não configurado → estado honesto
+        // "em breve", nunca uma tela de erro assustadora. (decisão do dono)
+        if (err) console.warn("[journal] sem entradas por ora:", err.message);
+        setEntries(data ?? []);
         setLoading(false);
       });
   }, []);
@@ -55,17 +56,7 @@ export default function Journal() {
           </div>
         )}
 
-        {error && (
-          <div className="premium-card p-10 text-center">
-            <div className="icon-chip mx-auto mb-4">
-              <BookText className="h-5 w-5" />
-            </div>
-            <p className="font-serif text-xl text-foreground">Não foi possível carregar</p>
-            <p className="mt-2 text-muted-foreground">{error}</p>
-          </div>
-        )}
-
-        {!loading && !error && entries.length === 0 && (
+        {!loading && entries.length === 0 && (
           <div className="premium-card p-12 text-center">
             <div className="icon-chip mx-auto mb-5">
               <BookText className="h-5 w-5" />
@@ -78,7 +69,7 @@ export default function Journal() {
           </div>
         )}
 
-        {!loading && !error && entries.length > 0 && (
+        {!loading && entries.length > 0 && (
           <ol className="space-y-0">
             {entries.map((entry, idx) => (
               <li key={entry.id}>

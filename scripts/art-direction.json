@@ -23,6 +23,13 @@
       "type": "atmosfera",
       "aspect": "16:9",
       "prompt": "Abstract atmospheric background, deep forest green 1A422D, soft volumetric fog and faint out-of-focus botanical leaf silhouettes, a few warm gold light motes, dark green tonal gradient, cinematic calm reverent haze, painterly minimalist, warm not cold, no people, no faces, no objects, no text, no logo, no watermark"
+    },
+    {
+      "name": "atmosphere-expedicao",
+      "type": "ambiente",
+      "aspect": "16:9",
+      "note": "Atmosfera PRÓPRIA da página Expedição — 'o limiar da travessia'. Cortada em panorama pra remover clutter de primeiro plano (Lei da Imagem).",
+      "prompt": "Cinematic editorial wide atmosphere of a vast layered Asian frontier landscape at warm misty dawn, distant terraced rice hills and rolling ridgelines fading into golden haze, a soft river bend catching first light, low warm sun, deep olive and jade greens washed in warm amber and terracotta light, volumetric mist between the ridges, soft film grain, muted painterly warm paper tones, a reverent sense of a long journey about to begin, no landmarks, no people, no faces, no animals, no vehicles, no boat, no monument, no text, no logo, no watermark"
     }
   ]
 }
