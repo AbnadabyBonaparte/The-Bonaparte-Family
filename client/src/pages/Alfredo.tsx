@@ -4,13 +4,13 @@ import { motion } from "framer-motion";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import PageHero from "@/components/PageHero";
+import BazarGallery from "@/components/BazarGallery";
 import {
   ALFREDO_STATUS,
   ALFREDO_FICHA,
   ALFREDO_INTRO,
   ALFREDO_PHASES,
   ALFREDO_GEAR,
-  BAZAR_URL,
   type AlfredoPhoto,
 } from "@/data/alfredo";
 
@@ -201,66 +201,15 @@ export default function Alfredo() {
           </div>
         ))}
 
-        {/* ══ O QUE VAI DENTRO DO ALFREDO — REGRA DO BAZAR ══════ */}
-        <motion.section {...fadeUp} className="py-16 md:py-24 bg-background">
-          <div className="editorial-container">
-            <div className="mx-auto max-w-5xl">
-              <p className="mb-2 text-xs uppercase tracking-[0.3em] text-primary">O que vai dentro</p>
-              <h2 className="font-serif text-3xl md:text-4xl">Equipando o Alfredo</h2>
-              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-                A curadoria dos objetos que fazem um ônibus virar casa vive no <strong className="text-foreground">Bazar</strong>.
-                Aqui a gente só mostra as categorias — o preço e a compra ficam lá, sempre.
-              </p>
-
-              {/* Nota honesta: a curadoria ainda precisa ser semeada no Bazar. */}
-              <p
-                className="mt-4 inline-flex items-center gap-2 rounded-md px-3 py-2 text-xs"
-                style={{
-                  background: "color-mix(in oklab, var(--color-areia) 26%, transparent)",
-                  color: "var(--color-couro)",
-                  border: "1px solid var(--color-border)",
-                }}
-              >
-                <span aria-hidden="true">◈</span>
-                Curadoria em formação — os produtos de motorhome ainda estão sendo semeados no Bazar. Por ora, cada card leva à casa do Bazar.
-              </p>
-
-              <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {ALFREDO_GEAR.map(gear => (
-                  <a
-                    key={gear.id}
-                    href={gear.bazarUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex flex-col rounded-lg border border-border bg-card p-5 transition hover:border-primary"
-                  >
-                    <h3 className="font-serif text-lg text-foreground">{gear.name}</h3>
-                    <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{gear.note}</p>
-                    <span
-                      className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.14em]"
-                      style={{ color: "var(--color-terracota)" }}
-                    >
-                      Ver no Bazar
-                      <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
-                    </span>
-                  </a>
-                ))}
-              </div>
-
-              <div className="mt-8">
-                <a
-                  href={BAZAR_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-md px-5 py-3 text-sm font-semibold uppercase tracking-[0.14em]"
-                  style={{ background: "var(--color-terracota)", color: "var(--color-papel)" }}
-                >
-                  Entrar no Bazar →
-                </a>
-              </div>
-            </div>
-          </div>
-        </motion.section>
+        {/* ══ O QUE VAI DENTRO DO ALFREDO — galeria prominente (Bazar) ══ */}
+        <BazarGallery
+          eyebrow="Equipando o Alfredo"
+          title="O que vai dentro da fortaleza"
+          blurb="A curadoria que faz um ônibus virar casa — energia, água, cozinha, conforto. Clique em cada categoria pra entender o porquê; a compra e o preço vivem no Bazar."
+          items={ALFREDO_GEAR.map(gear => ({ id: gear.id, label: gear.name, note: gear.note, href: gear.bazarUrl }))}
+          tone="papel"
+          seedingNote="Curadoria em formação — os produtos de motorhome ainda estão sendo semeados no Bazar. Por ora, cada card leva à casa do Bazar."
+        />
 
         <Divider />
 

@@ -5,7 +5,7 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { countries, DEPARTURE_DATE, EXPEDITION_STATS } from "@/data/expedition";
 import { familyMembers, pets } from "@/data/family";
-import BazarCollection from "@/components/BazarCollection";
+import BazarGallery from "@/components/BazarGallery";
 import { COLECAO_GERAL } from "@/data/bazar";
 import manifestoRaw from "@/content/manifesto.md?raw";
 
@@ -765,7 +765,14 @@ export default function Home() {
         <Divider />
 
         {/* ══ COLEÇÃO GERAL — curadoria puxada do Bazar central ══ */}
-        <BazarCollection collection={COLECAO_GERAL} />
+        <BazarGallery
+          eyebrow={COLECAO_GERAL.eyebrow}
+          title={COLECAO_GERAL.title}
+          blurb={COLECAO_GERAL.blurb}
+          items={COLECAO_GERAL.categories.map(c => ({ id: c.id, label: c.label, note: c.note, href: COLECAO_GERAL.href }))}
+          tone="verde"
+          seedingNote={COLECAO_GERAL.seeding ? "Curadoria em formação — as coleções estão sendo semeadas no Bazar. Por ora, cada card abre a casa do Bazar." : undefined}
+        />
 
         <Divider />
 
