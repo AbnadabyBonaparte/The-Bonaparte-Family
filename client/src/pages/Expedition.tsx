@@ -296,7 +296,7 @@ function ExpeditionGear() {
           >
             Entrar no Bazar Bonaparte →
           </a>
-          <p className="text-xs" style={{ color: "color-mix(in oklab, var(--color-papel) 55%, transparent)" }}>
+          <p className="text-xs" style={{ color: "color-mix(in oklab, var(--color-papel) 72%, transparent)" }}>
             {BAZAR_AFFILIATE_NOTE}
           </p>
         </div>
