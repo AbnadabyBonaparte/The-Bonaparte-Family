@@ -77,10 +77,17 @@ zero genérico.
 
 | Página | v1 (reprovada) | FASE 1 | Por quê |
 |---|:--:|:--:|---|
-| **Expedição** | 48 | **86** | atmosfera própria + roteiro clicável com foto/língua/curiosidade + Bazar prominente + mapa on-brand |
-| Família | 55 | 55 | (FASE 2 — atmosfera própria pendente) |
-| Journal | 40 | **68** | bug de erro → estado honesto "em breve" bonito |
-| Demais subpáginas | ~50 | ~50 | (FASE 2) |
+| **Expedição** | 48 | **86** | atmosfera própria + roteiro clicável + Bazar prominente + mapa on-brand |
+| **Família** | 55 | **80** | atmosfera própria (varanda/lar, AUTEUR 90) — remete à família, não paisagem genérica |
+| **Educação** | 50 | **80** | atmosfera escola/worldschooling (globo/mapa/candeeiro, AUTEUR 89) |
+| **Fé** | 50 | **82** | catedral natural / luz entre árvores (AUTEUR 91) |
+| **Saúde** | 50 | **78** | campo ao amanhecer, orvalho, vigor (AUTEUR 88) |
+| **Journal** | 40 | **76** | atmosfera de diário/papel (AUTEUR 86) + estado honesto "em breve" |
+| **Bazar & Livros** | 50 | **78** | atelier do escritor, estantes/luz (AUTEUR 87) |
+
+> **FASE 2 · Grupo 2 — CONCLUÍDO:** cada página acima ganhou a **atmosfera própria** (gerada via
+> Ideogram — fallback do fal.ai, que ficou sem saldo; **cada peça revista pelo AUTEUR nos pixels**).
+> A `atmosphere` compartilhada do `PageHero` permanece só como **fallback**.
 
 > A Expedição é a **galinha dos ovos de ouro** — foi levada a nível farol nesta fase; as demais
 > seguem o mesmo método na FASE 2.

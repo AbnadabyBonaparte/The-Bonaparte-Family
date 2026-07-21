@@ -1,6 +1,6 @@
 {
   "brand": "the-bonaparte-family",
-  "note": "Pele da Família (canon/PALETA-FAMILIA.md) — papel/tinta/couro/areia/oliva/verde profundo/ouro quente/terracota. JAMAIS obsidian (é ALSHAM). Lei da Imagem: gerar SOMENTE ambiente/atmosfera/textura/fundo/ornamento — nunca pessoa, rosto, o ônibus, capa, nem objeto real. Saídas otimizadas para .webp (responsivo, ~72q) antes de commitar.",
+  "note": "Pele da Família (canon/PALETA-FAMILIA.md) — papel/tinta/couro/areia/oliva/verde profundo/ouro quente/terracota. JAMAIS obsidian (é ALSHAM). Lei da Imagem: gerar SOMENTE ambiente/atmosfera/textura/fundo/ornamento — nunca pessoa, rosto, o ônibus, capa, nem objeto real. Saídas otimizadas para .webp (responsivo, ~72q) antes de commitar. Gerador: fal.ai (flux-pro ultra) OU Ideogram (V_2 + negative_prompt) como fallback — cada peça revista pelo AUTEUR nos pixels.",
   "palette": [
     "#F4F1EA papel", "#1A1814 tinta", "#6B4A2A couro", "#C8B89A areia",
     "#4A5A3A oliva", "#1A422D verde-profundo", "#C6A75E ouro-quente", "#8A4A2F terracota"
@@ -30,6 +30,18 @@
       "aspect": "16:9",
       "note": "Atmosfera PRÓPRIA da página Expedição — 'o limiar da travessia'. Cortada em panorama pra remover clutter de primeiro plano (Lei da Imagem).",
       "prompt": "Cinematic editorial wide atmosphere of a vast layered Asian frontier landscape at warm misty dawn, distant terraced rice hills and rolling ridgelines fading into golden haze, a soft river bend catching first light, low warm sun, deep olive and jade greens washed in warm amber and terracotta light, volumetric mist between the ridges, soft film grain, muted painterly warm paper tones, a reverent sense of a long journey about to begin, no landmarks, no people, no faces, no animals, no vehicles, no boat, no monument, no text, no logo, no watermark"
-    }
+    },
+    { "name": "atmosphere-familia", "type": "ambiente", "aspect": "16:9", "page": "Família",
+      "prompt": "Golden late-afternoon light streaming through a rustic wooden countryside veranda in the Brazilian cerrado, soft hearth glow, floating dust motes, olive greens and warm amber, a deep sense of home and belonging, empty and peaceful, warm paper tones — no people, no faces, no text" },
+    { "name": "atmosphere-educacao", "type": "ambiente", "aspect": "16:9", "page": "Educação",
+      "prompt": "Cozy study nook, out-of-focus vintage world globe and old world map, warm candlelight, blurred blank notebooks and pencils, dust motes, worldschooling wonder, olive green and amber paper tones — no people, no readable text" },
+    { "name": "atmosphere-fe", "type": "atmosfera", "aspect": "16:9", "page": "Fé",
+      "prompt": "Warm golden light shafts descending through tall forest trees, a natural cathedral of trunks, volumetric mist, reverent calm, forest green and warm gold — no building, no church, no cross, no people, no text" },
+    { "name": "atmosphere-saude", "type": "ambiente", "aspect": "16:9", "page": "Saúde",
+      "prompt": "Open green field at misty dawn, dew on tall grass catching first warm light, fresh living green and warm gold, breath and vitality, soft volumetric mist — no people, no animals, no text" },
+    { "name": "atmosphere-journal", "type": "textura", "aspect": "16:9", "page": "Journal",
+      "prompt": "Worn cream journal paper with a soft page fold and deckled edge, warm raking side light, ink and warm paper tones, intimate and quiet — no readable text, no people" },
+    { "name": "atmosphere-bazar", "type": "ambiente", "aspect": "16:9", "page": "Bazar & Livros",
+      "prompt": "Warm writer's atelier, out-of-focus wooden shelves with blurred leather-bound volumes and curated objects, brass desk lamp glow, paper and amber tones, craft and curation — no readable titles, no cover art, no people, no text" }
   ]
 }

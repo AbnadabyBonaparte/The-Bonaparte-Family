@@ -37,6 +37,7 @@ export default function Journal() {
       <Header />
 
       <PageHero
+        image="/brand/atmosphere-journal.webp"
         eyebrow="Diário de bordo"
         title="Journal"
         accent="a vida sem filtro"

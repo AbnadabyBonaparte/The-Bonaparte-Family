@@ -37,7 +37,7 @@ export default function Health() {
       <Header />
       <main>
         <PageHero
-          atmosphere="verde"
+          image="/brand/atmosphere-saude.webp"
           eyebrow="Saúde & Corpo"
           title="Corpo útil,"
           accent="mente inteira"
