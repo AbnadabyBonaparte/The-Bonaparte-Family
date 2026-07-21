@@ -7,6 +7,7 @@ import { countries, DEPARTURE_DATE, EXPEDITION_STATS } from "@/data/expedition";
 import { familyMembers, pets } from "@/data/family";
 import BazarGallery from "@/components/BazarGallery";
 import { COLECAO_GERAL } from "@/data/bazar";
+import { criarCheckout, type CheckoutPayload } from "@/lib/familiaCheckout";
 import manifestoRaw from "@/content/manifesto.md?raw";
 
 // ── MANIFESTO — texto-espinha (fonte única: content/manifesto.md) ──
@@ -147,32 +148,24 @@ function Divider() {
   );
 }
 
-// ── PIX COPY BUTTON ───────────────────────────────────────────
-function PixCopyButton() {
-  const [copied, setCopied] = useState(false);
-  const PIX = "59332265000130";
-  const copy = () => {
-    navigator.clipboard.writeText(PIX);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 3000);
+// ── CHECKOUT CENTRAL (Stripe via Banco do Universo) ───────────
+// A vitrine só redireciona; a sessão nasce na Edge Function central.
+function useFamiliaCheckout() {
+  const [abrindo, setAbrindo] = useState(false);
+  const [erro, setErro] = useState<string | null>(null);
+  const abrir = async (payload: CheckoutPayload) => {
+    if (abrindo) return;
+    setAbrindo(true);
+    setErro(null);
+    const url = await criarCheckout(payload);
+    if (url) {
+      window.location.href = url;
+    } else {
+      setErro("Não foi possível abrir o pagamento agora. Tente de novo — ou chame a gente no WhatsApp.");
+      setAbrindo(false);
+    }
   };
-  return (
-    <button
-      onClick={copy}
-      style={{
-        padding: "0.9rem",
-        background: copied ? "color-mix(in oklab, var(--color-gold) 22%, transparent)" : "var(--color-terracota)",
-        color: copied ? "var(--color-gold)" : "var(--color-papel)",
-        border: copied ? "1px solid var(--color-gold)" : "none",
-        fontSize: "0.82rem", fontWeight: 700,
-        letterSpacing: "0.1em", textTransform: "uppercase",
-        cursor: "pointer", transition: "all 250ms ease",
-        fontFamily: "inherit",
-      }}
-    >
-      {copied ? "✓ PIX copiado! · 59332265000130" : "Copiar chave PIX · CNPJ Bonaparte"}
-    </button>
-  );
+  return { abrir, abrindo, erro };
 }
 
 // ── COUNTDOWN ─────────────────────────────────────────────────
@@ -199,6 +192,7 @@ function useCountdown(target: Date) {
 export default function Home() {
   const countdown = useCountdown(DEPARTURE_DATE);
   const [manifestoIdx, setManifestoIdx] = useState(0);
+  const checkout = useFamiliaCheckout();
 
   useEffect(() => {
     const id = setInterval(() => setManifestoIdx(i => (i + 1) % MANIFESTO.length), 4000);
@@ -803,7 +797,39 @@ export default function Home() {
                   Sem intermediários. Via PIX ou qualquer valor.
                 </p>
                 <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-                  <PixCopyButton />
+                  {/* Apoio avulso via checkout central (PIX + cartão). Lei dos Tronos: só redireciona. */}
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "0.6rem" }}>
+                    {[2000, 5000, 10000].map(v => (
+                      <button
+                        key={v}
+                        onClick={() => checkout.abrir({ kind: "apoio", valor_centavos: v })}
+                        disabled={checkout.abrindo}
+                        style={{
+                          padding: "0.9rem 0.5rem",
+                          background: "var(--color-terracota)",
+                          color: "var(--color-papel)",
+                          border: "none",
+                          fontSize: "0.82rem", fontWeight: 700,
+                          letterSpacing: "0.08em",
+                          cursor: checkout.abrindo ? "wait" : "pointer",
+                          opacity: checkout.abrindo ? 0.7 : 1,
+                          transition: "all 250ms ease",
+                          fontFamily: "inherit",
+                        }}
+                      >
+                        R$ {v / 100}
+                      </button>
+                    ))}
+                  </div>
+                  <p style={{ margin: 0, fontSize: "0.7rem", textAlign: "center",
+                              color: "color-mix(in oklab, var(--color-papel) 55%, transparent)" }}>
+                    PIX ou cartão · pagamento seguro via Stripe
+                  </p>
+                  {checkout.erro && (
+                    <p style={{ margin: 0, fontSize: "0.72rem", textAlign: "center", color: "var(--color-gold)" }}>
+                      {checkout.erro}
+                    </p>
+                  )}
                   <a href="https://wa.me/5563992428800?text=Quero+apoiar+a+Expedi%C3%A7%C3%A3o+Bonaparte!"
                     target="_blank" rel="noopener noreferrer"
                     style={{ textAlign: "center", padding: "0.75rem",
@@ -811,7 +837,7 @@ export default function Home() {
                              color: "color-mix(in oklab, var(--color-papel) 72%, transparent)", textDecoration: "none",
                              fontSize: "0.78rem", fontWeight: 600,
                              letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                    Apoiar via WhatsApp →
+                    Prefere WhatsApp? Fala com a gente →
                   </a>
                 </div>
               </div>
@@ -863,17 +889,14 @@ export default function Home() {
 
               {/* 3 planos */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
-                {[
-                  { nome: "Apoiador", valor: "R$ 9,90/mês",  cor: "var(--color-areia)",     destaque: false,
-                    beneficios: ["Journal completo", "Atualizações da viagem"],
-                    waHref: "https://wa.me/5563992428800?text=Quero+ser+membro+Apoiador+da+Fam%C3%ADlia+Bonaparte+-+R%249%2C90%2Fm%C3%AAs" },
-                  { nome: "Viajante", valor: "R$ 29,90/mês", cor: "var(--color-verde)",     destaque: true,
-                    beneficios: ["Tudo do Apoiador", "Bastidores exclusivos", "Lives mensais da estrada"],
-                    waHref: "https://wa.me/5563992428800?text=Quero+ser+membro+Viajante+da+Fam%C3%ADlia+Bonaparte+-+R%2429%2C90%2Fm%C3%AAs" },
-                  { nome: "Fundador", valor: "R$ 97/mês",    cor: "var(--color-terracota)", destaque: false,
-                    beneficios: ["Tudo do Viajante", "Acesso ao manuscrito", "Menção no livro Dominó"],
-                    waHref: "https://wa.me/5563992428800?text=Quero+ser+membro+Fundador+da+Fam%C3%ADlia+Bonaparte+-+R%2497%2Fm%C3%AAs" },
-                ].map(p => (
+                {([
+                  { nome: "Apoiador", tier: "apoiador" as const, valor: "R$ 9,90/mês",  cor: "var(--color-areia)",     destaque: false,
+                    beneficios: ["Journal completo", "Atualizações da viagem"] },
+                  { nome: "Viajante", tier: "viajante" as const, valor: "R$ 29,90/mês", cor: "var(--color-verde)",     destaque: true,
+                    beneficios: ["Tudo do Apoiador", "Bastidores exclusivos", "Lives mensais da estrada"] },
+                  { nome: "Fundador", tier: "fundador" as const, valor: "R$ 97/mês",    cor: "var(--color-terracota)", destaque: false,
+                    beneficios: ["Tudo do Viajante", "Acesso ao manuscrito", "Menção no livro Dominó"] },
+                ]).map(p => (
                   <div key={p.nome}
                     className={p.destaque ? "sm:scale-105 ring-2 ring-[var(--color-verde)]" : ""}
                     style={{
@@ -897,15 +920,20 @@ export default function Home() {
                         ✓ {b}
                       </p>
                     ))}
-                    <a href={p.waHref} target="_blank" rel="noopener noreferrer"
+                    <button
+                      onClick={() => checkout.abrir({ kind: "membro", tier: p.tier })}
+                      disabled={checkout.abrindo}
                       style={{
-                        display: "block", marginTop: "auto",
+                        display: "block", marginTop: "auto", width: "100%",
                         textAlign: "center", padding: "0.75rem 1rem",
+                        background: "transparent",
                         border: `1px solid ${p.destaque ? "var(--color-gold)" : p.cor}`,
                         color: p.destaque ? "var(--color-gold)" : p.cor,
                         fontSize: "0.72rem", fontWeight: 700,
                         letterSpacing: "0.1em", textTransform: "uppercase",
-                        textDecoration: "none", transition: "all 220ms ease",
+                        cursor: checkout.abrindo ? "wait" : "pointer",
+                        opacity: checkout.abrindo ? 0.7 : 1,
+                        transition: "all 220ms ease", fontFamily: "inherit",
                       }}
                       onMouseEnter={e => {
                         (e.currentTarget as HTMLElement).style.background = p.destaque ? "var(--color-gold)" : p.cor;
@@ -916,25 +944,27 @@ export default function Home() {
                         (e.currentTarget as HTMLElement).style.color = p.destaque ? "var(--color-gold)" : p.cor;
                       }}
                     >
-                      Quero ser {p.nome} →
-                    </a>
+                      {checkout.abrindo ? "Abrindo…" : `Quero ser ${p.nome} →`}
+                    </button>
                   </div>
                 ))}
               </div>
 
-              <a href="https://wa.me/5563992428800?text=Quero+ser+membro+da+Comunidade+Bonaparte!"
-                target="_blank" rel="noopener noreferrer"
-                style={{ display: "inline-block",
-                         background: "var(--color-terracota)",
-                         color: "var(--color-papel)", padding: "1rem 2.5rem",
-                         fontSize: "0.85rem", fontWeight: 700,
-                         letterSpacing: "0.12em", textTransform: "uppercase",
-                         textDecoration: "none" }}>
-                Quero ser membro →
-              </a>
+              {checkout.erro && (
+                <p style={{ fontSize: "0.75rem", color: "var(--color-terracota)", marginBottom: "1rem" }}>
+                  {checkout.erro}
+                </p>
+              )}
               <p style={{ fontSize: "0.7rem", color: "var(--color-muted-foreground)",
-                          marginTop: "1rem", fontStyle: "italic" }}>
-                Via WhatsApp. Sem plataforma. Direto com a família.
+                          marginTop: "0.5rem", fontStyle: "italic" }}>
+                Assinatura no cartão · pagamento seguro via Stripe · cancele quando quiser.
+              </p>
+              <p style={{ fontSize: "0.7rem", marginTop: "0.75rem" }}>
+                <a href="https://wa.me/5563992428800?text=Quero+ser+membro+da+Comunidade+Bonaparte!"
+                  target="_blank" rel="noopener noreferrer"
+                  style={{ color: "var(--color-couro)", textDecoration: "underline" }}>
+                  Prefere falar com a gente primeiro? WhatsApp →
+                </a>
               </p>
             </div>
           </div>
