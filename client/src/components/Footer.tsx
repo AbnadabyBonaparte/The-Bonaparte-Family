@@ -51,7 +51,7 @@ export default function Footer() {
             { label: "Livraria",           url: "https://livraria.casabonaparte.com.br" },
             { label: "Podcast",            url: "https://podcast.casabonaparte.com.br" },
             { label: "ALSHAM Global",      url: "https://alshamglobal.com.br" },
-            { label: "Aby Bonaparte",      url: "https://abnadabybonaparte.alshamglobal.com.br" },
+            { label: "Aby Bonaparte",      url: "https://abnadabybonaparte.casabonaparte.com.br" },
             { label: "ALSHAM Ascension",   url: "https://select.alshamglobal.com.br" },
             { label: "ALSHAM Pulso",       url: "https://pulso.alshamglobal.com.br" },
           ].map((link) => (

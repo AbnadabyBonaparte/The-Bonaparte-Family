@@ -12,7 +12,7 @@ casabonaparte.com.br                    ← HUB CENTRAL (fonte de tudo)
 ├── /livros                             ← Livraria Bonaparte (fonte de verdade dos livros)
 ├── /bazar                              ← Bazar Bonaparte (fonte de verdade dos produtos)
 │
-abnadabybonaparte.alshamglobal.com.br   ← Músico (divulga → aponta pro hub)
+abnadabybonaparte.casabonaparte.com.br   ← Músico (divulga → aponta pro hub)
 the-bonaparte-family.vercel.app         ← Família (divulga → aponta pro hub)
 ```
 

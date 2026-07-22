@@ -48,7 +48,7 @@ const ECO_LINKS = [
   {
     label: "Aby Bonaparte",
     sub: "Músico · 25 anos de palco · 888 músicas",
-    href: "https://abnadabybonaparte.alshamglobal.com.br",
+    href: "https://abnadabybonaparte.casabonaparte.com.br",
     // SUBSTITUIR: foto do Aby no palco
     image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80",
     accent: "var(--color-sunset-orange)",

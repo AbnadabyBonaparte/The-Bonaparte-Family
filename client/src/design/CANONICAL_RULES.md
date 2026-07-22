@@ -114,7 +114,7 @@ casabonaparte.com.br (HUB)
 ├── the-bonaparte-family.vercel.app  (Família / Expedição)
 ├── livraria.casabonaparte.com.br    (Livraria)
 ├── casabonaparte.com.br/bazar       (Bazar)
-└── abnadabybonaparte.alshamglobal.com.br  (Músico)
+└── abnadabybonaparte.casabonaparte.com.br  (Músico)
 ```
 
 **Footer canônico:** Todo site do universo deve ter no footer:
